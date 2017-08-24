@@ -4,6 +4,7 @@ import './App.css';
 import Search from './map-items/Search.js'
 import Results from './map-items/Results.js'
 import Menu from './map-items/Menu.js'
+import Map from './map-items/Map.js'
 
 const App = () => (
     <div className="container">
@@ -13,6 +14,7 @@ const App = () => (
         </div>
         <div>
             <Menu/>
+            <Map/>
         </div>
     </div>
 
