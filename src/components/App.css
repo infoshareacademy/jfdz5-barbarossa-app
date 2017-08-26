@@ -1,13 +1,7 @@
 * {
-  color: #fff;
+  color: #eee;
   font-family: 'Roboto', sans-serif; }
-
-body {
-  background: black; }
 
 .main-panel {
   background: linear-gradient(to bottom, #333, #222);
-  padding: 2em;
-  margin-top: 20px; }
-
-/*# sourceMappingURL=App.css.map */
+  padding: 2em; }
