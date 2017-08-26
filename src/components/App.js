@@ -1,21 +1,25 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
+
+import {
+    Row,
+    Grid
+} from 'react-bootstrap'
 
 import Search from './map-items/Search.js'
-import Results from './map-items/Results.js'
 import Menu from './map-items/Menu.js'
+import Results from './map-items/Results.js'
 
 const App = () => (
-    <div className="container">
-        <div>
+    <Grid>
+        <Row>
             <Search/>
-            <Results/>
-        </div>
-        <div>
             <Menu/>
-        </div>
-    </div>
-
+        </Row>
+        <Row>
+            <Results/>
+        </Row>
+    </Grid>
 );
 
 export default App;
