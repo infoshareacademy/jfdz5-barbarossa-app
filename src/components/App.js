@@ -1,22 +1,24 @@
 import React from 'react'
 import './App.css'
-import Search from './map-items/Search.js'
-import Menu from './map-items/Menu.js'
-import Results from './map-items/Results.js'
+import Content from './Content'
+import Menu from './map-items/Menu'
+import Search from './map-items/Search'
+import Results from './map-items/Results'
 
 const App = () => (
 
-    <div className="container">
-        <div className="row">
-
-            <Search />
-            <Menu />
-        </div>
-        <div className="row">
-            <Results />
-        </div>
-    </div>
+            <div className="container">
+                <Search />
+                <Menu />
+                <Results />
+                <Content />
+            </div>
 
 );
 
-export default App;
+export default App
+
+
+
+
+
