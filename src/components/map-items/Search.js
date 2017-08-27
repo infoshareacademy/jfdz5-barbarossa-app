@@ -28,39 +28,37 @@ class Search extends React.Component {
 
     render() {
         return (
-            <Col md={6}>
-            <form className="search-container">
-                <div className="search-box">
-                    <div className="search-box_icon">
-                        <i className="fa fa-map-marker"/>
+                <form className="search-container">
+                    <div className="search-box">
+                        <div className="search-box_icon">
+                            <i className="fa fa-map-marker"/>
+                        </div>
+                        <Select
+                            name="form-field-name"
+                            value={this.state.value}
+                            options={options}
+                            onChange={this.logChange}
+                            placeholder="Start point..."
+                            className="search-input"
+                        />
                     </div>
-                    <Select
-                        name="form-field-name"
-                        value={this.state.value}
-                        options={options}
-                        onChange={this.logChange}
-                        placeholder="Start point..."
-                        className="search-input"
-                    />
-                </div>
-                <div className="search-box">
-                    <div className="search-box_icon">
-                        <i className="fa fa-flag"/>
-                    </div>
+                    <div className="search-box">
+                        <div className="search-box_icon">
+                            <i className="fa fa-flag"/>
+                        </div>
 
-                    <Select
-                        name="form-field-name"
-                        value={this.state.value}
-                        options={options}
-                        onChange={this.logChange}
-                        placeholder="Destination..."
-                        className="search-input"
-                    />
-                </div>
-                <Button bsStyle="primary" className="search-button">
-                    <i className="fa fa-search"/>Search</Button>
-            </form>
-            </Col>
+                        <Select
+                            name="form-field-name"
+                            value={this.state.value}
+                            options={options}
+                            onChange={this.logChange}
+                            placeholder="Destination..."
+                            className="search-input"
+                        />
+                    </div>
+                    <Button bsStyle="primary" className="search-button">
+                        <i className="fa fa-search"/>Search</Button>
+                </form>
         )
     }
 
