@@ -1,4 +1,5 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-}
+body {
+  background: black; }
+
+.main-panel {
+  background: red; }
