@@ -33,7 +33,6 @@ class Search extends React.Component {
         return (
             <div className="search-container">
                 <Grid className="search-box">
-                    <Col md={4}>
                         <Row>
                             <Col md={2}>
                                 <div className="search-box_icon">
@@ -50,10 +49,8 @@ class Search extends React.Component {
                                 />
                             </Col>
                         </Row>
-                    </Col>
                 </Grid>
                 <Grid className="search-box">
-                    <Col md={4}>
                         <Row>
                             <Col md={2}>
                                 <div className="search-box_icon">
@@ -70,15 +67,12 @@ class Search extends React.Component {
                                 />
                             </Col>
                         </Row>
-                    </Col>
                 </Grid>
                 <Grid className="search-box">
-                    <Col md={4} >
                         <Col md={4} mdOffset={8}>
                         <Button  bsStyle="primary" className="search-button">
                             <i className="fa fa-search"/>Search</Button>
                         </Col>
-                    </Col>
                 </Grid>
             </div>
         )

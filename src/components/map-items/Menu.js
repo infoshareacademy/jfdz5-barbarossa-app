@@ -10,7 +10,7 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 
 const Menu = () => (
-    <div className="col-sm-6">
+    <div>
         <Navbar inverse>
             <Nav>
                 <LinkContainer exact to="/favs">
