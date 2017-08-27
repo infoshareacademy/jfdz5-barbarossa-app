@@ -3,7 +3,6 @@ import './Search.css';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import {
-    Col,
     Button
 } from 'react-bootstrap';
 import 'font-awesome/css/font-awesome.min.css';
@@ -29,32 +28,37 @@ class Search extends React.Component {
 
     render() {
         return (
-            <Col md={6}>
-                <div className="search-container main-panel">
-                                <div className="search-box_icon">
-                                    <i className="fa fa-map-marker"/>
-                                </div>
-                                <Select
-                                    name="form-field-name"
-                                    value={this.state.value}
-                                    options={options}
-                                    onChange={this.logChange}
-                                    placeholder="Start point..."
-                                />
-                                <div className="search-box_icon">
-                                    <i className="fa fa-flag"/>
-                                </div>
-                                <Select
-                                    name="form-field-name"
-                                    value={this.state.value}
-                                    options={options}
-                                    onChange={this.logChange}
-                                    placeholder="Destination..."
-                                />
-                            <Button  bsStyle="primary" className="search-button">
-                                <i className="fa fa-search"/>Search</Button>
-                </div>
-            </Col>
+                <form className="search-container">
+                    <div className="search-box">
+                        <div className="search-box_icon">
+                            <i className="fa fa-map-marker"/>
+                        </div>
+                        <Select
+                            name="form-field-name"
+                            value={this.state.value}
+                            options={options}
+                            onChange={this.logChange}
+                            placeholder="Start point..."
+                            className="search-input"
+                        />
+                    </div>
+                    <div className="search-box">
+                        <div className="search-box_icon">
+                            <i className="fa fa-flag"/>
+                        </div>
+
+                        <Select
+                            name="form-field-name"
+                            value={this.state.value}
+                            options={options}
+                            onChange={this.logChange}
+                            placeholder="Destination..."
+                            className="search-input"
+                        />
+                    </div>
+                    <Button bsStyle="primary" className="search-button">
+                        <i className="fa fa-search"/>Search</Button>
+                </form>
         )
     }
 

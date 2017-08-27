@@ -14,8 +14,9 @@ import Stops from './menu-items/Stops'
 import Log from './menu-items/Log'
 
 const Content = () => (
-    <Grid>
+    <Grid fluid>
         <Switch>
+            <Route exact path="/"/>
             <Route path="/favs" component={Favs}/>
             <Route path="/lines" component={Lines}/>
             <Route path="/schedules" component={Schedules}/>

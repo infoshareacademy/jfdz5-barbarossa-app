@@ -8,18 +8,29 @@ import Map from './map-items/Map'
 
 import {
     Grid,
-    Row
+    Row,
+    Col
 } from 'react-bootstrap'
 
 const App = () => (
 
     <Grid>
         <Row>
-            <Search/>
-            <Menu/>
+            <Col md={6}>
+                <Search />
+            </Col>
+            <Col md={6}>
+                <Menu />
+            </Col>
         </Row>
-        <Results/>
-        <Content/>
+        <Row>
+            <Col md={6}>
+                <Results />
+            </Col>
+            <Col md={6}>
+                <Content />
+            </Col>
+        </Row>
         <Map/>
     </Grid>
 

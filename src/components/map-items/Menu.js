@@ -4,14 +4,12 @@ import {
     Nav,
     Navbar,
     NavItem,
-    Col
 } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 
 const Menu = () => (
-        <Col md={6}>
-            <Navbar>
+            <Navbar fluid>
                 <Nav>
                     <LinkContainer exact to="/favs">
                         <NavItem>Favs</NavItem>
@@ -30,7 +28,6 @@ const Menu = () => (
                     </LinkContainer>
                 </Nav>
             </Navbar>
-        </Col>
 );
 
 export default Menu
