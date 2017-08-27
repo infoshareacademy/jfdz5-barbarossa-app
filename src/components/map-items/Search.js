@@ -28,6 +28,7 @@ class Search extends React.Component {
 
     render() {
         return (
+            <Col md={6}>
             <form className="search-container">
                 <div className="search-box">
                     <div className="search-box_icon">
@@ -59,6 +60,7 @@ class Search extends React.Component {
                 <Button bsStyle="primary" className="search-button">
                     <i className="fa fa-search"/>Search</Button>
             </form>
+            </Col>
         )
     }
 
