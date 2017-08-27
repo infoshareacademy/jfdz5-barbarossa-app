@@ -1,13 +1,15 @@
 //********************  IMPORTS  ********************
-
 @import './Mixins.scss';
 @import './Variables.scss';
 
 //********************  GLOBAL  ********************
 
+body {
+  background: black;
+}
+
 * {
-  color: #eee;
-  font-family: 'Roboto', sans-serif;
+
 }
 
 body {
@@ -15,6 +17,5 @@ body {
 }
 
 .main-panel {
-  background: linear-gradient(to bottom, #333, #222);
-  padding: 2em;
+  background: red;
 }

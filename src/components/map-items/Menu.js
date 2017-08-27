@@ -14,9 +14,9 @@ const Menu = () => (
                         <Nav>
                             <NavItem eventKey={1} href="#">Favs</NavItem>
                             <NavItem eventKey={2} href="#">Stops</NavItem>
-                            <NavItem eventKey={2} href="#">Lines</NavItem>
-                            <NavItem eventKey={2} href="#">Schedules</NavItem>
-                            <NavItem eventKey={2} href="#">Log</NavItem>
+                            <NavItem eventKey={3} href="#">Lines</NavItem>
+                            <NavItem eventKey={4} href="#">Schedules</NavItem>
+                            <NavItem eventKey={5} href="#">Log</NavItem>
                         </Nav>
                     </Navbar>
                 </div>
