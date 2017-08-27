@@ -1,18 +1,19 @@
-import React from 'react';
-import './App.css';
-
+import React from 'react'
+import './App.css'
 import Search from './map-items/Search.js'
-import Results from './map-items/Results.js'
 import Menu from './map-items/Menu.js'
+import Results from './map-items/Results.js'
 
 const App = () => (
+
     <div className="container">
-        <div>
-            <Search/>
-            <Results/>
+        <div className="row">
+
+            <Search />
+            <Menu />
         </div>
-        <div>
-            <Menu/>
+        <div className="row">
+            <Results />
         </div>
     </div>
 

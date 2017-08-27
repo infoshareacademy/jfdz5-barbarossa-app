@@ -1,11 +1,5 @@
-p {
-    font-weight: 300;
-    font-size: 1.2em;
-}
+body {
+  background: black; }
 
-button {
-    font-weight: 300;
-    font-size: 1.2em;
-    margin-top: 10px;
-    padding: 5px;
-}
+.main-panel {
+  background: red; }
