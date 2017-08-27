@@ -6,15 +6,22 @@ import Search from './map-items/Search'
 import Results from './map-items/Results'
 import Map from './map-items/Map'
 
+import {
+    Grid,
+    Row
+} from 'react-bootstrap'
+
 const App = () => (
 
-            <div className="container">
-                <Search />
-                <Menu />
-                <Results />
-                <Content />
-                <Map />
-            </div>
+    <Grid>
+        <Row>
+            <Search/>
+            <Menu/>
+        </Row>
+        <Results/>
+        <Content/>
+        <Map/>
+    </Grid>
 
 );
 
