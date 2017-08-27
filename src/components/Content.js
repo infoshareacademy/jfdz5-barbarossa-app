@@ -16,6 +16,7 @@ import Log from './menu-items/Log'
 const Content = () => (
     <Grid>
         <Switch>
+            <Route exact path="/"/>
             <Route path="/favs" component={Favs}/>
             <Route path="/lines" component={Lines}/>
             <Route path="/schedules" component={Schedules}/>

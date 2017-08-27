@@ -3,9 +3,6 @@ import './Search.css';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import {
-    Grid,
-    Row,
-    Col,
     Button
 } from 'react-bootstrap';
 import 'font-awesome/css/font-awesome.min.css';
@@ -31,50 +28,37 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div className="search-container">
-                <Grid className="search-box">
-                        <Row>
-                            <Col md={2}>
-                                <div className="search-box_icon">
-                                    <i className="fa fa-map-marker"/>
-                                </div>
-                            </Col>
-                            <Col md={10}>
-                                <Select
-                                    name="form-field-name"
-                                    value={this.state.value}
-                                    options={options}
-                                    onChange={this.logChange}
-                                    placeholder="Start point..."
-                                />
-                            </Col>
-                        </Row>
-                </Grid>
-                <Grid className="search-box">
-                        <Row>
-                            <Col md={2}>
-                                <div className="search-box_icon">
-                                    <i className="fa fa-flag"/>
-                                </div>
-                            </Col>
-                            <Col md={10}>
-                                <Select
-                                    name="form-field-name"
-                                    value={this.state.value}
-                                    options={options}
-                                    onChange={this.logChange}
-                                    placeholder="Destination..."
-                                />
-                            </Col>
-                        </Row>
-                </Grid>
-                <Grid className="search-box">
-                        <Col md={4} mdOffset={8}>
-                        <Button  bsStyle="primary" className="search-button">
-                            <i className="fa fa-search"/>Search</Button>
-                        </Col>
-                </Grid>
-            </div>
+            <form className="search-container">
+                <div className="search-box">
+                    <div className="search-box_icon">
+                        <i className="fa fa-map-marker"/>
+                    </div>
+                    <Select
+                        name="form-field-name"
+                        value={this.state.value}
+                        options={options}
+                        onChange={this.logChange}
+                        placeholder="Start point..."
+                        className="search-input"
+                    />
+                </div>
+                <div className="search-box">
+                    <div className="search-box_icon">
+                        <i className="fa fa-flag"/>
+                    </div>
+
+                    <Select
+                        name="form-field-name"
+                        value={this.state.value}
+                        options={options}
+                        onChange={this.logChange}
+                        placeholder="Destination..."
+                        className="search-input"
+                    />
+                </div>
+                <Button bsStyle="primary" className="search-button">
+                    <i className="fa fa-search"/>Search</Button>
+            </form>
         )
     }
 
