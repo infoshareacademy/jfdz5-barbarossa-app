@@ -5,22 +5,32 @@ import {
     Navbar,
     NavItem
 } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 const Menu = () => (
-            <div className="col-sm-6">
-                <div>
-                    <Navbar inverse>
-                        <Nav>
-                            <NavItem eventKey={1} href="#">Favs</NavItem>
-                            <NavItem eventKey={2} href="#">Stops</NavItem>
-                            <NavItem eventKey={3} href="#">Lines</NavItem>
-                            <NavItem eventKey={4} href="#">Schedules</NavItem>
-                            <NavItem eventKey={5} href="#">Log</NavItem>
-                        </Nav>
-                    </Navbar>
-                </div>
-            </div>
+    <div className="col-sm-6">
+        <Navbar inverse>
+            <Nav>
+                <LinkContainer exact to="/favs">
+                    <NavItem>Favs</NavItem>
+                </LinkContainer>
+                <LinkContainer exact to="/stops">
+                    <NavItem>Stops</NavItem>
+                </LinkContainer>
+                <LinkContainer exact to="/lines">
+                    <NavItem>Lines</NavItem>
+                </LinkContainer>
+                <LinkContainer exact to="/schedules">
+                    <NavItem>Schedules</NavItem>
+                </LinkContainer>
+                <LinkContainer exact to="/log">
+                    <NavItem>Log</NavItem>
+                </LinkContainer>
+            </Nav>
+        </Navbar>
+    </div>
 );
 
 export default Menu
