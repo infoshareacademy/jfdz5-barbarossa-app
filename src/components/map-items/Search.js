@@ -14,25 +14,55 @@ function onChange(value) {
     value.format(format);
 }
 
-const options = [
-    {value: 'one', label: 'One', matchPos: "start"},
-    {value: 'two', label: 'Two'},
-    {value: 'three', label: 'Three'},
-    {value: 'four', label: 'Four'},
-];
-
-
 class Search extends React.Component {
 
     state = {
-        value: ""
+        startValue: "",
+        destinationValue: "",
+        stops: null,
+        fetching: false
     };
 
-    logChange = (val) => this.setState({
-        value: val
+    startLogChange = (val) => this.setState({
+        startValue: val
     });
 
+    destinationLogChange = (val) => this.setState({
+        destinationValue: val
+    });
+
+    options = [];
+
+    // options = [
+    //     {value: 'one', label: 'One', matchPos: "start"},
+    //     {value: 'two', label: 'Two'},
+    //     {value: 'three', label: 'Three'},
+    //     {value: 'four', label: 'Four'},
+    // ];
+
+    componentWillMount() {
+        fetch(
+            'http://localhost:3000/data/stops.json'
+        ).then(
+            response => response.json()
+        ).then(
+            data => {
+                this.setState({
+                    stops: data
+                })
+            }
+        )
+    }
+
+
     render() {
+        this.options = this.state.stops ? this.state.stops.map(
+            stop => ({
+                value: stop.name,
+                label: stop.name
+            })
+        ) : null;
+
         return (
             <form className="search-container">
                 <div className="search-box">
@@ -41,9 +71,9 @@ class Search extends React.Component {
                     </div>
                     <Select
                         name="form-field-name"
-                        value={this.state.value}
-                        options={options}
-                        onChange={this.logChange}
+                        value={this.state.startValue}
+                        options={this.options}
+                        onChange={this.startLogChange}
                         placeholder="Start point..."
                         className="search-input"
                     />
@@ -55,9 +85,9 @@ class Search extends React.Component {
 
                     <Select
                         name="form-field-name"
-                        value={this.state.value}
-                        options={options}
-                        onChange={this.logChange}
+                        value={this.state.destinationValue}
+                        options={this.options}
+                        onChange={this.destinationLogChange}
                         placeholder="Destination..."
                         className="search-input"
                     />
