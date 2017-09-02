@@ -3,18 +3,29 @@
 .search-box {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   padding: 0.5em;
 }
 
+.search-box__inverse {
+  justify-content: flex-end;
+}
 .search-box_icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5em;
+  width: 3em;
+  font-size: 1.5em;
 }
 
 .search-input {
   width: 20em;
+}
+
+.search-time-input {
+  width: 3.5em;
+  margin-right: 1em;
 }
 
 .search-button {
