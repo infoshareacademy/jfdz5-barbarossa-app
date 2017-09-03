@@ -20,7 +20,7 @@
 }
 
 @mixin custom-gradient() {
-  background: linear-gradient(to top left, $colorMain, lighten($colorMain, 10%));
+  background: linear-gradient(to top right, $colorMain, lighten($colorMain, 10%));
 }
 
 @mixin shadow-content() {

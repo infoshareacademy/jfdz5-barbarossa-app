@@ -3,7 +3,7 @@
 
 .main-panel {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background: linear-gradient(to top left, #222, #3c3c3c);
+  background: linear-gradient(to top right, #222, #3c3c3c);
   padding: 1em 2em;
   color: #ddd;
   border-radius: 5px; }
