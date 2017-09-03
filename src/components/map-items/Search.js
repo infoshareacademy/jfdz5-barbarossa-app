@@ -7,6 +7,11 @@ import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
 import {Button, Checkbox} from 'react-bootstrap';
+import {connect} from 'react-redux'
+
+import {
+    search
+} from '../../state/search'
 
 const format = 'HH:mm';
 
@@ -19,18 +24,30 @@ class Search extends React.Component {
     state = {
         startValue: "",
         destinationValue: "",
+        arrivalChecked: true,
+        departureChecked: false,
         stops: null
     };
 
-    startLogChange = (val) => this.setState({
-        startValue: val
-    });
-
-    destinationLogChange = (val) => this.setState({
-        destinationValue: val
-    });
-
     options = [];
+
+    startLogChange = value => this.setState({
+        startValue: value
+    });
+
+    destinationLogChange = value => this.setState({
+        destinationValue: value
+    });
+
+    handleArrivalCheckboxClick = () => this.setState({
+        arrivalChecked: true,
+        departureChecked: false
+    });
+
+    handleDepartureCheckboxClick = () => this.setState({
+        arrivalChecked: false,
+        departureChecked: true
+    });
 
     componentWillMount() {
         fetch(
@@ -86,10 +103,16 @@ class Search extends React.Component {
                 </div>
                 <div className="search-box search-box__center">
                     <div className="search-box_check">
-                        <Checkbox>
+                        <Checkbox
+                            checked={this.state.arrivalChecked}
+                            onChange={this.handleArrivalCheckboxClick}
+                        >
                             Time of arrival
                         </Checkbox>
-                        <Checkbox>
+                        <Checkbox
+                            checked={this.state.departureChecked}
+                            onChange={this.handleDepartureCheckboxClick}
+                        >
                             Time of departure
                         </Checkbox>
                     </div>
@@ -100,7 +123,11 @@ class Search extends React.Component {
                         format={format}
                         className="search-time-input"
                     />
-                    <Button bsStyle="primary" className="search-button">
+                    <Button
+                        bsStyle="primary"
+                        className="search-button"
+                        onClick={this.props.handleSubmitClick}
+                    >
                         <i className="fa fa-search"/>Search</Button>
                 </div>
             </form>
@@ -109,4 +136,16 @@ class Search extends React.Component {
 
 }
 
-export default Search
+const mapStateToProps = state => ({
+    departureStop: state.search.departureStop,
+    arrivalStop: state.search.arrivalStop,
+})
+
+const mapDispatchToProps = dispatch => ({
+    handleSubmitClick: () => dispatch(search())
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Search)
