@@ -6,7 +6,7 @@ import 'react-select/dist/react-select.css';
 import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
-import {Button} from 'react-bootstrap';
+import {Button, Checkbox} from 'react-bootstrap';
 
 const format = 'HH:mm';
 
@@ -19,8 +19,7 @@ class Search extends React.Component {
     state = {
         startValue: "",
         destinationValue: "",
-        stops: null,
-        fetching: false
+        stops: null
     };
 
     startLogChange = (val) => this.setState({
@@ -32,13 +31,6 @@ class Search extends React.Component {
     });
 
     options = [];
-
-    // options = [
-    //     {value: 'one', label: 'One', matchPos: "start"},
-    //     {value: 'two', label: 'Two'},
-    //     {value: 'three', label: 'Three'},
-    //     {value: 'four', label: 'Four'},
-    // ];
 
     componentWillMount() {
         fetch(
@@ -92,7 +84,15 @@ class Search extends React.Component {
                         className="search-input"
                     />
                 </div>
-                <div className="search-box search-box__inverse">
+                <div className="search-box search-box__center">
+                    <div className="search-box_check">
+                        <Checkbox>
+                            Time of arrival
+                        </Checkbox>
+                        <Checkbox>
+                            Time of departure
+                        </Checkbox>
+                    </div>
                     <TimePicker
                         showSecond={false}
                         defaultValue={moment()}

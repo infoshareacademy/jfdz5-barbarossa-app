@@ -8,8 +8,8 @@
   padding: 0.5em;
 }
 
-.search-box__inverse {
-  justify-content: flex-end;
+.search-box__center {
+  justify-content: space-around;
 }
 .search-box_icon {
   display: flex;
@@ -21,6 +21,12 @@
 
 .search-input {
   width: 20em;
+}
+
+.search-box_check {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
 }
 
 .search-time-input {
