@@ -27,3 +27,6 @@ h1 {
   margin-bottom: 0; }
   .menu i {
     margin-right: 10px; }
+
+.nav > li {
+  padding: 15px; }

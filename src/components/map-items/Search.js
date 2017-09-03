@@ -79,7 +79,7 @@ class Search extends React.Component {
         return (
             <form className="search-container main-panel">
                 <div className="search-box_title">
-                    <h1><i className="fa fa-search" aria-hidden="true"></i>Wyszukaj...</h1>
+                    <h1><i className="fa fa-search" aria-hidden="true"></i>Wyszukaj</h1>
                 </div>
                 <div className="search-box">
                     <div className="search-box_icon">
