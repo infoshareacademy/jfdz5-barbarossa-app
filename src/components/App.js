@@ -14,7 +14,7 @@ const App = () => (
                 <Menu />
                 <Results />
                 <Content />
-                <Route path="/map" component={Map}/>
+                {/*<Route path="/map" component={Map}/>*/}
             </div>
 
 );
