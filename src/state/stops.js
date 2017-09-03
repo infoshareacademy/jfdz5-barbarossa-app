@@ -1,4 +1,4 @@
-const SET_STOPS = 'posts/SET_STOPS'
+const SET_STOPS = 'stops/SET_STOPS'
 export const setStops = stops => ({
     type: SET_STOPS,
     stops

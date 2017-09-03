@@ -1,4 +1,4 @@
-const SET_LINES = 'posts/SET_LINES'
+const SET_LINES = 'lines/SET_LINES'
 export const setLines = lines => ({
     type: SET_LINES,
     lines

@@ -1,15 +1,42 @@
 import React from 'react'
 import './Results.css';
+import {connect} from 'react-redux'
 
-const Results = () => (
-                <div className="main-panel">
-                    <h1>Results</h1>
-                    <ul>
-                        <li>Result 1</li>
-                        <li>Result 2</li>
-                        <li>Result 3</li>
-                    </ul>
-                </div>
+const Results = ({search,stops,lines}) => (
+    search.searchParams ?
+    <div className="main-panel">
+        <h1>Results</h1>
+        <ul>
+            <li>
+                {
+                    search.searchParams.arrivalStop
+                }
+            </li>
+            <li>
+                {
+                    search.searchParams.departureStop
+                }
+            </li>
+            <li>
+                {
+                    search.searchParams.typeOfTime
+                }
+            </li>
+            <li>
+                {
+                    search.searchParams.time
+                }
+            </li>
+        </ul>
+    </div> : null
 );
 
-export default Results
+const mapStateToProps = state => ({
+    stops: state.stops,
+    lines: state.lines,
+    search: state.search
+});
+
+export default connect(
+    mapStateToProps
+)(Results)
