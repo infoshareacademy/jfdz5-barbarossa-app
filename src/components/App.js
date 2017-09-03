@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import 'font-awesome/css/font-awesome.min.css';
 import Content from './Content'
 import Menu from './map-items/Menu'
 import Search from './map-items/Search'
