@@ -1,28 +1,27 @@
-// Action types
 const SEARCH = 'search/SEARCH'
-
-// Action creators
-export const search = (startValue,destinationValue) => ({
+export const search = (departureStop, arrivalStop, time, typeOfTime) => ({
     type: SEARCH,
-    startValue,
-    destinationValue
-
+    departureStop,
+    arrivalStop,
+    time: time.format('Y-M'),
+    typeOfTime
 })
 
-// Initial state
 const initialState = {
     departureStop: null,
     arrivalStop: null,
+    time: null,
+    typeOfTime: null
 }
 
-// Reducer
 export default (state = initialState, action) => {
     switch(action.type) {
         case SEARCH:
             return {
-                ...state,
-                departureStop: action.startValue,
-                arrivalStop: action.destinationValue
+                departureStop: action.departureStop,
+                arrivalStop: action.arrivalStop,
+                time: action.time,
+                typeOfTime: action.typeOfTime
             }
         default:
             return state
