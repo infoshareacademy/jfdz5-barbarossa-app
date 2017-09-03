@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAOA,WAAY;EACV,UAAU,ECRA,IAAI;EDSd,OAAO,EAAE,OAAO",
+"sources": ["../App.scss","../Variables.scss"],
 "names": [],
 "file": "Results.css"
 }

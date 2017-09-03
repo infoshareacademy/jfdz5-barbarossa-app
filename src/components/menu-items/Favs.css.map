@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAKA,UAAW;EACT,WAAW,EAAE,GAAG;;AAGlB,WAAY;EACV,OAAO,EAAE,OAAO;EAChB,UAAU,EAAE,2CAAkE;EAC9E,KAAK,ECVK,IAAI;EDWd,aAAa,EAAE,IAAI;;AAGrB,IAAK;EACH,aAAa,EAAE,GAAG",
+"sources": ["../App.scss","../Variables.scss"],
 "names": [],
 "file": "Favs.css"
 }

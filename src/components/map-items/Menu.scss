@@ -1,1 +1,12 @@
 @import '../App.scss';
+
+.menu {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+
+  i {
+    margin-right: 10px;
+  }
+}

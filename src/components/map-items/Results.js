@@ -2,7 +2,7 @@ import React from 'react'
 import './Results.css';
 
 const Results = () => (
-                <div className="main-panel">
+                <div className="main-panel results">
                     <h1>Results</h1>
                     <ul>
                         <li>Result 1</li>

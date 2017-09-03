@@ -1,2 +1,14 @@
+.container {
+  padding-top: 2em; }
+
 .main-panel {
-  background: red; }
+  padding: 1em 2em;
+  background: linear-gradient(to top left, #222, #3c3c3c);
+  color: #ddd; }
+
+.row {
+  margin-bottom: 1.5em; }
+
+.container-fluid {
+  margin: 0 !important;
+  padding: 0 !important; }

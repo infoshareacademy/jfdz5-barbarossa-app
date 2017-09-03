@@ -77,7 +77,7 @@ class Search extends React.Component {
         ) : null;
 
         return (
-            <form className="search-container">
+            <form className="search-container main-panel">
                 <div className="search-box">
                     <div className="search-box_icon">
                         <i className="fa fa-map-marker"/>

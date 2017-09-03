@@ -9,22 +9,22 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 
 const Menu = () => (
-            <Navbar fluid>
+            <Navbar fluid inverse className="menu">
                 <Nav>
                     <LinkContainer exact to="/favs">
-                        <NavItem>Favs</NavItem>
+                        <NavItem><i className="fa fa-star" aria-hidden="true"></i>Favs</NavItem>
                     </LinkContainer>
                     <LinkContainer exact to="/stops">
-                        <NavItem>Stops</NavItem>
+                        <NavItem><i className="fa fa-bus" aria-hidden="true"></i>Stops</NavItem>
                     </LinkContainer>
                     <LinkContainer exact to="/lines">
-                        <NavItem>Lines</NavItem>
+                        <NavItem><i className="fa fa-link" aria-hidden="true"></i>Lines</NavItem>
                     </LinkContainer>
                     <LinkContainer exact to="/schedules">
-                        <NavItem>Schedules</NavItem>
+                        <NavItem><i className="fa fa-map-o" aria-hidden="true"></i>Schedules</NavItem>
                     </LinkContainer>
                     <LinkContainer exact to="/log">
-                        <NavItem>Log</NavItem>
+                        <NavItem><i className="fa fa-user-circle-o" aria-hidden="true"></i>Log</NavItem>
                     </LinkContainer>
                 </Nav>
             </Navbar>
