@@ -16,10 +16,10 @@ const App = () => (
 
     <Grid>
         <Row>
-            <Col md={6}>
+            <Col md={4}>
                 <Search />
             </Col>
-            <Col md={6}>
+            <Col mdOffset={2} md={6}>
                 <Menu />
             </Col>
         </Row>
