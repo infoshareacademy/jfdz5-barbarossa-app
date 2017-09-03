@@ -6,15 +6,28 @@
   justify-content: flex-start;
   align-items: center;
   padding: 0.5em;
+  span {
+    @include custom-transition();
+    font-size: 1em;
+    text-transform: uppercase;
+    &:hover {
+      color: $colorAccent;
+    }
+  }
+}
+
+.search-box_title {
+  @include icon-move();
+  display: flex;
+  width: 100%;
+  margin-bottom: 0.5em;
 }
 
 .search-box__center {
   justify-content: space-around;
 }
 .search-box_icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-align();
   width: 3em;
   font-size: 1.5em;
 }
@@ -30,13 +43,17 @@
 }
 
 .search-time-input {
-  width: 3.5em;
-  margin-right: 1em;
+  @include shadow-content();
+  width: 5em;
+  margin: 0 1em;
+}
+
+.rc-time-picker-input {
+  text-align: center;
 }
 
 .search-button {
-  right: 0;
-  i {
-    margin-right: 0.5em;
-  }
+  @include icon-move();
+  @include shadow-content();
+  background: $colorAccent;
 }

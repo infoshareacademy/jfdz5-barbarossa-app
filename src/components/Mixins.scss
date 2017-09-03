@@ -2,3 +2,27 @@
   margin: $margin;
   padding: $padding;
 }
+
+@mixin flex-align() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin icon-move() {
+  i {
+    margin-right: 10px;
+  }
+}
+
+@mixin custom-transition() {
+  transition: color 0.3s, background 0.3s;
+}
+
+@mixin custom-gradient() {
+  background: linear-gradient(to top left, $colorMain, lighten($colorMain, 10%));
+}
+
+@mixin shadow-content() {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}

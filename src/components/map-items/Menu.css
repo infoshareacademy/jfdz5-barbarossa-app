@@ -2,9 +2,11 @@
   padding-top: 2em; }
 
 .main-panel {
-  padding: 1em 2em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: linear-gradient(to top left, #222, #3c3c3c);
-  color: #ddd; }
+  padding: 1em 2em;
+  color: #ddd;
+  border-radius: 5px; }
 
 .row {
   margin-bottom: 1.5em; }
@@ -12,6 +14,11 @@
 .container-fluid {
   margin: 0 !important;
   padding: 0 !important; }
+
+h1 {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  letter-spacing: 0.5px; }
 
 .menu {
   text-transform: uppercase;

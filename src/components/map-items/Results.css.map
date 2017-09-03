@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAOA,WAAY;EACV,UAAU,ECRA,IAAI;EDSd,OAAO,EAAE,OAAO",
-"sources": ["../App.scss","../Variables.scss"],
+"mappings": "AAKA,UAAW;EACT,WAAW,EAAE,GAAG;;AAGlB,WAAY;EACV,OAAO,EAAE,OAAO;EAChB,UAAU,EAAE,2CAAkE;EAC9E,KAAK,ECLK,IAAI;EDMd,aAAa,EAAE,GAAG;;AAGpB,IAAK;EACH,aAAa,EAAE,KAAK;;AAGtB,gBAAiB;EACf,MAAM,EAAE,YAAY;EACpB,OAAO,EAAE,YAAY;;AAGvB,EAAG;EACD,cAAc,EAAE,SAAS;EACzB,SAAS,EAAE,KAAK;EAChB,cAAc,EAAE,KAAK;;AEhBrB,UAAE;EACA,YAAY,EAAE,IAAI",
+"sources": ["../App.scss","../Variables.scss","../Mixins.scss"],
 "names": [],
 "file": "Results.css"
 }

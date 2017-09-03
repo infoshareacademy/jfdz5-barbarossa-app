@@ -78,6 +78,9 @@ class Search extends React.Component {
 
         return (
             <form className="search-container main-panel">
+                <div className="search-box_title">
+                    <h1><i className="fa fa-search" aria-hidden="true"></i>Wyszukaj...</h1>
+                </div>
                 <div className="search-box">
                     <div className="search-box_icon">
                         <i className="fa fa-map-marker"/>
@@ -111,13 +114,13 @@ class Search extends React.Component {
                             checked={this.state.arrivalChecked}
                             onChange={this.handleArrivalCheckboxClick}
                         >
-                            Time of arrival
+                            <span>Arrival</span>
                         </Checkbox>
                         <Checkbox
                             checked={this.state.departureChecked}
                             onChange={this.handleDepartureCheckboxClick}
                         >
-                            Time of departure
+                            <span>Departure</span>
                         </Checkbox>
                     </div>
                     <TimePicker
@@ -128,7 +131,7 @@ class Search extends React.Component {
                         className="search-time-input"
                     />
                     <Button
-                        bsStyle="primary"
+                        bsStyle="btn-custom"
                         className="search-button"
                         onClick={this.handleSubmitClick}
                     >
