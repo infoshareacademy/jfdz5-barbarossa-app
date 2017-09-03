@@ -2,8 +2,11 @@
 const SEARCH = 'search/SEARCH'
 
 // Action creators
-export const search = () => ({
-    type: SEARCH
+export const search = (startValue,destinationValue) => ({
+    type: SEARCH,
+    startValue,
+    destinationValue
+
 })
 
 // Initial state
@@ -18,7 +21,8 @@ export default (state = initialState, action) => {
         case SEARCH:
             return {
                 ...state,
-                departureStop: 'work'
+                departureStop: action.startValue,
+                arrivalStop: action.destinationValue
             }
         default:
             return state

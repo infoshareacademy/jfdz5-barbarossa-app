@@ -49,6 +49,10 @@ class Search extends React.Component {
         departureChecked: true
     });
 
+    handleSubmitClick = () => {
+        this.props.handleSubmitClick(this.state.startValue.value, this.state.destinationValue.value)
+    }
+
     componentWillMount() {
         fetch(
             'http://localhost:3000/data/stops.json'
@@ -126,7 +130,7 @@ class Search extends React.Component {
                     <Button
                         bsStyle="primary"
                         className="search-button"
-                        onClick={this.props.handleSubmitClick}
+                        onClick={this.handleSubmitClick}
                     >
                         <i className="fa fa-search"/>Search</Button>
                 </div>
@@ -142,7 +146,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    handleSubmitClick: () => dispatch(search())
+    handleSubmitClick: (startValue,destinationValue) => dispatch(search(startValue,destinationValue))
 })
 
 export default connect(
