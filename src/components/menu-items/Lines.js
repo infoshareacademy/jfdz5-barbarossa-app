@@ -8,9 +8,9 @@ const Lines = ({lines}) => (
                 {
                     lines.map(
                         line => (
-                            <li>
+                            <li key={line.id}>
                                 {
-                                    line.line
+                                    line.name
                                 }
                             </li>
                         )
