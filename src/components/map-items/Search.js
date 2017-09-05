@@ -75,10 +75,10 @@ class Search extends React.Component {
     };
 
     render() {
-        this.options = this.props.stops ? this.props.stops.map(
-            stop => ({
-                value: stop.name,
-                label: stop.name
+        this.options = this.props.stopNames ? this.props.stopNames.map(
+            stopName => ({
+                value: stopName,
+                label: stopName
             })
         ) : null;
 
@@ -148,7 +148,7 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    stops: state.stops
+    stopNames: state.stopNames
 });
 
 const mapDispatchToProps = dispatch => ({

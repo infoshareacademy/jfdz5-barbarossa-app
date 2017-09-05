@@ -6,7 +6,7 @@ export const setLines = lines => ({
 
 export const fetchLines = () => dispatch => {
     fetch(
-        'http://localhost:3000/data/lines.json'
+        'https://frozen-garden-78232.herokuapp.com/transport/lines.json'
     ).then(
         response => response.json()
     ).then(

@@ -1,16 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-const Stops = ({stops}) => (
+const Stops = ({stopNames}) => (
     <div className="main-panel">
         <h1>Stops</h1>
         <ul>
                 {
-                    stops.map(
+                    stopNames.map(
                         stop => (
-                            <li>
+                            <li key={stop}>
                                 {
-                                    stop.name
+                                    stop
                                 }
                             </li>
                         )
@@ -22,6 +22,6 @@ const Stops = ({stops}) => (
 
 export default connect(
     state => ({
-        stops: state.stops
+        stopNames: state.stopNames
     })
 )(Stops)

@@ -6,7 +6,7 @@ export const setStops = stops => ({
 
 export const fetchStops = () => dispatch => {
     fetch(
-        'http://localhost:3000/data/stops.json'
+        'https://frozen-garden-78232.herokuapp.com/transport/stops.json'
     ).then(
         response => response.json()
     ).then(
