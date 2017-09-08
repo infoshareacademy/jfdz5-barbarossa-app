@@ -1,59 +1,71 @@
 import React from 'react'
 import './Results.css';
-import {Button} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
-const Results = ({search,stops,lines}) => (
-    search.searchParams ?
-    <div className="main-panel">
-        <h1>What is search?</h1>
-        <ul>
-            <li>
-                {
-                    search.searchParams.arrivalStop
-                }
-            </li>
-            <li>
-                {
-                    search.searchParams.departureStop
-                }
-            </li>
-            <li>
-                {
-                    search.searchParams.typeOfTime
-                }
-            </li>
-            <li>
-                {
-                    search.searchParams.time
-                }
-            </li>
-        </ul>
-        <h1>Results</h1>
+class Results extends React.Component {
 
-            {
-                lines.map(
-                    line => line.stops.map(
-                        stop => stop.name === search.searchParams.arrivalStop ?
-                            line.stops.map(
-                                stop => stop.name === search.searchParams.departureStop ?
-                                    <Button>
-                                        {
-                                            line.name
-                                        }
-                                    </Button>
-                                    :
-                                    null
-                            )
+    state = {
+        foundLines: [],
+        matchedTime: []
+    }
+
+    findLine = () => {
+        this.props.lines.map(
+            line => line.stops.map(
+                stop => stop.name === this.props.search.searchParams.departureStop ?
+                    line.stops.map(
+                        stop => stop.name === this.props.search.searchParams.arrivalStop ?
+                            this.state.foundLines.push(line.name)
                             :
                             null
-
                     )
-                )
-            }
+                    :
+                    null
+            )
+        )
+    }
 
-    </div> : null
-);
+    matchTime = () => {
+        this.props.lines.map(
+            line => this.state.foundLines.map(
+                foundLine => line.name === foundLine ?
+                    this.state.matchedTime.push(line.departure)
+                    :
+                    null
+            )
+        )
+        console.log(this.state.matchedTime)
+    }
+
+    render() {
+
+        return (
+            this.props.search.searchParams ?
+                (
+                    this.findLine(),
+                        this.matchTime(),
+                        <div className="main-panel">
+                            <h1>Results</h1>
+                            <ul>
+                                {
+                                    this.state.foundLines.map(
+                                        line =>
+                                            <li key={line}>
+                                                {
+                                                    line
+                                                }
+                                            </li>
+                                    )
+                                }
+                            </ul>
+                        </div>
+                )
+                : null
+        )
+    }
+
+};
+
 
 const mapStateToProps = state => ({
     stops: state.stops,

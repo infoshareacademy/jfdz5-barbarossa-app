@@ -65,7 +65,7 @@ class Search extends React.Component {
             const searchParams = {
                 departureStop:  this.state.departureStop.value,
                 arrivalStop:    this.state.arrivalStop.value,
-                time:           this.state.time.format('HH:mm'),
+                time:           this.state.time,
                 typeOfTime:     this.state.typeOfTime
             };
 
