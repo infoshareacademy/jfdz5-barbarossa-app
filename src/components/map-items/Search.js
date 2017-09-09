@@ -60,11 +60,17 @@ class Search extends React.Component {
     handleSubmitClick = event => {
         event.preventDefault();
 
+
+
         if (this.state.departureStop && this.state.arrivalStop) {
 
             const searchParams = {
-                departureStop:  this.state.departureStop.value,
-                arrivalStop:    this.state.arrivalStop.value,
+                departureStop:  this.props.stops.filter(
+                    stop => stop.name === this.state.departureStop.value
+                ),
+                arrivalStop:    this.props.stops.filter(
+                    stop => stop.name === this.state.arrivalStop.value
+                ),
                 time:           this.state.time,
                 typeOfTime:     this.state.typeOfTime
             };
@@ -148,7 +154,8 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    stopNames: state.stopNames
+    stopNames: state.stopNames,
+    stops: state.stops
 });
 
 const mapDispatchToProps = dispatch => ({

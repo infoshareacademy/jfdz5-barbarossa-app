@@ -9,13 +9,15 @@ class Results extends React.Component {
         matchedTime: []
     }
 
+    x = null;
+
     findLine = () => {
         this.props.lines.map(
             line => line.stops.map(
-                stop => stop.name === this.props.search.searchParams.departureStop ?
+                stop => stop.id === this.props.search.searchParams.departureStop[0].id ?
                     line.stops.map(
-                        stop => stop.name === this.props.search.searchParams.arrivalStop ?
-                            this.state.foundLines.push(line.name)
+                        stop => stop.id === this.props.search.searchParams.arrivalStop[0].id ?
+                            this.state.foundLines.push(line)
                             :
                             null
                     )
@@ -23,36 +25,29 @@ class Results extends React.Component {
                     null
             )
         )
+        console.log(this.state.foundLines)
     }
 
     matchTime = () => {
-        this.props.lines.map(
-            line => this.state.foundLines.map(
-                foundLine => line.name === foundLine ?
-                    this.state.matchedTime.push(line.departure)
-                    :
-                    null
-            )
-        )
-        console.log(this.state.matchedTime)
+        
     }
+
 
     render() {
 
         return (
             this.props.search.searchParams ?
                 (
-                    this.findLine(),
-                        this.matchTime(),
+                    this.findLine(), this.matchTime(),
                         <div className="main-panel">
                             <h1>Results</h1>
                             <ul>
                                 {
                                     this.state.foundLines.map(
-                                        line =>
-                                            <li key={line}>
+                                        (foundLine, index) =>
+                                            <li key={index}>
                                                 {
-                                                    line
+                                                    foundLine.name
                                                 }
                                             </li>
                                     )
