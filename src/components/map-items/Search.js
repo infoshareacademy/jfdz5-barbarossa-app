@@ -39,7 +39,7 @@ class Search extends React.Component {
     });
 
     handleTimeChange = value => {
-        this.setState ({
+        this.setState({
             time: value
         })
     }
@@ -60,29 +60,31 @@ class Search extends React.Component {
     handleSubmitClick = event => {
         event.preventDefault();
 
-        const departureStop = this.state.departureStop;
-        const arrivalStop = this.state.arrivalStop;
-        const time = this.state.time;
-        const typeOfTime = this.state.typeOfTime;
 
-        if (departureStop && arrivalStop ) {
 
-            this.props.handleSubmitClick(
-                departureStop.value,
-                arrivalStop.value,
-                time,
-                typeOfTime
-            )
+        if (this.state.departureStop && this.state.arrivalStop) {
 
+            const searchParams = {
+                departureStop:  this.props.stops.filter(
+                    stop => stop.name === this.state.departureStop.value
+                ),
+                arrivalStop:    this.props.stops.filter(
+                    stop => stop.name === this.state.arrivalStop.value
+                ),
+                time:           this.state.time,
+                typeOfTime:     this.state.typeOfTime
+            };
+
+            this.props.handleSubmitClick(searchParams);
             this.setState(initialState);
         }
-    }
+    };
 
     render() {
-        this.options = this.props.stops ? this.props.stops.map(
-            stop => ({
-                value: stop.name,
-                label: stop.name
+        this.options = this.props.stopNames ? this.props.stopNames.map(
+            stopName => ({
+                value: stopName,
+                label: stopName
             })
         ) : null;
 
@@ -152,19 +154,13 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    stopNames: state.stopNames,
     stops: state.stops
 });
 
 const mapDispatchToProps = dispatch => ({
-    handleSubmitClick: (departureStop,arrivalStop, time, typeOfTime) => dispatch(
-        search(
-            departureStop,
-            arrivalStop,
-            time,
-            typeOfTime
-        )
-    )
-})
+    handleSubmitClick: (searchParams) => dispatch(search(searchParams))
+});
 
 export default connect(
     mapStateToProps,
