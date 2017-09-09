@@ -9,8 +9,6 @@ class Results extends React.Component {
         matchedTime: []
     }
 
-    x = null;
-
     findLine = () => {
         this.props.lines.map(
             line => line.stops.map(
@@ -25,20 +23,41 @@ class Results extends React.Component {
                     null
             )
         )
-        console.log(this.state.foundLines)
+    }
+
+    departureIndex = null;
+
+    getIndex = () => {
+     this.departureIndex = this.state.foundLines.map(
+         foundLine => foundLine.stops.filter(
+             (stop, index) => stop.id === this.props.search.searchParams.departureStop[0].id ?
+                 index : null
+         )
+     )
+        console.log(this.departureIndex)
     }
 
     matchTime = () => {
-        
+        this.state.matchedTime.push(
+            this.state.foundLines.map(
+                foundLine => foundLine.dTimes
+                .filter(
+                (_, index) => index <= 2)
+                .reduce(
+                (sumSeconds, seconds) =>
+                    sumSeconds + seconds
+                )
+            )
+        )
+        console.log(this.state.matchedTime)
     }
 
 
     render() {
-
         return (
             this.props.search.searchParams ?
                 (
-                    this.findLine(), this.matchTime(),
+                    this.findLine(), this.matchTime(), this.getIndex(),
                         <div className="main-panel">
                             <h1>Results</h1>
                             <ul>
