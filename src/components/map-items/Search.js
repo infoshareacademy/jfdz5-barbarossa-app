@@ -71,7 +71,11 @@ class Search extends React.Component {
                 arrivalStop:    this.props.stops.filter(
                     stop => stop.name === this.state.arrivalStop.value
                 ),
-                time:           this.state.time,
+                time:           {
+                    hour: parseInt(this.state.time.format('HH')),
+                    minutes: parseInt(this.state.time.format('mm')),
+                    seconds: 0
+                },
                 typeOfTime:     this.state.typeOfTime
             };
 
