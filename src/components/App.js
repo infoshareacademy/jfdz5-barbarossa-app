@@ -14,27 +14,27 @@ import {
 } from 'react-bootstrap'
 
 const App = () => (
-
-    <Grid>
-        <Row>
-            <Col md={4}>
-                <Search />
-            </Col>
-            <Col mdOffset={2} md={6}>
-                <Menu />
-            </Col>
-        </Row>
-        <Row>
-            <Col md={6}>
-                <Results />
-            </Col>
-            <Col md={6}>
-                <Content />
-            </Col>
-        </Row>
+    <div>
         <Map/>
-    </Grid>
-
+        <Grid style={{ position: `relative`}}>
+            <Row>
+                <Col md={4}>
+                    <Search />
+                </Col>
+                <Col mdOffset={2} md={6}>
+                    <Menu />
+                </Col>
+            </Row>
+            <Row>
+                <Col md={6}>
+                    <Results />
+                </Col>
+                <Col md={6}>
+                    <Content />
+                </Col>
+            </Row>
+        </Grid>
+    </div>
 );
 
 export default App
