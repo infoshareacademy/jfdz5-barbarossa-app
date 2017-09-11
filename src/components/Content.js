@@ -11,16 +11,17 @@ import Favs from './menu-items/Favs'
 import Lines from './menu-items/Lines'
 import Schedules from './menu-items/Schedules'
 import Stops from './menu-items/Stops'
-import Map from './map-items/Map'
+import Log from './menu-items/Log'
 
 const Content = () => (
-    <Grid>
+    <Grid fluid>
         <Switch>
+            <Route exact path="/"/>
             <Route path="/favs" component={Favs}/>
             <Route path="/lines" component={Lines}/>
             <Route path="/schedules" component={Schedules}/>
             <Route path="/stops" component={Stops}/>
-            <Route path="/map" component={Map}/>
+            <Route path="/log" component={Log}/>
             <Route render={() => <h1>Not found</h1>}/>
         </Switch>
     </Grid>

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Stops = () => (
+const Log = () => (
         <div className="main-panel">
-            <h1>Stops</h1>
+            <h1>Log</h1>
         </div>
 );
 
-export default Stops
+export default Log
