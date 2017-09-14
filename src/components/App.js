@@ -4,7 +4,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import Content from './Content'
 import Menu from './map-items/Menu'
 import Search from './map-items/Search'
-import Results from './map-items/Results'
+import Results from './map-items/Results/Results'
 import Map from './map-items/Map'
 
 import {
