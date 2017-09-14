@@ -1,11 +1,27 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-import './Stops.css'
-
-const Stops = () => (
-        <div className="main-panel stops">
-            <h1>Stops</h1>
-        </div>
+const Stops = ({stopNames}) => (
+    <div className="main-panel">
+        <h1>Stops</h1>
+        <ul>
+                {
+                    stopNames.map(
+                        stop => (
+                            <li key={stop}>
+                                {
+                                    stop
+                                }
+                            </li>
+                        )
+                    )
+                }
+        </ul>
+    </div>
 );
 
-export default Stops
+export default connect(
+    state => ({
+        stopNames: state.stopNames
+    })
+)(Stops)

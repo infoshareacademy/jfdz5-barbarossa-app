@@ -1,28 +1,18 @@
-// Action types
 const SEARCH = 'search/SEARCH'
-
-// Action creators
-export const search = (startValue,destinationValue) => ({
+export const search = (searchParams) => ({
     type: SEARCH,
-    startValue,
-    destinationValue
-
+    searchParams
 })
 
-// Initial state
 const initialState = {
-    departureStop: null,
-    arrivalStop: null,
+    searchParams: null
 }
 
-// Reducer
 export default (state = initialState, action) => {
     switch(action.type) {
         case SEARCH:
             return {
-                ...state,
-                departureStop: action.startValue,
-                arrivalStop: action.destinationValue
+                searchParams: action.searchParams
             }
         default:
             return state

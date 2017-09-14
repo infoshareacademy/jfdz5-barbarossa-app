@@ -1,12 +1,28 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-import './Lines.css'
-
-const Lines = () => (
-        <div className="main-panel lines">
+const Lines = ({lines}) => (
+        <div className="main-panel">
             <h1>Lines</h1>
+            <ul>
+                {
+                    lines.map(
+                        line => (
+                            <li key={line.id}>
+                                {
+                                    line.name
+                                }
+                            </li>
+                        )
+                    )
+                }
+            </ul>
         </div>
 );
 
+export default connect(
+    state => ({
+        lines: state.lines
+    })
+)(Lines)
 
-export default Lines

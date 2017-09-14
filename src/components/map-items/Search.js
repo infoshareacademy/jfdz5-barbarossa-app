@@ -1,95 +1,108 @@
 import React from 'react';
 import './Search.css';
-import 'font-awesome/css/font-awesome.min.css';
+import {Button, Checkbox} from 'react-bootstrap';
+import {connect} from 'react-redux'
+
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+
 import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
-import {Button, Checkbox} from 'react-bootstrap';
-import {connect} from 'react-redux'
 
 import {
     search
 } from '../../state/search'
 
-const format = 'HH:mm';
-
-function onChange(value) {
-    value.format(format);
+const initialState = {
+    departureStop: null,
+    arrivalStop: null,
+    departureChecked: false,
+    arrivalChecked: true,
+    time: moment(),
+    typeOfTime: 'arrival',
+    stops: null
 }
 
 class Search extends React.Component {
 
-    state = {
-        startValue: "",
-        destinationValue: "",
-        arrivalChecked: true,
-        departureChecked: false,
-        stops: null
-    };
+    state = initialState;
 
     options = [];
 
-    startLogChange = value => this.setState({
-        startValue: value
+    handleDepartureChange = value => this.setState({
+        departureStop: value
     });
 
-    destinationLogChange = value => this.setState({
-        destinationValue: value
+    handleArrivalChange = value => this.setState({
+        arrivalStop: value
     });
+
+    handleTimeChange = value => {
+        this.setState({
+            time: value
+        })
+    }
 
     handleArrivalCheckboxClick = () => this.setState({
         arrivalChecked: true,
-        departureChecked: false
+        departureChecked: false,
+        typeOfTime: 'arrival'
     });
 
     handleDepartureCheckboxClick = () => this.setState({
         arrivalChecked: false,
-        departureChecked: true
+        departureChecked: true,
+        typeOfTime: 'departure'
+
     });
 
-    handleSubmitClick = () => {
-        this.props.handleSubmitClick(this.state.startValue.value, this.state.destinationValue.value)
-    }
+    handleSubmitClick = event => {
+        event.preventDefault();
 
-    componentWillMount() {
-        fetch(
-            'http://localhost:3000/data/stops.json'
-        ).then(
-            response => response.json()
-        ).then(
-            data => {
-                this.setState({
-                    stops: data
-                })
-            }
-        )
-    }
 
+
+        if (this.state.departureStop && this.state.arrivalStop) {
+
+            const searchParams = {
+                departureStop:  this.props.stops.filter(
+                    stop => stop.name === this.state.departureStop.value
+                ),
+                arrivalStop:    this.props.stops.filter(
+                    stop => stop.name === this.state.arrivalStop.value
+                ),
+                time:           {
+                    hour: parseInt(this.state.time.format('HH')),
+                    minutes: parseInt(this.state.time.format('mm')),
+                    seconds: 0
+                },
+                typeOfTime:     this.state.typeOfTime
+            };
+
+            this.props.handleSubmitClick(searchParams);
+            this.setState(initialState);
+        }
+    };
 
     render() {
-        this.options = this.state.stops ? this.state.stops.map(
-            stop => ({
-                value: stop.name,
-                label: stop.name
+        this.options = this.props.stopNames ? this.props.stopNames.map(
+            stopName => ({
+                value: stopName,
+                label: stopName
             })
         ) : null;
 
         return (
-            <form className="search-container main-panel">
-                <div className="search-box_title">
-                    <h1><i className="fa fa-search" aria-hidden="true"></i>Wyszukaj</h1>
-                </div>
+            <form className="search-container" onSubmit={this.handleSubmitClick}>
                 <div className="search-box">
                     <div className="search-box_icon">
                         <i className="fa fa-map-marker"/>
                     </div>
                     <Select
-                        name="form-field-name"
-                        value={this.state.startValue}
+                        name="departureStop"
+                        value={this.state.departureStop}
                         options={this.options}
-                        onChange={this.startLogChange}
+                        onChange={this.handleDepartureChange}
                         placeholder="Start point..."
                         className="search-input"
                     />
@@ -100,40 +113,41 @@ class Search extends React.Component {
                     </div>
 
                     <Select
-                        name="form-field-name"
-                        value={this.state.destinationValue}
+                        name="arrivalStop"
+                        value={this.state.arrivalStop}
                         options={this.options}
-                        onChange={this.destinationLogChange}
+                        onChange={this.handleArrivalChange}
                         placeholder="Destination..."
                         className="search-input"
                     />
                 </div>
-                <div className="search-box search-box__center">
+                <div className="search-box">
                     <div className="search-box_check">
                         <Checkbox
                             checked={this.state.arrivalChecked}
                             onChange={this.handleArrivalCheckboxClick}
                         >
-                            <span>Arrival</span>
+                            Arrival
                         </Checkbox>
                         <Checkbox
                             checked={this.state.departureChecked}
                             onChange={this.handleDepartureCheckboxClick}
                         >
-                            <span>Departure</span>
+                            Departure
                         </Checkbox>
                     </div>
                     <TimePicker
+                        name="time"
                         showSecond={false}
-                        defaultValue={moment()}
-                        onChange={onChange}
-                        format={format}
+                        value={this.state.time}
+                        onChange={this.handleTimeChange}
+                        format={'HH:mm'}
                         className="search-time-input"
                     />
                     <Button
-                        bsStyle="btn-custom"
+                        bsStyle="primary"
                         className="search-button"
-                        onClick={this.handleSubmitClick}
+                        type="submit"
                     >
                         <i className="fa fa-search"/>Search</Button>
                 </div>
@@ -144,13 +158,13 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    departureStop: state.search.departureStop,
-    arrivalStop: state.search.arrivalStop,
-})
+    stopNames: state.stopNames,
+    stops: state.stops
+});
 
 const mapDispatchToProps = dispatch => ({
-    handleSubmitClick: (startValue,destinationValue) => dispatch(search(startValue,destinationValue))
-})
+    handleSubmitClick: (searchParams) => dispatch(search(searchParams))
+});
 
 export default connect(
     mapStateToProps,
