@@ -67,13 +67,13 @@ class Search extends React.Component {
             const searchParams = {
                 departureStop:  this.props.stops.filter(
                     stop => stop.name === this.state.departureStop.value
-                ),
+                )[0], // return first, because array always has only one element
                 arrivalStop:    this.props.stops.filter(
                     stop => stop.name === this.state.arrivalStop.value
-                ),
+                )[0], // return first, because array always has only one element
                 time:           {
-                    hour: parseInt(this.state.time.format('HH')),
-                    minutes: parseInt(this.state.time.format('mm')),
+                    hour: parseInt(this.state.time.format('HH'),10),
+                    minutes: parseInt(this.state.time.format('mm'),10),
                     seconds: 0
                 },
                 typeOfTime:     this.state.typeOfTime
