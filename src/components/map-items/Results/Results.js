@@ -7,19 +7,21 @@ import {connect} from 'react-redux'
 // import getTimeAtStop from './_utils/getTimeAtStop'
 // import getTimeToStop from './_utils/getTimeToStop'
 
+const initialState = {
+    foundLines: [],
+    departureStopIndex: [],
+    arrivalStopIndex: [],
+    timeToDepartureStop: [],
+    timeToArrivalStop: [],
+    timeAtDepartureStop: [],
+    timeAtArrivalStop: [],
+    matchedTimeAtDepartureStop: [],
+    matchedTimeAtSelectedStop: []
+}
+
 class Results extends React.Component {
 
-    state = {
-        foundLines: [],
-        departureStopIndex: [],
-        arrivalStopIndex: [],
-        timeToDepartureStop: [],
-        timeToArrivalStop: [],
-        timeAtDepartureStop: [],
-        timeAtArrivalStop: [],
-        matchedTimeAtDepartureStop: [],
-        matchedTimeAtArrivalStop: []
-    }
+    state = initialState;
 
     findLine = () => {
         this.props.lines.map(
@@ -46,6 +48,7 @@ class Results extends React.Component {
         this.getArrivalStopIndex()
         this.getTimeToArrivalStop()
         this.getTimeAtArrivalStop()
+        this.matchTimeAtStops()
     }
 
 
@@ -53,7 +56,10 @@ class Results extends React.Component {
         this.state.foundLines.map(
             foundLine => foundLine.stops.map(
                 (stop, index) => stop.id === this.props.search.searchParams.departureStop.id ?
-                    this.state.departureStopIndex.push(index) : null
+                    this.state.departureStopIndex.push({
+                        name: foundLine.name,
+                        index: index
+                    }) : null
             )
         )
         console.log('DepartureStopIndex')
@@ -64,7 +70,10 @@ class Results extends React.Component {
         this.state.foundLines.map(
             foundLine => foundLine.stops.map(
                 (stop, index) => stop.id === this.props.search.searchParams.arrivalStop.id ?
-                    this.state.arrivalStopIndex.push(index) : null
+                    this.state.arrivalStopIndex.push({
+                        name: foundLine.name,
+                        index: index
+                    }) : null
             )
         )
         console.log('ArrivalStopIndex')
@@ -72,42 +81,61 @@ class Results extends React.Component {
     }
 
     getTimeToDepartureStop = () => {
-        this.state.timeToDepartureStop.push(
-            this.state.foundLines.map(
-                foundLine => foundLine.dTimes.filter(
-                    (dTime, index) => index <= this.state.departureStopIndex).reduce(
-                    (sum, seconds) => sum + seconds
-                )
+        this.state.departureStopIndex.map(
+            stopIndex => this.state.foundLines.filter(
+                foundLine => foundLine.name === stopIndex.name).map(
+                foundLine => this.state.timeToDepartureStop.push(
+                    {
+                        name: foundLine.name,
+                        time: foundLine.dTimes.filter(
+                            (dTime, index) => index <= stopIndex.index)
+                            .reduce(
+                                (sum, seconds) => sum + seconds
+                            )
+                    })
             )
-        )
+        );
+
         console.log('TimeToDepartureStop')
         console.log(this.state.timeToDepartureStop)
     }
 
     getTimeToArrivalStop = () => {
-        this.state.timeToArrivalStop.push(
-            this.state.foundLines.map(
-                foundLine => foundLine.dTimes.filter(
-                    (dTime, index) => index <= this.state.arrivalStopIndex).reduce(
-                    (sum, seconds) => sum + seconds
-                )
+        this.state.arrivalStopIndex.map(
+            stopIndex => this.state.foundLines.filter(
+                foundLine => foundLine.name === stopIndex.name).map(
+                foundLine => this.state.timeToArrivalStop.push(
+                    {
+                        name: foundLine.name,
+                        time: foundLine.dTimes.filter(
+                            (dTime, index) => index <= stopIndex.index)
+                            .reduce(
+                                (sum, seconds) => sum + seconds
+                            )
+                    })
             )
-        )
+        );
         console.log('TimeToArrivalStop')
         console.log(this.state.timeToArrivalStop)
     }
 
     getTimeAtDepartureStop = () => {
-        this.state.foundLines.map(
-            foundLine => foundLine.departures.map(
-                departure => this.state.timeAtDepartureStop.push({
-                        hour: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                            parseInt(this.state.timeToDepartureStop[0], 10)) / 3600),
-                        minutes: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                            parseInt(this.state.timeToDepartureStop[0], 10)) % 3600 / 60),
-                        seconds: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                            parseInt(this.state.timeToDepartureStop[0], 10)) % 60)
-                    }
+        this.state.timeToDepartureStop.map(
+            time => this.state.foundLines.filter(
+                foundLine => foundLine.name === time.name).map(
+                foundLine => foundLine.departures.map(
+                    departure => this.state.timeAtDepartureStop.push({
+                            name: foundLine.name,
+                            hour: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
+                                parseInt(time.time, 10)) / 3600),
+                            minutes: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
+                                parseInt(time.time, 10)) % 3600 / 60),
+                            seconds: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
+                                parseInt(time.time, 10)) % 60),
+                            sum: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
+                                parseInt(time.time, 10)))
+                        }
+                    )
                 )
             )
         )
@@ -116,16 +144,22 @@ class Results extends React.Component {
     }
 
     getTimeAtArrivalStop = () => {
-        this.state.foundLines.map(
-            foundLine => foundLine.departures.map(
-                departure => this.state.timeAtArrivalStop.push({
-                        hour: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                            parseInt(this.state.timeToArrivalStop[0], 10)) / 3600),
-                        minutes: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                            parseInt(this.state.timeToArrivalStop[0], 10)) % 3600 / 60),
-                        seconds: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                            parseInt(this.state.timeToArrivalStop[0], 10)) % 60)
-                    }
+        this.state.timeToArrivalStop.map(
+            time => this.state.foundLines.filter(
+                foundLine => foundLine.name === time.name).map(
+                foundLine => foundLine.departures.map(
+                    departure => this.state.timeAtArrivalStop.push({
+                            name: foundLine.name,
+                            hour: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
+                                parseInt(time.time, 10)) / 3600),
+                            minutes: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
+                                parseInt(time.time, 10)) % 3600 / 60),
+                            seconds: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
+                                parseInt(time.time, 10)) % 60),
+                            sum: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
+                                parseInt(time.time, 10)))
+                        }
+                    )
                 )
             )
         )
@@ -133,60 +167,75 @@ class Results extends React.Component {
         console.log(this.state.timeAtArrivalStop)
     }
 
-    matchTimeAtDepartureStop = () => {
+    matchTimeAtStops = () => {
 
-        var timeAtStop = [];
+        var timeAtSelectedStop = [];
+        var timeAtUnselectedStop = [];
 
         if (this.props.search.searchParams.typeOfTime === 'departure') {
-            timeAtStop = this.state.timeAtDepartureStop
+            timeAtSelectedStop = this.state.timeAtDepartureStop
+            timeAtUnselectedStop = this.state.timeAtArrivalStop
         }
         else if (this.props.search.searchParams.typeOfTime === 'arrival') {
-            timeAtStop = this.state.timeAtArrivalStop
+            timeAtSelectedStop = this.state.timeAtArrivalStop
+            timeAtUnselectedStop = this.state.timeAtDepartureStop
         }
 
-        for (var i = 0; i <= 24; i++) {
-            timeAtStop.map(
-                time => {
-                    if (Math.abs(time.hour - this.props.search.searchParams.time.hour) === i) {
-                        for (var j = 0; j <= 60; j++) {
-                            if (Math.abs(time.minutes - this.props.search.searchParams.time.minutes) === j) {
-                                    this.state.matchedTimeAtArrivalStop.push(
-                                        {
-                                            hour: time.hour,
-                                            minutes: time.minutes
-                                        }
-                                )
-                                break;
-                            }
-                            break;
-                        }
-                    }
-                }
-            )
-        }
+        const sumTimeSelected = this.props.search.searchParams.time.hour * 3600 +
+            this.props.search.searchParams.time.hour * 60;
+
+        const possibleTimeAtSelectedStop = timeAtSelectedStop.filter(
+            time => time.sum - sumTimeSelected > 0)
+
+
+        this.state.matchedTimeAtSelectedStop.push(possibleTimeAtSelectedStop) // first element will be first at stop
 
         console.log('MatchedTimeArrival')
-        console.log(this.state.matchedTimeAtArrivalStop)
+        console.log(this.state.matchedTimeAtSelectedStop)
     }
 
     render() {
         return (
             this.props.search.searchParams ?
                 (
-                    this.findLine(), this.getTime(), this.matchTimeAtDepartureStop(),
+                    this.findLine(), this.getTime(),
                         <div className="main-panel">
                             <h1>Results</h1>
                             <table>
+                                <tbody>
+                                <tr>
+                                    <th>Lines:</th>
+                                    <th>Departure time:</th>
+                                    <th>Arrival time:</th>
+                                </tr>
                                 {
-                                    this.state.foundLines.map(
-                                        (foundLine, index) =>
-                                            <li key={index}>
-                                                {
-                                                    foundLine.name
-                                                }
-                                            </li>
-                                    )
+                                    // this.state.foundLines.length > 0 ?
+                                    // this.state.matchedTimeAtSelectedStop.map(
+                                    //     (time, index) =>
+                                    //         <tr key={index}>
+                                    //             <td>
+                                    //                 {
+                                    //                     time.name
+                                    //                 }
+                                    //             </td>
+                                    //             <td>
+                                    //
+                                    //             </td>
+                                    //             <td>
+                                    //                 {
+                                    //                     time.hour + ':' + time.minutes
+                                    //                 }
+                                    //             </td>
+                                    //         </tr>
+                                    // )
+                                    //     :
+                                    //     <tr>
+                                    //         <td colSpan={3}>
+                                    //             No results found
+                                    //         </td>
+                                    //     </tr>
                                 }
+                                </tbody>
                             </table>
                         </div>
                 )
