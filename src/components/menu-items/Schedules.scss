@@ -1,14 +1,2 @@
 @import '../App.scss';
 
-ul.schedules, ol.schedules_tickets {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  i {
-    margin-left: 0.5em;
-  }
-  li {
-    padding: 0;
-    margin: 0;
-  }
-}
