@@ -17,11 +17,10 @@ import {
 const initialState = {
     startStop: null,
     endStop: null,
-    departureChecked: false,
-    arrivalChecked: true,
     time: moment(),
     typeOfTime: 'arrival',
-    stops: null
+    departureChecked: false,
+    arrivalChecked: true
 }
 
 class Search extends React.Component {
@@ -61,22 +60,19 @@ class Search extends React.Component {
         event.preventDefault();
 
 
-
         if (this.state.startStop && this.state.endStop) {
 
             const searchParams = {
-                startStop:  this.props.stops.filter(
-                    stop => stop.name === this.state.startStop.value
-                )[0], // return first, because array always has only one element
-                endStop:    this.props.stops.filter(
-                    stop => stop.name === this.state.endStop.value
-                )[0], // return first, because array always has only one element
-                time:           {
-                    hour: parseInt(this.state.time.format('HH'),10),
-                    minutes: parseInt(this.state.time.format('mm'),10),
-                    seconds: 0
-                },
-                typeOfTime:     this.state.typeOfTime
+
+                startStop: this.props.stops.find(stop => stop.name === this.state.startStop.value),
+                endStop: this.props.stops.find(stop => stop.name === this.state.endStop.value),
+                time: {
+                    hour: parseInt(this.state.time.format('HH'), 10),
+                    minutes: parseInt(this.state.time.format('mm'), 10),
+                    seconds: 0,
+                    typeOfTime: this.state.typeOfTime
+                }
+
             };
 
             this.props.handleSubmitClick(searchParams);

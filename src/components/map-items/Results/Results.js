@@ -8,17 +8,26 @@ import {matchTime} from "./matchTime";
 const Results = ({search, lines}) => {
 
     var foundLines = [];
+    var matchedTime = [];
 
     if (search.searchParams) {
-        const {startStop: {id: startId}, endStop: {id: endId}} = search.searchParams;
+
+        const {
+            startStop: {id: startId},
+            endStop: {id: endId},
+            time
+            } = search.searchParams;
 
         foundLines = findLine(startId, endId, lines);
-
         console.log(foundLines)
+
+        matchedTime = matchTime(foundLines,time)
+        console.log(matchedTime)
+
     }
 
     return (
-        search.searchParams && foundLines.length > 0 ?
+        search.searchParams ?
             (
                 <div className="main-panel">
                     <h1>Results</h1>
