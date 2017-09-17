@@ -2,22 +2,10 @@ import React from 'react'
 import './Results.css';
 import {connect} from 'react-redux'
 
-// import findLine from './_utils/findLine'
-// import getStopIndex from './_utils/getStopIndex'
-// import getTimeAtStop from './_utils/getTimeAtStop'
-// import getTimeToStop from './_utils/getTimeToStop'
-
-const initialState = {
-    foundLines: [],
-    departureStopIndex: [],
-    arrivalStopIndex: [],
-    timeToDepartureStop: [],
-    timeToArrivalStop: [],
-    timeAtDepartureStop: [],
-    timeAtArrivalStop: [],
-    matchedTimeAtDepartureStop: [],
-    matchedTimeAtSelectedStop: []
-}
+import findLine from './findLine'
+import getStopIndex from './getStopIndex'
+// import getTimeAtStop from './getTimeAtStop'
+// import getTimeToStop from './getTimeToStop'
 
 class Results extends React.Component {
 
@@ -209,31 +197,31 @@ class Results extends React.Component {
                                     <th>Arrival time:</th>
                                 </tr>
                                 {
-                                    // this.state.foundLines.length > 0 ?
-                                    // this.state.matchedTimeAtSelectedStop.map(
-                                    //     (time, index) =>
-                                    //         <tr key={index}>
-                                    //             <td>
-                                    //                 {
-                                    //                     time.name
-                                    //                 }
-                                    //             </td>
-                                    //             <td>
-                                    //
-                                    //             </td>
-                                    //             <td>
-                                    //                 {
-                                    //                     time.hour + ':' + time.minutes
-                                    //                 }
-                                    //             </td>
-                                    //         </tr>
-                                    // )
-                                    //     :
-                                    //     <tr>
-                                    //         <td colSpan={3}>
-                                    //             No results found
-                                    //         </td>
-                                    //     </tr>
+                                    this.state.foundLines.length > 0 ?
+                                    this.state.matchedTimeAtSelectedStop.map(
+                                        (time, index) =>
+                                            <tr key={index}>
+                                                <td>
+                                                    {
+                                                        time.name
+                                                    }
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                                <td>
+                                                    {
+                                                        time.hour + ':' + time.minutes
+                                                    }
+                                                </td>
+                                            </tr>
+                                    )
+                                        :
+                                        <tr>
+                                            <td colSpan={3}>
+                                                No results found
+                                            </td>
+                                        </tr>
                                 }
                                 </tbody>
                             </table>
@@ -245,44 +233,35 @@ class Results extends React.Component {
 
 };
 
+const initialState = {
+    foundLines: [],
+    departureStopIndex: [],
+    arrivalStopIndex: [],
+    timeToDepartureStop: [],
+    timeToArrivalStop: [],
+    timeAtDepartureStop: [],
+    timeAtArrivalStop: [],
+    matchedTimeAtDepartureStop: [],
+    matchedTimeAtSelectedStop: []
+}
 
-const mapStateToProps = state => ({
-    stops: state.stops,
-    lines: state.lines,
-    search: state.search
-});
-
-export default connect(
-    mapStateToProps
-)(Results)
 
 // const Results = ({search,lines,stops}) => {
 //
 //     const foundLines = findLine(search,lines);
+//     console.log(foundLines)
 //
-//     const foo = () => {
-//         const departureIndex = getStopIndex(foundLines,search.searchParams.departureStop)
-//         const arrivalIndex = getStopIndex(foundLines,search.searchParams.arrivalStop)
+//     if (foundLines.length > 0 && search.searchParams) {
 //
+//         const departureIndex = getStopIndex(foundLines, search.searchParams.departureStop)
+//         console.log('Departure Index')
 //         console.log(departureIndex)
 //
-//         const timeToDepartureStop = getTimeToStop(foundLines,departureIndex)
-//         const timeToArrivalStop = getTimeToStop(foundLines,arrivalIndex)
-//
-//         console.log(timeToDepartureStop)
-//
-//         const timeAtDepartureStop = getTimeAtStop(foundLines, timeToDepartureStop)
-//         const timeAtArrivalStop = getTimeAtStop(foundLines, timeToArrivalStop)
-//
-//         console.log(timeAtDepartureStop)
-//         console.log(timeAtArrivalStop)
 //     }
-//
 //
 //     return (
 //         search.searchParams ?
 //             (
-//                 foo(),
 //                     <div className="main-panel">
 //                         <h1>Results</h1>
 //                         <ul>
@@ -302,3 +281,16 @@ export default connect(
 //             : null
 //     )
 // }
+
+const mapStateToProps = state => ({
+    stops: state.stops,
+    lines: state.lines,
+    search: state.search
+});
+
+export default connect(
+    mapStateToProps
+)(Results)
+
+
+
