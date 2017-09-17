@@ -16,18 +16,19 @@
   padding: 0 !important; }
 
 h1 {
-  text-transform: uppercase;
   font-size: 1.5em;
-  letter-spacing: 0.5px; }
+  letter-spacing: 1px; }
 
 h1.lines {
   margin-bottom: 1em; }
 
 ul.lines {
   padding: 0;
+  padding-bottom: 1em;
   margin: 0;
   list-style-type: none; }
   ul.lines li {
+    transition: color 0.3s, background 0.3s, transform 0.3s;
     border: 1px solid #151515;
     background: #222;
     color: #c4c4c4;

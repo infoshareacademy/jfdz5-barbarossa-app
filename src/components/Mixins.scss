@@ -16,7 +16,7 @@
 }
 
 @mixin custom-transition() {
-  transition: color 0.3s, background 0.3s;
+  transition: color 0.3s, background 0.3s, transform 0.3s;
 }
 
 @mixin custom-gradient() {

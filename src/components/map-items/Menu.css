@@ -16,9 +16,8 @@
   padding: 0 !important; }
 
 h1 {
-  text-transform: uppercase;
   font-size: 1.5em;
-  letter-spacing: 0.5px; }
+  letter-spacing: 1px; }
 
 .menu {
   text-transform: uppercase;

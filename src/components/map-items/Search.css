@@ -16,9 +16,8 @@
   padding: 0 !important; }
 
 h1 {
-  text-transform: uppercase;
   font-size: 1.5em;
-  letter-spacing: 0.5px; }
+  letter-spacing: 1px; }
 
 .search-box {
   display: flex;
@@ -27,7 +26,7 @@ h1 {
   align-items: center;
   padding: 0.5em; }
   .search-box span {
-    transition: color 0.3s, background 0.3s;
+    transition: color 0.3s, background 0.3s, transform 0.3s;
     font-size: 1em;
     text-transform: uppercase; }
     .search-box span:hover {
