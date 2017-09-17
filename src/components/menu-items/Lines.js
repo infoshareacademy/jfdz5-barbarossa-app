@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import './Lines.css'
 
 const Lines = ({lines}) => (
         <div className="main-panel">
-            <h1>Lines</h1>
-            <ul>
+            <h1 className="lines-stops">Lines</h1>
+            <ul className="lines-stops">
                 {
                     lines.map(
                         line => (

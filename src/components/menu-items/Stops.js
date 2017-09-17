@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 
 const Stops = ({stopNames}) => (
     <div className="main-panel">
-        <h1>Stops</h1>
-        <ul>
+        <h1 className="lines-stops">Stops</h1>
+        <ul className="lines-stops">
                 {
                     stopNames.map(
                         stop => (

@@ -1,8 +1,10 @@
 //**********    BACKGROUND COLORS   **********
 
 $colorMain: #222;
+$colorMainDarken: darken($colorMain, 5%);
 $colorAccent: #0c8ff2;
 
 //**********    TYPOGRAPHY COLORS   **********
 
 $colorFont: #ddd;
+$colorFontDarker: darken($colorFont, 10%);
