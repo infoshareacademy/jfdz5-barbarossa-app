@@ -2,285 +2,59 @@ import React from 'react'
 import './Results.css';
 import {connect} from 'react-redux'
 
-import findLine from './findLine'
-import getStopIndex from './getStopIndex'
-// import getTimeAtStop from './getTimeAtStop'
-// import getTimeToStop from './getTimeToStop'
+import {findLine} from './findLine'
+import {matchTime} from "./matchTime";
 
-class Results extends React.Component {
+const Results = ({search, lines}) => {
 
-    state = initialState;
+    var foundLines = [];
 
-    findLine = () => {
-        this.props.lines.map(
-            line => line.stops.map(
-                stop => stop.id === this.props.search.searchParams.departureStop.id ?
-                    line.stops.map(
-                        stop => stop.id === this.props.search.searchParams.arrivalStop.id ?
-                            this.state.foundLines.push(line)
-                            :
-                            null
-                    )
-                    :
-                    null
-            )
-        )
-        console.log('FoundLines')
-        console.log(this.state.foundLines)
+    if (search.searchParams) {
+        const {startStop: {id: startId}, endStop: {id: endId}} = search.searchParams;
+
+        foundLines = findLine(startId, endId, lines);
+
+        console.log(foundLines)
     }
 
-    getTime = () => {
-        this.getDepartureStopIndex()
-        this.getTimeToDepartureStop()
-        this.getTimeAtDepartureStop()
-        this.getArrivalStopIndex()
-        this.getTimeToArrivalStop()
-        this.getTimeAtArrivalStop()
-        this.matchTimeAtStops()
-    }
-
-
-    getDepartureStopIndex = () => {
-        this.state.foundLines.map(
-            foundLine => foundLine.stops.map(
-                (stop, index) => stop.id === this.props.search.searchParams.departureStop.id ?
-                    this.state.departureStopIndex.push({
-                        name: foundLine.name,
-                        index: index
-                    }) : null
-            )
-        )
-        console.log('DepartureStopIndex')
-        console.log(this.state.departureStopIndex)
-    }
-
-    getArrivalStopIndex = () => {
-        this.state.foundLines.map(
-            foundLine => foundLine.stops.map(
-                (stop, index) => stop.id === this.props.search.searchParams.arrivalStop.id ?
-                    this.state.arrivalStopIndex.push({
-                        name: foundLine.name,
-                        index: index
-                    }) : null
-            )
-        )
-        console.log('ArrivalStopIndex')
-        console.log(this.state.arrivalStopIndex)
-    }
-
-    getTimeToDepartureStop = () => {
-        this.state.departureStopIndex.map(
-            stopIndex => this.state.foundLines.filter(
-                foundLine => foundLine.name === stopIndex.name).map(
-                foundLine => this.state.timeToDepartureStop.push(
-                    {
-                        name: foundLine.name,
-                        time: foundLine.dTimes.filter(
-                            (dTime, index) => index <= stopIndex.index)
-                            .reduce(
-                                (sum, seconds) => sum + seconds
-                            )
-                    })
-            )
-        );
-
-        console.log('TimeToDepartureStop')
-        console.log(this.state.timeToDepartureStop)
-    }
-
-    getTimeToArrivalStop = () => {
-        this.state.arrivalStopIndex.map(
-            stopIndex => this.state.foundLines.filter(
-                foundLine => foundLine.name === stopIndex.name).map(
-                foundLine => this.state.timeToArrivalStop.push(
-                    {
-                        name: foundLine.name,
-                        time: foundLine.dTimes.filter(
-                            (dTime, index) => index <= stopIndex.index)
-                            .reduce(
-                                (sum, seconds) => sum + seconds
-                            )
-                    })
-            )
-        );
-        console.log('TimeToArrivalStop')
-        console.log(this.state.timeToArrivalStop)
-    }
-
-    getTimeAtDepartureStop = () => {
-        this.state.timeToDepartureStop.map(
-            time => this.state.foundLines.filter(
-                foundLine => foundLine.name === time.name).map(
-                foundLine => foundLine.departures.map(
-                    departure => this.state.timeAtDepartureStop.push({
-                            name: foundLine.name,
-                            hour: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                                parseInt(time.time, 10)) / 3600),
-                            minutes: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                                parseInt(time.time, 10)) % 3600 / 60),
-                            seconds: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                                parseInt(time.time, 10)) % 60),
-                            sum: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                                parseInt(time.time, 10)))
-                        }
-                    )
-                )
-            )
-        )
-        console.log('TimeAtDepartureStop')
-        console.log(this.state.timeAtDepartureStop)
-    }
-
-    getTimeAtArrivalStop = () => {
-        this.state.timeToArrivalStop.map(
-            time => this.state.foundLines.filter(
-                foundLine => foundLine.name === time.name).map(
-                foundLine => foundLine.departures.map(
-                    departure => this.state.timeAtArrivalStop.push({
-                            name: foundLine.name,
-                            hour: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                                parseInt(time.time, 10)) / 3600),
-                            minutes: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                                parseInt(time.time, 10)) % 3600 / 60),
-                            seconds: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                                parseInt(time.time, 10)) % 60),
-                            sum: Math.floor((departure.hour * 3600 + departure.minutes * 60 + departure.seconds +
-                                parseInt(time.time, 10)))
-                        }
-                    )
-                )
-            )
-        )
-        console.log('TimeAtArrivalStop')
-        console.log(this.state.timeAtArrivalStop)
-    }
-
-    matchTimeAtStops = () => {
-
-        var timeAtSelectedStop = [];
-        var timeAtUnselectedStop = [];
-
-        if (this.props.search.searchParams.typeOfTime === 'departure') {
-            timeAtSelectedStop = this.state.timeAtDepartureStop
-            timeAtUnselectedStop = this.state.timeAtArrivalStop
-        }
-        else if (this.props.search.searchParams.typeOfTime === 'arrival') {
-            timeAtSelectedStop = this.state.timeAtArrivalStop
-            timeAtUnselectedStop = this.state.timeAtDepartureStop
-        }
-
-        const sumTimeSelected = this.props.search.searchParams.time.hour * 3600 +
-            this.props.search.searchParams.time.hour * 60;
-
-        const possibleTimeAtSelectedStop = timeAtSelectedStop.filter(
-            time => time.sum - sumTimeSelected > 0)
-
-
-        this.state.matchedTimeAtSelectedStop.push(possibleTimeAtSelectedStop) // first element will be first at stop
-
-        console.log('MatchedTimeArrival')
-        console.log(this.state.matchedTimeAtSelectedStop)
-    }
-
-    render() {
-        return (
-            this.props.search.searchParams ?
-                (
-                    this.findLine(), this.getTime(),
-                        <div className="main-panel">
-                            <h1>Results</h1>
-                            <table>
-                                <tbody>
+    return (
+        search.searchParams && foundLines.length > 0 ?
+            (
+                <div className="main-panel">
+                    <h1>Results</h1>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>Line</th>
+                            <th>Departure time</th>
+                            <th>Arrival time</th>
+                        </tr>
+                        {
+                            foundLines.length > 0 ?
+                            foundLines.map(
+                                (foundLine, index) =>
+                                    <tr key={index}>
+                                        <td>
+                                            {
+                                                foundLine.name
+                                            }
+                                        </td>
+                                    </tr>
+                            ) :
                                 <tr>
-                                    <th>Lines:</th>
-                                    <th>Departure time:</th>
-                                    <th>Arrival time:</th>
+                                    <td colSpan={3}>
+                                        No results found
+                                    </td>
                                 </tr>
-                                {
-                                    this.state.foundLines.length > 0 ?
-                                    this.state.matchedTimeAtSelectedStop.map(
-                                        (time, index) =>
-                                            <tr key={index}>
-                                                <td>
-                                                    {
-                                                        time.name
-                                                    }
-                                                </td>
-                                                <td>
+                        }
+                        </tbody>
 
-                                                </td>
-                                                <td>
-                                                    {
-                                                        time.hour + ':' + time.minutes
-                                                    }
-                                                </td>
-                                            </tr>
-                                    )
-                                        :
-                                        <tr>
-                                            <td colSpan={3}>
-                                                No results found
-                                            </td>
-                                        </tr>
-                                }
-                                </tbody>
-                            </table>
-                        </div>
-                )
-                : null
-        )
-    }
-
-};
-
-const initialState = {
-    foundLines: [],
-    departureStopIndex: [],
-    arrivalStopIndex: [],
-    timeToDepartureStop: [],
-    timeToArrivalStop: [],
-    timeAtDepartureStop: [],
-    timeAtArrivalStop: [],
-    matchedTimeAtDepartureStop: [],
-    matchedTimeAtSelectedStop: []
+                    </table>
+                </div>
+            )
+            : null
+    )
 }
-
-
-// const Results = ({search,lines,stops}) => {
-//
-//     const foundLines = findLine(search,lines);
-//     console.log(foundLines)
-//
-//     if (foundLines.length > 0 && search.searchParams) {
-//
-//         const departureIndex = getStopIndex(foundLines, search.searchParams.departureStop)
-//         console.log('Departure Index')
-//         console.log(departureIndex)
-//
-//     }
-//
-//     return (
-//         search.searchParams ?
-//             (
-//                     <div className="main-panel">
-//                         <h1>Results</h1>
-//                         <ul>
-//                             {
-//                                 foundLines.map(
-//                                     (foundLine, index) =>
-//                                         <li key={index}>
-//                                             {
-//                                                 foundLine.name
-//                                             }
-//                                         </li>
-//                                 )
-//                             }
-//                         </ul>
-//                     </div>
-//             )
-//             : null
-//     )
-// }
 
 const mapStateToProps = state => ({
     stops: state.stops,

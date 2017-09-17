@@ -15,8 +15,8 @@ import {
 } from '../../state/search'
 
 const initialState = {
-    departureStop: null,
-    arrivalStop: null,
+    startStop: null,
+    endStop: null,
     departureChecked: false,
     arrivalChecked: true,
     time: moment(),
@@ -31,11 +31,11 @@ class Search extends React.Component {
     options = [];
 
     handleDepartureChange = value => this.setState({
-        departureStop: value
+        startStop: value
     });
 
     handleArrivalChange = value => this.setState({
-        arrivalStop: value
+        endStop: value
     });
 
     handleTimeChange = value => {
@@ -62,14 +62,14 @@ class Search extends React.Component {
 
 
 
-        if (this.state.departureStop && this.state.arrivalStop) {
+        if (this.state.startStop && this.state.endStop) {
 
             const searchParams = {
-                departureStop:  this.props.stops.filter(
-                    stop => stop.name === this.state.departureStop.value
+                startStop:  this.props.stops.filter(
+                    stop => stop.name === this.state.startStop.value
                 )[0], // return first, because array always has only one element
-                arrivalStop:    this.props.stops.filter(
-                    stop => stop.name === this.state.arrivalStop.value
+                endStop:    this.props.stops.filter(
+                    stop => stop.name === this.state.endStop.value
                 )[0], // return first, because array always has only one element
                 time:           {
                     hour: parseInt(this.state.time.format('HH'),10),
@@ -100,7 +100,7 @@ class Search extends React.Component {
                     </div>
                     <Select
                         name="departureStop"
-                        value={this.state.departureStop}
+                        value={this.state.startStop}
                         options={this.options}
                         onChange={this.handleDepartureChange}
                         placeholder="Start point..."
@@ -114,7 +114,7 @@ class Search extends React.Component {
 
                     <Select
                         name="arrivalStop"
-                        value={this.state.arrivalStop}
+                        value={this.state.endStop}
                         options={this.options}
                         onChange={this.handleArrivalChange}
                         placeholder="Destination..."
