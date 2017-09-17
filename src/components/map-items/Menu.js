@@ -23,6 +23,9 @@ const Menu = () => (
                     <LinkContainer exact to="/schedules">
                         <NavItem><i className="fa fa-map-o" aria-hidden="true"></i>Schedules</NavItem>
                     </LinkContainer>
+                    <LinkContainer exact to="/prices">
+                        <NavItem><i className="fa fa-user-circle-o" aria-hidden="true"></i>Prices</NavItem>
+                    </LinkContainer>
                     <LinkContainer exact to="/log">
                         <NavItem><i className="fa fa-user-circle-o" aria-hidden="true"></i>Log</NavItem>
                     </LinkContainer>

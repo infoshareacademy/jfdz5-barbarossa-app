@@ -18,3 +18,22 @@
 h1 {
   font-size: 1.5em;
   letter-spacing: 1px; }
+
+h2 {
+  font-size: 1.3em; }
+
+h3 {
+  font-size: 1.2em; }
+
+h4 {
+  font-size: 1.1em; }
+
+ul.schedules, ol.schedules_tickets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
+  ul.schedules i, ol.schedules_tickets i {
+    margin-left: 0.5em; }
+  ul.schedules li, ol.schedules_tickets li {
+    padding: 0;
+    margin: 0; }
