@@ -4,20 +4,20 @@ import './Stops.css'
 
 const Stops = ({stopNames}) => (
     <div className="main-panel">
-        <h1 className="lines stops">Stops</h1>
-        <ul className="stops">
-                {
-                    stopNames.map(
-                        stop => (
-                            <li key={stop}>
-                                {
-                                    stop
-                                }
-                            </li>
+        <h1>Stops</h1>
+                <select className="stops">
+                    {
+                        stopNames.map(
+                            stop => (
+                                    <option>
+                                        {
+                                            stop
+                                        }
+                                    </option>
+                            )
                         )
-                    )
-                }
-        </ul>
+                    }
+                </select>
     </div>
 );
 

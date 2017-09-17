@@ -20,10 +20,10 @@ h1 {
   font-size: 1.5em;
   letter-spacing: 0.5px; }
 
-h1.stops {
-  margin-bottom: 1em; }
-
-ul.stops {
-  padding: 0;
-  margin: 0;
-  list-style-type: none; }
+select.stops {
+  margin: 1em 0;
+  background: #222;
+  outline: none;
+  border: none;
+  font-size: 1.2em;
+  padding: 0.5em; }
