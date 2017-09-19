@@ -70,7 +70,7 @@ class Search extends React.Component {
                     hour: parseInt(this.state.time.format('HH'), 10),
                     minutes: parseInt(this.state.time.format('mm'), 10),
                     seconds: 0,
-                    typeOfTime: this.state.typeOfTime
+                    type: this.state.type
                 }
 
             };

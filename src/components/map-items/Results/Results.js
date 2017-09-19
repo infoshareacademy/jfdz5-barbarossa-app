@@ -16,12 +16,12 @@ const Results = ({search, lines}) => {
             startStop: {id: startId},
             endStop: {id: endId},
             time
-            } = search.searchParams;
+        } = search.searchParams;
 
         foundLines = findLine(startId, endId, lines);
         console.log(foundLines)
 
-        matchedTime = matchTime(foundLines,time)
+        matchedTime = matchTime(foundLines, time)
         console.log(matchedTime)
 
     }
@@ -39,17 +39,31 @@ const Results = ({search, lines}) => {
                             <th>Arrival time</th>
                         </tr>
                         {
-                            foundLines.length > 0 ?
-                            foundLines.map(
-                                (foundLine, index) =>
-                                    <tr key={index}>
-                                        <td>
-                                            {
-                                                foundLine.name
-                                            }
-                                        </td>
-                                    </tr>
-                            ) :
+                            matchedTime.length > 0 ?
+                                matchedTime.map(
+                                    (time, index) =>
+                                        <tr key={index}>
+                                            <td>
+                                                {
+                                                    time.name
+                                                }
+                                            </td>
+                                            <td>
+                                                {
+                                                    time.timeFromStartStop.hour + ':' +
+                                                    time.timeFromStartStop.minutes < 9 ?
+                                                        '0' + time.timeFromStartStop : time.timeFromStartStop
+                                                }
+                                            </td>
+                                            <td>
+                                                {
+                                                    time.timeFromEndStop.hour + ':' +
+                                                    time.timeFromEndStop.minutes < 9 ?
+                                                        '0' + time.timeFromEndStop : time.timeFromEndStop
+                                                }
+                                            </td>
+                                        </tr>
+                                ) :
                                 <tr>
                                     <td colSpan={3}>
                                         No results found
