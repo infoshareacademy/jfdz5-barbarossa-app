@@ -19,11 +19,8 @@ const Results = ({search, lines}) => {
         } = search.searchParams;
 
         foundLines = findLine(startId, endId, lines);
-        console.log(foundLines)
 
         matchedTime = matchTime(foundLines, time)
-        console.log(matchedTime)
-
     }
 
     return (
@@ -50,16 +47,12 @@ const Results = ({search, lines}) => {
                                             </td>
                                             <td>
                                                 {
-                                                    time.timeFromStartStop.hour + ':' +
-                                                    time.timeFromStartStop.minutes < 9 ?
-                                                        '0' + time.timeFromStartStop : time.timeFromStartStop
+                                                    time.timeFromStartStop.hour + ':' + time.timeFromStartStop.minutes
                                                 }
                                             </td>
                                             <td>
                                                 {
-                                                    time.timeFromEndStop.hour + ':' +
-                                                    time.timeFromEndStop.minutes < 9 ?
-                                                        '0' + time.timeFromEndStop : time.timeFromEndStop
+                                                    time.timeFromEndStop.hour + ':' + time.timeFromEndStop.minutes
                                                 }
                                             </td>
                                         </tr>
