@@ -6,12 +6,14 @@ import search from './state/search'
 import stops, {fetchStops} from './state/stops'
 import lines, {fetchLines} from './state/lines'
 import stopNames, {fetchStopNames} from './state/stopNames'
+import results from './state/results'
 
 const reducer = combineReducers({
     search,
     stops,
     lines,
-    stopNames
+    stopNames,
+    results
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

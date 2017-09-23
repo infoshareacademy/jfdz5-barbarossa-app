@@ -6,8 +6,12 @@ import {Button} from 'react-bootstrap'
 import {findLine} from './findLine'
 import {computeDeparture} from './computeDeparture'
 import {selectTime} from "./selectTime"
+import {
+    show
+} from '../../../state/results'
 
-const Results = ({search, lines}) => {
+
+const Results = ({search, lines, showClick}) => {
 
     var results = [];
 
@@ -25,6 +29,11 @@ const Results = ({search, lines}) => {
 
         results = selectTime(computedDepartures, time)
         console.log(results)
+    }
+
+    const handleShowClick = event => {
+        const resultName = event.currentTarget.getAttribute('data-result-name')
+        showClick(resultName);
     }
 
     return (
@@ -61,12 +70,15 @@ const Results = ({search, lines}) => {
                                             </td>
                                             <td>
                                                 <Button>
-                                                    <i className="fa fa-star-o" />
+                                                    <i className="fa fa-star-o"/>
                                                 </Button>
                                             </td>
                                             <td>
-                                                <Button>
-                                                    <i className="fa fa-car" />
+                                                <Button
+                                                    data-result-name={result.name}
+                                                    onClick={handleShowClick}
+                                                >
+                                                    <i className="fa fa-car"/>
                                                 </Button>
                                             </td>
                                         </tr>
@@ -91,8 +103,13 @@ const mapStateToProps = state => ({
     search: state.search
 });
 
+const mapDispatchToProps = dispatch => ({
+    showClick: (resultName) => dispatch(show(resultName))
+});
+
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Results)
 
 
