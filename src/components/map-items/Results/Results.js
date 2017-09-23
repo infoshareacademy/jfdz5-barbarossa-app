@@ -6,12 +6,20 @@ import {Button} from 'react-bootstrap'
 import {findLine} from './findLine'
 import {computeDeparture} from './computeDeparture'
 import {selectTime} from "./selectTime"
+import {getLocations} from "../../_utlis/getLocations"
 import {
-    show
+    show,
+    save
 } from '../../../state/results'
 
 
-const Results = ({search, lines, showClick}) => {
+const Results = ({
+                     search,
+                     lines,
+                     stops,
+                     showClick,
+                     saveClick
+                 }) => {
 
     var results = [];
 
@@ -24,16 +32,24 @@ const Results = ({search, lines, showClick}) => {
         } = search.searchParams;
 
         const foundLines = findLine(startId, endId, lines);
-        const computedDepartures = computeDeparture(foundLines);
+        const connections = computeDeparture(foundLines);
 
-
-        results = selectTime(computedDepartures, time)
-        console.log(results)
+        results = selectTime(connections, time);
     }
 
     const handleShowClick = event => {
-        const resultName = event.currentTarget.getAttribute('data-result-name')
-        showClick(resultName);
+        const resultName = event.currentTarget.getAttribute('data-result-name');
+        const selectedResult = results.find(result => result.name === resultName);
+        const locations = getLocations(selectedResult, stops);
+
+        showClick(locations);
+    }
+
+    const handleSaveClick = event => {
+        const resultName = event.currentTarget.getAttribute('data-result-name');
+        const selectedResult = results.find(result => result.name === resultName);
+
+        saveClick(selectedResult)
     }
 
     return (
@@ -60,16 +76,19 @@ const Results = ({search, lines, showClick}) => {
                                             </td>
                                             <td>
                                                 {
-                                                    result.timeFromStartStop.hours + ':' + result.timeFromStartStop.minutes
+                                                    result.selectedTime.timeFromStartStop.hours + ':' + result.selectedTime.timeFromStartStop.minutes
                                                 }
                                             </td>
                                             <td>
                                                 {
-                                                    result.timeFromEndStop.hours + ':' + result.timeFromEndStop.minutes
+                                                    result.selectedTime.timeFromEndStop.hours + ':' + result.selectedTime.timeFromEndStop.minutes
                                                 }
                                             </td>
                                             <td>
-                                                <Button>
+                                                <Button
+                                                    data-result-name={result.name}
+                                                    onClick={handleSaveClick}
+                                                >
                                                     <i className="fa fa-star-o"/>
                                                 </Button>
                                             </td>
@@ -100,11 +119,13 @@ const Results = ({search, lines, showClick}) => {
 
 const mapStateToProps = state => ({
     lines: state.lines,
-    search: state.search
+    search: state.search,
+    stops: state.stops
 });
 
 const mapDispatchToProps = dispatch => ({
-    showClick: (resultName) => dispatch(show(resultName))
+    showClick: locations => dispatch(show(locations)),
+    saveClick: result => dispatch(save(result))
 });
 
 export default connect(

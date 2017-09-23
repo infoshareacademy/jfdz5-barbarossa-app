@@ -14,6 +14,11 @@ export const findLine = (startId, endId, lines) => {
         })
     ).filter(
         line => line.startStop.index < line.endStop.index
+    ).map(
+        line => ({
+            ...line,
+            routeStops: line.stops.slice(line.startStop.index + 1, line.endStop.index)
+        })
     )
 
 }

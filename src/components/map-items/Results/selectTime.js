@@ -1,24 +1,27 @@
 import {transformTime} from '../../_utlis/transformTime'
 import {adjustTime} from './adjustTime'
 
-export const selectTime = (computedDepartures, time) => {
+export const selectTime = (connections, time) => {
 
     const inputTime = time.hour * 3600 + time.minutes * 60 + time.seconds;
 
-    return computedDepartures.map(
-        departure => ({
-            name: departure.name,
+    return connections.map(
+        line => ({
+            ...line,
             selectedTime: adjustTime(
-                departure.computedDepartures,
+                line.computedDepartures,
                 time.type,
                 inputTime
             )
         })
     ).map(
-        departure => ({
-            ...departure,
-            timeFromEndStop: transformTime(departure.selectedTime.depFromEndStop),
-            timeFromStartStop:transformTime(departure.selectedTime.depFromStartStop)
+        line => ({
+            ...line,
+            selectedTime: ({
+                ...line.selectedTime,
+                timeFromEndStop: transformTime(line.selectedTime.depFromEndStop),
+                timeFromStartStop:transformTime(line.selectedTime.depFromStartStop)
+            })
         })
     )
 }
