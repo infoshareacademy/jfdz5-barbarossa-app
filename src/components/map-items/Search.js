@@ -18,7 +18,7 @@ const initialState = {
     startStop: null,
     endStop: null,
     time: moment(),
-    typeOfTime: 'arrival',
+    timeType: 'arrival',
     departureChecked: false,
     arrivalChecked: true
 }
@@ -46,13 +46,13 @@ class Search extends React.Component {
     handleArrivalCheckboxClick = () => this.setState({
         arrivalChecked: true,
         departureChecked: false,
-        typeOfTime: 'arrival'
+        timeType: 'arrival'
     });
 
     handleDepartureCheckboxClick = () => this.setState({
         arrivalChecked: false,
         departureChecked: true,
-        typeOfTime: 'departure'
+        timeType: 'departure'
 
     });
 
@@ -70,7 +70,7 @@ class Search extends React.Component {
                     hour: parseInt(this.state.time.format('HH'), 10),
                     minutes: parseInt(this.state.time.format('mm'), 10),
                     seconds: 0,
-                    type: this.state.type
+                    type: this.state.timeType
                 }
 
             };
@@ -81,10 +81,11 @@ class Search extends React.Component {
     };
 
     render() {
-        this.options = this.props.stopNames ? this.props.stopNames.map(
-            stopName => ({
-                value: stopName,
-                label: stopName
+        this.options = this.props.stops ? this.props.stops.sort().map(
+            stop => stop.name).sort()
+            .map( stop => ({
+                value: stop,
+                label: stop
             })
         ) : null;
 
@@ -154,7 +155,6 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    stopNames: state.stopNames,
     stops: state.stops
 });
 
