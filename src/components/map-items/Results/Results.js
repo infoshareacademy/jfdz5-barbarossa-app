@@ -1,14 +1,15 @@
 import React from 'react'
 import './Results.css';
 import {connect} from 'react-redux'
+import {Button} from 'react-bootstrap'
 
 import {findLine} from './findLine'
-import {matchTime} from "./matchTime";
+import {computeDeparture} from './computeDeparture'
+import {selectTime} from "./selectTime"
 
 const Results = ({search, lines}) => {
 
-    var foundLines = [];
-    var matchedTime = [];
+    var results = [];
 
     if (search.searchParams) {
 
@@ -18,9 +19,12 @@ const Results = ({search, lines}) => {
             time
         } = search.searchParams;
 
-        foundLines = findLine(startId, endId, lines);
+        const foundLines = findLine(startId, endId, lines);
+        const computedDepartures = computeDeparture(foundLines);
 
-        matchedTime = matchTime(foundLines, time)
+
+        results = selectTime(computedDepartures, time)
+        console.log(results)
     }
 
     return (
@@ -36,24 +40,34 @@ const Results = ({search, lines}) => {
                             <th>Arrival time</th>
                         </tr>
                         {
-                            matchedTime.length > 0 ?
-                                matchedTime.map(
-                                    (time, index) =>
+                            results.length > 0 ?
+                                results.map(
+                                    (result, index) =>
                                         <tr key={index}>
                                             <td>
                                                 {
-                                                    time.name
+                                                    result.name
                                                 }
                                             </td>
                                             <td>
                                                 {
-                                                    time.timeFromStartStop.hour + ':' + time.timeFromStartStop.minutes
+                                                    result.timeFromStartStop.hours + ':' + result.timeFromStartStop.minutes
                                                 }
                                             </td>
                                             <td>
                                                 {
-                                                    time.timeFromEndStop.hour + ':' + time.timeFromEndStop.minutes
+                                                    result.timeFromEndStop.hours + ':' + result.timeFromEndStop.minutes
                                                 }
+                                            </td>
+                                            <td>
+                                                <Button>
+                                                    <i className="fa fa-star-o" />
+                                                </Button>
+                                            </td>
+                                            <td>
+                                                <Button>
+                                                    <i className="fa fa-car" />
+                                                </Button>
                                             </td>
                                         </tr>
                                 ) :
@@ -73,7 +87,6 @@ const Results = ({search, lines}) => {
 }
 
 const mapStateToProps = state => ({
-    stops: state.stops,
     lines: state.lines,
     search: state.search
 });
