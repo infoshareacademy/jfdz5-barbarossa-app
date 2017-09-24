@@ -1,27 +1,18 @@
 const SEARCH = 'search/SEARCH'
-export const search = (departureStop, arrivalStop, time, typeOfTime) => ({
+export const search = (searchParams) => ({
     type: SEARCH,
-    departureStop,
-    arrivalStop,
-    time: time.format('Y-M'),
-    typeOfTime
+    searchParams
 })
 
 const initialState = {
-    departureStop: null,
-    arrivalStop: null,
-    time: null,
-    typeOfTime: null
+    searchParams: null
 }
 
 export default (state = initialState, action) => {
     switch(action.type) {
         case SEARCH:
             return {
-                departureStop: action.departureStop,
-                arrivalStop: action.arrivalStop,
-                time: action.time,
-                typeOfTime: action.typeOfTime
+                searchParams: action.searchParams
             }
         default:
             return state

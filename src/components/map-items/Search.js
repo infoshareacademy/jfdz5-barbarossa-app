@@ -15,13 +15,12 @@ import {
 } from '../../state/search'
 
 const initialState = {
-    departureStop: null,
-    arrivalStop: null,
-    departureChecked: false,
-    arrivalChecked: true,
+    startStop: null,
+    endStop: null,
     time: moment(),
-    typeOfTime: 'arrival',
-    stops: null
+    timeType: 'arrival',
+    departureChecked: false,
+    arrivalChecked: true
 }
 
 class Search extends React.Component {
@@ -31,15 +30,15 @@ class Search extends React.Component {
     options = [];
 
     handleDepartureChange = value => this.setState({
-        departureStop: value
+        startStop: value
     });
 
     handleArrivalChange = value => this.setState({
-        arrivalStop: value
+        endStop: value
     });
 
     handleTimeChange = value => {
-        this.setState ({
+        this.setState({
             time: value
         })
     }
@@ -47,42 +46,46 @@ class Search extends React.Component {
     handleArrivalCheckboxClick = () => this.setState({
         arrivalChecked: true,
         departureChecked: false,
-        typeOfTime: 'arrival'
+        timeType: 'arrival'
     });
 
     handleDepartureCheckboxClick = () => this.setState({
         arrivalChecked: false,
         departureChecked: true,
-        typeOfTime: 'departure'
+        timeType: 'departure'
 
     });
 
     handleSubmitClick = event => {
         event.preventDefault();
 
-        const departureStop = this.state.departureStop;
-        const arrivalStop = this.state.arrivalStop;
-        const time = this.state.time;
-        const typeOfTime = this.state.typeOfTime;
 
-        if (departureStop && arrivalStop ) {
+        if (this.state.startStop && this.state.endStop) {
 
-            this.props.handleSubmitClick(
-                departureStop.value,
-                arrivalStop.value,
-                time,
-                typeOfTime
-            )
+            const searchParams = {
 
+                startStop: this.props.stops.find(stop => stop.name === this.state.startStop.value),
+                endStop: this.props.stops.find(stop => stop.name === this.state.endStop.value),
+                time: {
+                    hour: parseInt(this.state.time.format('HH'), 10),
+                    minutes: parseInt(this.state.time.format('mm'), 10),
+                    seconds: 0,
+                    type: this.state.timeType
+                }
+
+            };
+
+            this.props.handleSubmitClick(searchParams);
             this.setState(initialState);
         }
-    }
+    };
 
     render() {
-        this.options = this.props.stops ? this.props.stops.map(
-            stop => ({
-                value: stop.name,
-                label: stop.name
+        this.options = this.props.stops ? this.props.stops.sort().map(
+            stop => stop.name).sort()
+            .map( stop => ({
+                value: stop,
+                label: stop
             })
         ) : null;
 
@@ -94,7 +97,7 @@ class Search extends React.Component {
                     </div>
                     <Select
                         name="departureStop"
-                        value={this.state.departureStop}
+                        value={this.state.startStop}
                         options={this.options}
                         onChange={this.handleDepartureChange}
                         placeholder="Start point..."
@@ -108,7 +111,7 @@ class Search extends React.Component {
 
                     <Select
                         name="arrivalStop"
-                        value={this.state.arrivalStop}
+                        value={this.state.endStop}
                         options={this.options}
                         onChange={this.handleArrivalChange}
                         placeholder="Destination..."
@@ -156,15 +159,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    handleSubmitClick: (departureStop,arrivalStop, time, typeOfTime) => dispatch(
-        search(
-            departureStop,
-            arrivalStop,
-            time,
-            typeOfTime
-        )
-    )
-})
+    handleSubmitClick: (searchParams) => dispatch(search(searchParams))
+});
 
 export default connect(
     mapStateToProps,

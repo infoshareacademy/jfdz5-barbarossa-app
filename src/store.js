@@ -1,22 +1,26 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
-import persistState from 'redux-localstorage'
+// import persistState from 'redux-localstorage'
 import thunk from 'redux-thunk'
 
 import search from './state/search'
 import stops, {fetchStops} from './state/stops'
 import lines, {fetchLines} from './state/lines'
+import stopNames, {fetchStopNames} from './state/stopNames'
+import results from './state/results'
 
 const reducer = combineReducers({
     search,
     stops,
-    lines
+    lines,
+    stopNames,
+    results
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const enhancer = composeEnhancers(
     applyMiddleware(thunk),
-    persistState([]),
+    // persistState([]),
 )
 
 const store = createStore(
@@ -26,5 +30,6 @@ const store = createStore(
 
 store.dispatch(fetchStops());
 store.dispatch(fetchLines());
+store.dispatch(fetchStopNames());
 
 export default store
