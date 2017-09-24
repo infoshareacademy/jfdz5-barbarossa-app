@@ -12,5 +12,8 @@
 }
 
 .nav > li {
-  padding: 8px;
+  padding: 0 15px;
+  @media #{$small} {
+    padding: 8px;
+  }
 }
