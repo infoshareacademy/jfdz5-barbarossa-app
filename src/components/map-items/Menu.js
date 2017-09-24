@@ -4,12 +4,19 @@ import {
     Nav,
     Navbar,
     NavItem,
+    NavDropdown,
+    MenuItem
+
 } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 
 const Menu = () => (
-            <Navbar fluid inverse className="menu">
+            <Navbar fluid inverse collapseOnSelect className="menu">
+                <Navbar.Header>
+                    <Navbar.Toggle />
+                </Navbar.Header>
+                <Navbar.Collapse>
                 <Nav>
                     <LinkContainer exact to="/favs">
                         <NavItem><i className="fa fa-star" aria-hidden="true"></i>Favs</NavItem>
@@ -24,12 +31,13 @@ const Menu = () => (
                         <NavItem><i className="fa fa-map-o" aria-hidden="true"></i>Schedules</NavItem>
                     </LinkContainer>
                     <LinkContainer exact to="/prices">
-                        <NavItem><i className="fa fa-usd" aria-hidden="true"></i>Prices</NavItem>
+                        <NavItem><i className="fa fa-ticket" aria-hidden="true"></i>Prices</NavItem>
                     </LinkContainer>
                     <LinkContainer exact to="/log">
                         <NavItem><i className="fa fa-user-circle-o" aria-hidden="true"></i>Log</NavItem>
                     </LinkContainer>
                 </Nav>
+                </Navbar.Collapse>
             </Navbar>
 );
 
