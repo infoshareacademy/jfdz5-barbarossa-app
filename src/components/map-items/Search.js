@@ -15,13 +15,12 @@ import {
 } from '../../state/search'
 
 const initialState = {
-    departureStop: null,
-    arrivalStop: null,
-    departureChecked: false,
-    arrivalChecked: true,
+    startStop: null,
+    endStop: null,
     time: moment(),
-    typeOfTime: 'arrival',
-    stops: null
+    timeType: 'arrival',
+    departureChecked: false,
+    arrivalChecked: true
 }
 
 class Search extends React.Component {
@@ -31,11 +30,11 @@ class Search extends React.Component {
     options = [];
 
     handleDepartureChange = value => this.setState({
-        departureStop: value
+        startStop: value
     });
 
     handleArrivalChange = value => this.setState({
-        arrivalStop: value
+        endStop: value
     });
 
     handleTimeChange = value => {
@@ -47,13 +46,13 @@ class Search extends React.Component {
     handleArrivalCheckboxClick = () => this.setState({
         arrivalChecked: true,
         departureChecked: false,
-        typeOfTime: 'arrival'
+        timeType: 'arrival'
     });
 
     handleDepartureCheckboxClick = () => this.setState({
         arrivalChecked: false,
         departureChecked: true,
-        typeOfTime: 'departure'
+        timeType: 'departure'
 
     });
 
@@ -61,22 +60,19 @@ class Search extends React.Component {
         event.preventDefault();
 
 
-
-        if (this.state.departureStop && this.state.arrivalStop) {
+        if (this.state.startStop && this.state.endStop) {
 
             const searchParams = {
-                departureStop:  this.props.stops.filter(
-                    stop => stop.name === this.state.departureStop.value
-                ),
-                arrivalStop:    this.props.stops.filter(
-                    stop => stop.name === this.state.arrivalStop.value
-                ),
-                time:           {
-                    hour: parseInt(this.state.time.format('HH')),
-                    minutes: parseInt(this.state.time.format('mm')),
-                    seconds: 0
-                },
-                typeOfTime:     this.state.typeOfTime
+
+                startStop: this.props.stops.find(stop => stop.name === this.state.startStop.value),
+                endStop: this.props.stops.find(stop => stop.name === this.state.endStop.value),
+                time: {
+                    hour: parseInt(this.state.time.format('HH'), 10),
+                    minutes: parseInt(this.state.time.format('mm'), 10),
+                    seconds: 0,
+                    type: this.state.timeType
+                }
+
             };
 
             this.props.handleSubmitClick(searchParams);
@@ -85,10 +81,11 @@ class Search extends React.Component {
     };
 
     render() {
-        this.options = this.props.stopNames ? this.props.stopNames.map(
-            stopName => ({
-                value: stopName,
-                label: stopName
+        this.options = this.props.stops ? this.props.stops.sort().map(
+            stop => stop.name).sort()
+            .map( stop => ({
+                value: stop,
+                label: stop
             })
         ) : null;
 
@@ -100,7 +97,7 @@ class Search extends React.Component {
                     </div>
                     <Select
                         name="departureStop"
-                        value={this.state.departureStop}
+                        value={this.state.startStop}
                         options={this.options}
                         onChange={this.handleDepartureChange}
                         placeholder="Start point..."
@@ -114,7 +111,7 @@ class Search extends React.Component {
 
                     <Select
                         name="arrivalStop"
-                        value={this.state.arrivalStop}
+                        value={this.state.endStop}
                         options={this.options}
                         onChange={this.handleArrivalChange}
                         placeholder="Destination..."
@@ -158,7 +155,6 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    stopNames: state.stopNames,
     stops: state.stops
 });
 
