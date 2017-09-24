@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import './Lines.css'
 
 const Lines = ({lines}) => (
