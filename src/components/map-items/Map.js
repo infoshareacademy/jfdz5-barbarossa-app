@@ -1,42 +1,88 @@
-import React from 'react'
 import './Map.css';
+/* global google */
+import {
+    default as React,
+    Component,
+} from "react";
+import {connect} from 'react-redux'
+
+import {
+    withGoogleMap,
+    GoogleMap,
+    DirectionsRenderer,
+} from "react-google-maps";
+
+const DirectionsGoogleMap = withGoogleMap(props => (
+    <GoogleMap
+        defaultZoom={7}
+        defaultCenter={props.center}
+    >
+        {props.directions && <DirectionsRenderer directions={props.directions}/>}
+    </GoogleMap>
+));
+
+/*
+ * Add <script src="https://maps.googleapis.com/maps/api/js"></script> to your HTML to provide google.maps reference
+ */
+class Map extends Component {
+
+    state = {
+        origin: null,
+        destination: null,
+        directions: null
+    };
+
+    componentWillReceiveProps(nextProps) {
+
+        this.setState({
+            origin: null,
+            destination: null
+        })
 
 
+        const DirectionsService = new google.maps.DirectionsService();
 
-const Map = (origin, destination) => (
-    <div id="map">
+        DirectionsService.route({
+            origin: new google.maps.LatLng(
+                100,100
+            ),
+            destination: new google.maps.LatLng(
+                100,100
+            ),
+            travelMode: google.maps.TravelMode.DRIVING,
+        }, (result, status) => {
+            if (status === google.maps.DirectionsStatus.OK) {
+                this.setState({
+                    directions: result,
+                });
+            } else {
+                console.error(`error fetching directions ${result}`);
+            }
+        });
+    }
 
-    </div>
-);
+    render() {
+        return (
+            <div id="map">
+                <DirectionsGoogleMap
+                    containerElement={
+                        <div style={{height: `100%`, width: `100%`}}/>
+                    }
+                    mapElement={
+                        <div style={{height: `100%`, width: `100%`}}/>
+                    }
+                    center={this.state.origin}
+                    directions={this.state.directions}
+                />
+            </div>
+        );
+    }
+}
 
-// function initMap() {
-//     var chicago = {lat: 41.85, lng: -87.65};
-//     var indianapolis = {lat: 39.79, lng: -86.14};
-//
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//         center: chicago,
-//         zoom: 7
-//     });
-//
-//     var directionsDisplay = new google.maps.DirectionsRenderer({
-//         map: map
-//     });
-//
-//     // Set destination, origin and travel mode.
-//     var request = {
-//         destination: indianapolis,
-//         origin: chicago,
-//         travelMode: 'DRIVING'
-//     };
-//
-//     // Pass the directions request to the directions service.
-//     var directionsService = new google.maps.DirectionsService();
-//     directionsService.route(request, function(response, status) {
-//         if (status == 'OK') {
-//             // Display the route on the map.
-//             directionsDisplay.setDirections(response);
-//         }
-//     });
-// }
+const mapStateToProps = state => ({
+    map: state.map
+});
 
-export default Map
+export default connect(
+    mapStateToProps
+)(Map)
