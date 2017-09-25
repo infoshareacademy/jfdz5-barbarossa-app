@@ -8,7 +8,7 @@ export const adjustTime = (departures, type, inputTime) => {
             )
         )
     ) ?
-        departures.reduce((min, next) => min < next ? min : next, 0) :
+        departures[0] :
         departures.filter(
             ({ depFromEndStop, depFromStartStop }) => (
                 (
@@ -17,5 +17,5 @@ export const adjustTime = (departures, type, inputTime) => {
                         depFromStartStop
                 ) >=  inputTime
             )
-        ).reduce((min, next) => min < next ? min : next, 0)
+        )[0]
 }

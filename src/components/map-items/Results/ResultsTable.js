@@ -1,7 +1,7 @@
 import React from 'react'
 import {ResultItem} from './ResultItem'
 
-export const ResultsTable = ({results, saveClick, showClick}) => {
+export const ResultsTable = ({results, saveInFavsClick, showOnMapClick}) => {
 
     return (
         <div>
@@ -21,9 +21,8 @@ export const ResultsTable = ({results, saveClick, showClick}) => {
                             <ResultItem
                                 key={result.name}
                                 result={result}
-                                results={results}
-                                saveClick={saveClick}
-                                showClick={showClick}
+                                saveInFavsClick={saveInFavsClick}
+                                showOnMapClick={showOnMapClick}
                             />
                         )
                         :

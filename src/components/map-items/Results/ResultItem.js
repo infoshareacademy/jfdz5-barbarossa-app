@@ -1,51 +1,52 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
 
-export const ResultItem = ({result, results, saveClick, showClick}) => {
+export const ResultItem = ({result, saveInFavsClick, showOnMapClick}) => {
 
-    const handleShowClick = event => {
+    const {
+        name,
+        selectedTime: {timeFromStartStop, timeFromEndStop}
+    } = result;
+
+    const handleShowOnMapClick = event => {
         const resultName = event.currentTarget.getAttribute('data-result-name');
-        const selectedResult = results.find(result => result.name === resultName);
-
-        showClick(selectedResult);
+        showOnMapClick(resultName);
     }
 
-    const handleSaveClick = event => {
+    const handleSaveFavsClick = event => {
         const resultName = event.currentTarget.getAttribute('data-result-name');
-        const selectedResult = results.find(result => result.name === resultName);
-
-        saveClick(selectedResult)
+        saveInFavsClick(resultName)
     }
 
     return (
             <tr>
                 <td>
                     {
-                        result.name
+                        name
                     }
                 </td>
                 <td>
                     {
-                        result.selectedTime.timeFromStartStop.hours + ':' + result.selectedTime.timeFromStartStop.minutes
+                        timeFromStartStop.hours + ':' + timeFromStartStop.minutes
                     }
                 </td>
                 <td>
                     {
-                        result.selectedTime.timeFromEndStop.hours + ':' + result.selectedTime.timeFromEndStop.minutes
+                        timeFromEndStop.hours + ':' + timeFromEndStop.minutes
                     }
                 </td>
                 <td>
                     <Button
-                        data-result-name={result.name}
-                        onClick={handleSaveClick}
+                        data-result-name={name}
+                        onClick={handleSaveFavsClick}
                     >
                         <i className="fa fa-star-o"/>
                     </Button>
                 </td>
                 <td>
                     <Button
-                        data-result-name={result.name}
-                        onClick={handleShowClick}
+                        data-result-name={name}
+                        onClick={handleShowOnMapClick}
                     >
                         <i className="fa fa-car"/>
                     </Button>

@@ -6,16 +6,14 @@ import {getConnections} from './getConnections'
 import {selectTime} from "./selectTime"
 import {ResultsTable} from "./ResultsTable"
 
-import {
-    show,
-    save
-} from '../../../state/results'
+import {add} from '../../../state/map'
+import {save} from '../../../state/favs'
 
 const Results = ({
                      search,
                      lines,
-                     saveClick,
-                     showClick
+                     saveInFavsClick,
+                     showOnMapClick
                  }) => {
 
     let results = [];
@@ -38,8 +36,8 @@ const Results = ({
             (
                 <ResultsTable
                     results={results}
-                    saveClick={saveClick}
-                    showClick={showClick}
+                    saveInFavsClick={saveInFavsClick}
+                    showOnMapClick={showOnMapClick}
                 />
             )
             : null
@@ -53,8 +51,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    showClick: locations => dispatch(show(locations)),
-    saveClick: result => dispatch(save(result))
+    showOnMapClick: locations => dispatch(add(locations)),
+    saveInFavsClick: result => dispatch(save(result)),
 });
 
 export default connect(
