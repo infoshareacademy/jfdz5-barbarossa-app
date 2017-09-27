@@ -2,10 +2,11 @@ export const getLocations = (results,stops) => {
 
     const {
         startStop: {id: startId},
-        endStop: {id: endId}
+        endStop: {id: endId},
+        routeStops
     } = results;
 
-    const routeIds = results.routeStops.map(stop => stop.id);
+    const routeIds = routeStops.map(stop => stop.id);
 
     return ({
             startStop: stops.find(stop => stop.id === startId),

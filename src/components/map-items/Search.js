@@ -82,7 +82,7 @@ class Search extends React.Component {
 
     render() {
         this.options = this.props.stops ? this.props.stops.sort().map(
-            stop => stop.name).sort()
+            stop => stop.name)
             .map( stop => ({
                 value: stop,
                 label: stop
