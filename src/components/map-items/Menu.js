@@ -3,10 +3,7 @@ import './Menu.css'
 import {
     Nav,
     Navbar,
-    NavItem,
-    NavDropdown,
-    MenuItem
-
+    NavItem
 } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 

@@ -21,40 +21,48 @@ const DirectionsGoogleMap = withGoogleMap(props => (
     </GoogleMap>
 ));
 
+const initialState = {
+    origin: new google.maps.LatLng(54.354161, 18.652906),
+    destination: null,
+    directions: null
+}
 /*
  * Add <script src="https://maps.googleapis.com/maps/api/js"></script> to your HTML to provide google.maps reference
  */
 class Map extends Component {
 
-    state = {
-        origin: new google.maps.LatLng(54.354161, 18.652906),
-        destination: null,
-        directions: null
-    };
+    state = initialState;
 
     componentWillReceiveProps(nextProps) {
 
-        const DirectionsService = new google.maps.DirectionsService();
-        const waypoints = nextProps.map.routeStops.map(
-            stop => ({
-                location: stop.name + ' ,Gdańsk'
-            })
-        )
+        if (nextProps.routeMap.id === undefined) {
+            this.setState({
+                directions: null
+            });
+        }
+        else {
+            const DirectionsService = new google.maps.DirectionsService();
+            const waypoints = nextProps.routeMap.routeStops.map(
+                stop => ({
+                    location: stop.name + ' ,Gdańsk'
+                })
+            )
 
-        DirectionsService.route({
-            origin: nextProps.map.startStop.name + ' ,Gdańsk',
-            destination: nextProps.map.endStop.name + ' ,Gdańsk',
-            waypoints: waypoints,
-            travelMode: google.maps.TravelMode.DRIVING,
-        }, (result, status) => {
-            if (status === google.maps.DirectionsStatus.OK) {
-                this.setState({
-                    directions: result,
-                });
-            } else {
-                console.error(`error fetching directions ${result}`);
-            }
-        });
+            DirectionsService.route({
+                origin: nextProps.routeMap.startStop.name + ' ,Gdańsk',
+                destination: nextProps.routeMap.endStop.name + ' ,Gdańsk',
+                waypoints: waypoints,
+                travelMode: google.maps.TravelMode.DRIVING,
+            }, (result, status) => {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    this.setState({
+                        directions: result,
+                    });
+                } else {
+                    console.error(`error fetching directions ${result}`);
+                }
+            });
+        }
     }
 
     render() {
@@ -76,7 +84,7 @@ class Map extends Component {
 }
 
 const mapStateToProps = state => ({
-    map: state.map
+    routeMap: state.routeMap
 });
 
 export default connect(

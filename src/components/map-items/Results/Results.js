@@ -6,7 +6,7 @@ import {getConnections} from './getConnections'
 import {selectTime} from "./selectTime"
 import {ResultsTable} from "./ResultsTable"
 
-import {add} from '../../../state/map'
+import {add} from '../../../state/routeMap'
 import {save} from '../../../state/favs'
 
 const Results = ({
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    showOnMapClick: locations => dispatch(add(locations)),
+    showOnMapClick: stops => dispatch(add(stops)),
     saveInFavsClick: result => dispatch(save(result)),
 });
 

@@ -1,7 +1,7 @@
-const ADD_LOCATIONS = 'map/ADD_LOCATIONS'
-export const add = resultName => ({
+const ADD_LOCATIONS = 'routeMap/ADD_LOCATIONS'
+export const add = selectedResult => ({
     type: ADD_LOCATIONS,
-    resultName
+    selectedResult
 })
 
 const initialState = {};
@@ -9,7 +9,7 @@ const initialState = {};
 export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_LOCATIONS:
-            return action.resultName
+            return action.selectedResult
         default:
             return initialState
     }
