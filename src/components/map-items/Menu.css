@@ -28,6 +28,19 @@ h3 {
 h4 {
   font-size: 1.1em; }
 
+.btn-custom {
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  text-shadow: none;
+  margin: 8px 0;
+  font-weight: bold;
+  letter-spacing: 1px; }
+  .btn-custom:hover {
+    background: #0c8ff2;
+    color: #ddd; }
+
 .menu {
   text-transform: uppercase;
   font-weight: bold;

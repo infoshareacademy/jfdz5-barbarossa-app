@@ -48,3 +48,18 @@ h3 {
 h4 {
   font-size: 1.1em;
 }
+
+.btn-custom {
+  @include custom-transition();
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  text-shadow: none;
+  margin: 8px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  &:hover {
+    background: $colorAccent;
+    color: $colorFont;
+  }
+}
