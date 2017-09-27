@@ -29,6 +29,26 @@ h4 {
   font-size: 1.1em; }
 
 .log {
-  background: #0c8ff2; }
+  background: #151515; }
   .log .nav {
-    border-bottom: 0; }
+    border-bottom: 0;
+    padding: 1em; }
+  .log .nav-tabs > li > a {
+    background: linear-gradient(to top right, #222, #3c3c3c);
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px; }
+    .log .nav-tabs > li > a:hover {
+      background: #0c8ff2;
+      cursor: pointer;
+      color: white; }
+  .log .nav-tabs > li.active > a {
+    border: 0;
+    outline: none;
+    color: #ddd; }
+    .log .nav-tabs > li.active > a:hover {
+      background: linear-gradient(to top right, #222, #3c3c3c); }

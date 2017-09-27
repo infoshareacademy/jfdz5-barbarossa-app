@@ -1,8 +1,32 @@
 @import '../App.scss';
 
 .log {
-  background: $colorAccent;
+  background: $colorMainDarken;
   .nav {
     border-bottom: 0;
+    padding: 1em;
+  }
+  .nav-tabs>li>a{
+    @include custom-gradient();
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    color: $colorFontDarker;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    &:hover {
+      background: $colorAccent;
+      cursor: pointer;
+      color: white;
+    }
+  }
+  .nav-tabs>li.active>a {
+    border: 0;
+    outline: none;
+    color: $colorFont;
+    &:hover {
+      @include custom-gradient();
+    }
   }
 }
