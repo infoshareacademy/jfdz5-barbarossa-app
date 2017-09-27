@@ -4,7 +4,6 @@ import AuthLog from '../AuthLog'
 
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
-
 import './Log.css'
 
 
