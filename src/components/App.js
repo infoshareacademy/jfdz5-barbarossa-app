@@ -6,6 +6,7 @@ import Menu from './map-items/Menu'
 import Search from './map-items/Search'
 import Results from './map-items/Results/Results'
 import Map from './map-items/Map'
+import AuthSearch from './AuthSearch'
 
 import {
     Grid,
@@ -18,18 +19,20 @@ const App = () => (
     <Grid>
         <Row>
             <Col md={4}>
-                <Search />
+                <AuthSearch>
+                    <Search/>
+                </AuthSearch>
             </Col>
             <Col md={8}>
-                <Menu />
+                <Menu/>
             </Col>
             <Col md={8}>
-                <Content />
+                <Content/>
             </Col>
         </Row>
         <Row>
-            <Col md={4}>
-                <Results />
+            <Col md={6}>
+                <Results/>
             </Col>
         </Row>
         <Map/>

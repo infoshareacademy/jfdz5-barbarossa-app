@@ -82,12 +82,12 @@ class Search extends React.Component {
 
     render() {
         this.options = this.props.stops ? this.props.stops.sort().map(
-            stop => stop.name).sort()
-            .map(stop => ({
-                    value: stop,
-                    label: stop
-                })
-            ) : null;
+            stop => stop.name)
+            .map( stop => ({
+                value: stop,
+                label: stop
+            })
+        ) : null;
 
         return (
             <form className="search-container main-panel" onSubmit={this.handleSubmitClick}>

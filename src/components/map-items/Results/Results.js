@@ -1,27 +1,22 @@
 import React from 'react'
 import './Results.css';
 import {connect} from 'react-redux'
-import {Button} from 'react-bootstrap'
 
-import {findLine} from './findLine'
-import {computeDeparture} from './computeDeparture'
+import {getConnections} from './getConnections'
 import {selectTime} from "./selectTime"
-import {getLocations} from "../../_utlis/getLocations"
-import {
-    show,
-    save
-} from '../../../state/results'
+import {ResultsTable} from "./ResultsTable"
 
+import {add} from '../../../state/map'
+import {save} from '../../../state/favs'
 
 const Results = ({
                      search,
                      lines,
-                     stops,
-                     showClick,
-                     saveClick
+                     saveInFavsClick,
+                     showOnMapClick
                  }) => {
 
-    var results = [];
+    let results = [];
 
     if (search.searchParams) {
 
@@ -31,87 +26,19 @@ const Results = ({
             time
         } = search.searchParams;
 
-        const foundLines = findLine(startId, endId, lines);
-        const connections = computeDeparture(foundLines);
+        const connections = getConnections(startId, endId, lines);
 
         results = selectTime(connections, time);
-    }
-
-    const handleShowClick = event => {
-        const resultName = event.currentTarget.getAttribute('data-result-name');
-        const selectedResult = results.find(result => result.name === resultName);
-        const locations = getLocations(selectedResult, stops);
-
-        showClick(locations);
-    }
-
-    const handleSaveClick = event => {
-        const resultName = event.currentTarget.getAttribute('data-result-name');
-        const selectedResult = results.find(result => result.name === resultName);
-
-        saveClick(selectedResult)
     }
 
     return (
         search.searchParams ?
             (
-                <div className="main-panel">
-                    <h1>Results</h1>
-                    <table>
-                        <tbody>
-                        <tr>
-                            <th>Line</th>
-                            <th>Departure time</th>
-                            <th>Arrival time</th>
-                        </tr>
-                        {
-                            results.length > 0 ?
-                                results.map(
-                                    (result, index) =>
-                                        <tr key={index}>
-                                            <td>
-                                                {
-                                                    result.name
-                                                }
-                                            </td>
-                                            <td>
-                                                {
-                                                    result.selectedTime.timeFromStartStop.hours + ':' + result.selectedTime.timeFromStartStop.minutes
-                                                }
-                                            </td>
-                                            <td>
-                                                {
-                                                    result.selectedTime.timeFromEndStop.hours + ':' + result.selectedTime.timeFromEndStop.minutes
-                                                }
-                                            </td>
-                                            <td>
-                                                <Button
-                                                    data-result-name={result.name}
-                                                    onClick={handleSaveClick}
-                                                >
-                                                    <i className="fa fa-star-o"/>
-                                                </Button>
-                                            </td>
-                                            <td>
-                                                <Button
-                                                    data-result-name={result.name}
-                                                    onClick={handleShowClick}
-                                                >
-                                                    <i className="fa fa-car"/>
-                                                </Button>
-                                            </td>
-                                        </tr>
-                                ) :
-                                <tr>
-                                    <td colSpan={3}>
-                                        No results found
-                                    </td>
-                                </tr>
-                        }
-                        </tbody>
-
-                    </table>
-                </div>
+                <ResultsTable
+                    results={results}
+                    saveInFavsClick={saveInFavsClick}
+                    showOnMapClick={showOnMapClick}
+                />
             )
             : null
     )
@@ -124,8 +51,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    showClick: locations => dispatch(show(locations)),
-    saveClick: result => dispatch(save(result))
+    showOnMapClick: locations => dispatch(add(locations)),
+    saveInFavsClick: result => dispatch(save(result)),
 });
 
 export default connect(

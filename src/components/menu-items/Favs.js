@@ -1,11 +1,30 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import { LinkContainer, Button } from 'react-router-bootstrap'
 
-import './Favs.css'
-
-const Favs = () => (
-        <div className="main-panel favs">
-            <h1>Favs</h1>
+const Favs = ({user}) => (
+        <div className="main-panel">
+            {
+                user === null ?
+                    <div>
+                        <h4>You must be log in to see your favorite connections!</h4>
+                        <LinkContainer exact to="/log">
+                            <a>Sign in</a>
+                        </LinkContainer>
+                    </div>
+                    :
+                    <div>
+                        <h4>Hello {user.email} !</h4>
+                        <h5>This is your favorite connections:</h5>
+                    </div>
+            }
         </div>
 );
 
-export default Favs
+const mapStateToProps = state => ({
+    user: state.auth.user
+});
+
+export default connect(
+    mapStateToProps
+)(Favs)
