@@ -1,0 +1,32 @@
+@import '../App.scss';
+.prices {
+  text-align: center;
+  h2, h3 {
+    text-transform: uppercase;
+  }
+  h3 {
+    margin-bottom: 1.5em;
+  }
+}
+
+ul.prices-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  i {
+    margin-left: 0.5em;
+    color: $colorAccent;
+  }
+  li {
+    text-align: left;
+    padding: 0.5em;
+    margin: 0;
+    background: $colorMainDarken;
+  }
+  p {
+    margin: 1.3em 0 0.3em 0;
+    padding: 0.5em;
+    background: $colorMain;
+    border: 1px solid $colorMainDarken;
+  }
+}

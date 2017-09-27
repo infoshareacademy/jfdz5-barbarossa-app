@@ -1,1 +1,18 @@
 @import '../App.scss';
+
+select.stops {
+  margin: 1em 0;
+  background: $colorMain;
+  outline: none;
+  border: none;
+  font-size: 1.2em;
+  padding: 0.5em;
+}
+
+.schedules_tickets--oneway {
+  background: red;
+}
+
+.schedules_tickets--time {
+  background: green;
+}

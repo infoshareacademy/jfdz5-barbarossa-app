@@ -23,7 +23,7 @@ const App = () => (
                     <Search/>
                 </AuthSearch>
             </Col>
-            <Col mdOffset={2} md={6}>
+            <Col md={8}>
                 <Menu/>
             </Col>
         </Row>

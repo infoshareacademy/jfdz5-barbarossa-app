@@ -90,7 +90,7 @@ class Search extends React.Component {
         ) : null;
 
         return (
-            <form className="search-container" onSubmit={this.handleSubmitClick}>
+            <form className="search-container main-panel" onSubmit={this.handleSubmitClick}>
                 <div className="search-box">
                     <div className="search-box_icon">
                         <i className="fa fa-map-marker"/>

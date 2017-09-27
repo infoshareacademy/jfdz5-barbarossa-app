@@ -1,1 +1,19 @@
 @import '../App.scss';
+
+.menu {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: -0.2em;
+  padding-bottom: 0.2em;
+  i {
+    margin-right: 6px;
+  }
+}
+
+.nav > li {
+  padding: 0 15px;
+  @media #{$small} {
+    padding: 8px;
+  }
+}
