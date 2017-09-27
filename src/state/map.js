@@ -4,17 +4,13 @@ export const add = resultName => ({
     resultName
 })
 
-const initialState = {
-    locations: null
-};
+const initialState = {};
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_LOCATIONS:
-            return {
-                locations: action.resultName
-            };
+            return action.resultName
         default:
-            return state
+            return initialState
     }
 }

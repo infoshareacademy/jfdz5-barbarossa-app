@@ -14,7 +14,7 @@ import {
 
 const DirectionsGoogleMap = withGoogleMap(props => (
     <GoogleMap
-        defaultZoom={7}
+        defaultZoom={10}
         defaultCenter={props.center}
     >
         {props.directions && <DirectionsRenderer directions={props.directions}/>}
@@ -27,28 +27,24 @@ const DirectionsGoogleMap = withGoogleMap(props => (
 class Map extends Component {
 
     state = {
-        origin: null,
+        origin: new google.maps.LatLng(54.354161, 18.652906),
         destination: null,
         directions: null
     };
 
     componentWillReceiveProps(nextProps) {
 
-        this.setState({
-            origin: null,
-            destination: null
-        })
-
-
         const DirectionsService = new google.maps.DirectionsService();
+        const waypoints = nextProps.map.routeStops.map(
+            stop => ({
+                location: stop.name + ' ,Gdańsk'
+            })
+        )
 
         DirectionsService.route({
-            origin: new google.maps.LatLng(
-                100,100
-            ),
-            destination: new google.maps.LatLng(
-                100,100
-            ),
+            origin: nextProps.map.startStop.name + ' ,Gdańsk',
+            destination: nextProps.map.endStop.name + ' ,Gdańsk',
+            waypoints: waypoints,
             travelMode: google.maps.TravelMode.DRIVING,
         }, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
@@ -63,19 +59,19 @@ class Map extends Component {
 
     render() {
         return (
-            <div id="map">
-                <DirectionsGoogleMap
-                    containerElement={
-                        <div style={{height: `100%`, width: `100%`}}/>
-                    }
-                    mapElement={
-                        <div style={{height: `100%`, width: `100%`}}/>
-                    }
-                    center={this.state.origin}
-                    directions={this.state.directions}
-                />
-            </div>
-        );
+                <div id="map">
+                    <DirectionsGoogleMap
+                        containerElement={
+                            <div style={{height: `100%`, width: `100%`}}/>
+                        }
+                        mapElement={
+                            <div style={{height: `100%`, width: `100%`}}/>
+                        }
+                        center={this.state.origin}
+                        directions={this.state.directions}
+                    />
+                </div>
+        )
     }
 }
 

@@ -21,6 +21,7 @@ export const ResultsTable = ({results, saveInFavsClick, showOnMapClick}) => {
                             <ResultItem
                                 key={result.name}
                                 result={result}
+                                results={results}
                                 saveInFavsClick={saveInFavsClick}
                                 showOnMapClick={showOnMapClick}
                             />
