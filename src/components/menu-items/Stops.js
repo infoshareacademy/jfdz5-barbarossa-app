@@ -1,22 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
+import './Stops.css'
 const Stops = ({stops}) => (
     <div className="main-panel">
         <h1>Stops</h1>
-        <ul>
+        <select className="stops">
                 {
                     stops.sort().map(
                         stop => (
-                            <li key={stop.id}>
+                            <option key={stop.id}>
                                 {
                                     stop.name
                                 }
-                            </li>
+                            </option>
                         )
                     )
                 }
-        </ul>
+        </select>
     </div>
 );
 

@@ -11,6 +11,7 @@ import Favs from './menu-items/Favs'
 import Lines from './menu-items/Lines'
 import Schedules from './menu-items/Schedules'
 import Stops from './menu-items/Stops'
+import Prices from './menu-items/Prices'
 import Log from './menu-items/Log'
 
 const Content = () => (
@@ -21,6 +22,7 @@ const Content = () => (
             <Route path="/lines" component={Lines}/>
             <Route path="/schedules" component={Schedules}/>
             <Route path="/stops" component={Stops}/>
+            <Route path="/prices" component={Prices}/>
             <Route path="/log" component={Log}/>
             <Route render={() => <h1>Not found</h1>}/>
         </Switch>
