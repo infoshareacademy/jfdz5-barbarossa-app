@@ -1,1 +1,8 @@
 @import '../App.scss';
+
+.log {
+  background: $colorAccent;
+  .nav {
+    border-bottom: 0;
+  }
+}
