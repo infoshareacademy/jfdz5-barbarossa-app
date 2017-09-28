@@ -6,7 +6,7 @@ import firebase from 'firebase'
 import search from './state/search'
 import stops, {fetchStops} from './state/stops'
 import lines, {fetchLines} from './state/lines'
-import map from './state/map'
+import routeMap from './state/routeMap'
 import favs from './state/favs'
 import auth, {setUser} from './state/auth'
 
@@ -24,7 +24,7 @@ const reducer = combineReducers({
     search,
     stops,
     lines,
-    map,
+    routeMap,
     favs,
     auth
 })

@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { LinkContainer, Button } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Favs = ({user}) => (
         <div className="main-panel">
