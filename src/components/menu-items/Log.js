@@ -8,7 +8,7 @@ import './Log.css'
 
 
 const Log = () => (
-    <div className="log">
+    <div className="log menu-panel">
         <AuthLog>
             <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                 <Tab eventKey={1} title="Sign In">

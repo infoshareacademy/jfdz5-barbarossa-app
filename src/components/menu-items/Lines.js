@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './Lines.css'
 
 const Lines = ({lines}) => (
-        <div className="main-panel">
+        <div className="main-panel menu-panel">
             <h1 className="lines">Lines</h1>
             <ul className="lines">
                 {

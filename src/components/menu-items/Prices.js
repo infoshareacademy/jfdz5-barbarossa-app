@@ -4,7 +4,7 @@ import './Prices.css'
 
 
 const Prices = () => (
-    <div className="main-panel prices">
+    <div className="main-panel prices menu-panel">
         <h1>Prices</h1>
         <h2>Single tickets</h2>
         <div className="row">

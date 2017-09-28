@@ -4,7 +4,7 @@ import {ResultItem} from './ResultItem'
 export const ResultsTable = ({results, saveInFavsClick, showOnMapClick}) => {
 
     return (
-        <div>
+        <div className="results main-panel">
             <h1>Results</h1>
             <table>
                 <thead>
