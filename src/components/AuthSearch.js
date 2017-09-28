@@ -8,8 +8,9 @@ const AuthSearch = ({ user, children }) => (
     <div>
         {
             user === null ?
-                <div className="auth-box__not-log">
-                    Sign in to search
+                <div className="auth-box__not-log main-panel">
+                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i><br/>
+                    Sign in <span>to search</span>
                 </div> :
                 children
         }

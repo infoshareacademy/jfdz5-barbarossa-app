@@ -45,7 +45,7 @@ class SignUpForm extends React.Component {
 
     render() {
         return (
-            <Form horizontal onSubmit={this.handleSubmit}>
+            <Form horizontal onSubmit={this.handleSubmit} className="main-panel auth-panel">
                 <h3>Sign Up</h3>
                 <FormGroup controlId="formHorizontalEmail">
                     <Col style={{paddingTop: '10px'}} componentClass={ControlLabel} sm={2}>

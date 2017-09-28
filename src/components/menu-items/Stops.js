@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import './Stops.css'
 const Stops = ({stops}) => (
-    <div className="main-panel">
+    <div className="main-panel menu-panel">
         <h1>Stops</h1>
         <select className="stops">
                 {

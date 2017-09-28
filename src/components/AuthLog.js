@@ -11,11 +11,11 @@ const AuthLog = ({user, children}) => (
         {
             user === null ?
                 children :
-                <div>
+                <div className="main-panel">
                     <h4>
                         You are logged in by <strong>{user.email}</strong>
                     </h4>
-                    <Button onClick={() => firebase.auth().signOut()}>
+                    <Button className="btn-custom" onClick={() => firebase.auth().signOut()}>
                         Sign Out
                     </Button>
                 </div>
