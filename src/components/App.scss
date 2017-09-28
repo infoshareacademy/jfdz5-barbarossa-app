@@ -23,6 +23,14 @@
   border-radius: 5px;
 }
 
+.menu-panel {
+  margin-top: -2.5em;
+  @media #{$medium} {
+    margin-top: -12em;
+  }
+  border-radius: 5px;
+}
+
 .row {
   margin-bottom: 1.5em;
 }
