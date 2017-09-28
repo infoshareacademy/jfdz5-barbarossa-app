@@ -4,6 +4,7 @@ import AuthLog from '../AuthLog'
 
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
+import UsersList from './UsersList'
 import './Log.css'
 
 
@@ -16,6 +17,9 @@ const Log = () => (
                 </Tab>
                 <Tab eventKey={2} title="Sign Up">
                     <SignUpForm/>
+                </Tab>
+                <Tab eventKey={3} title="Users List">
+                    <UsersList/>
                 </Tab>
             </Tabs>
         </AuthLog>
