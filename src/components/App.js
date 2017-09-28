@@ -28,10 +28,10 @@ const App = () => (
             </Col>
         </Row>
         <Row>
-            <Col md={6}>
+            <Col md={4}>
                 <Results/>
             </Col>
-            <Col md={6}>
+            <Col md={8}>
                 <Content/>
             </Col>
         </Row>

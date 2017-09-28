@@ -8,6 +8,13 @@
   color: #ddd;
   border-radius: 5px; }
 
+.menu-panel {
+  margin-top: -2.5em;
+  border-radius: 5px; }
+  @media only screen and (min-width: 992px) {
+    .menu-panel {
+      margin-top: -12em; } }
+
 .row {
   margin-bottom: 1.5em; }
 
@@ -44,14 +51,15 @@ h4 {
 .menu {
   text-transform: uppercase;
   font-weight: bold;
-  letter-spacing: 0.5px;
-  margin-bottom: -0.2em;
-  padding-bottom: 0.2em; }
+  letter-spacing: 0.1px;
+  padding-bottom: 0.2em;
+  font-size: 0.8em; }
   .menu i {
-    margin-right: 6px; }
+    margin-right: 6px;
+    font-size: 1.5em; }
 
 .nav > li {
   padding: 0 15px; }
   @media only screen and (min-width: 768px) {
     .nav > li {
-      padding: 8px; } }
+      padding: 0; } }
