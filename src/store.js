@@ -1,4 +1,4 @@
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 // import persistState from 'redux-localstorage'
 import thunk from 'redux-thunk'
 import firebase from 'firebase'
@@ -9,6 +9,8 @@ import lines, {fetchLines} from './state/lines'
 import routeMap from './state/routeMap'
 import favs from './state/favs'
 import auth, {setUser} from './state/auth'
+import usersList, {updateList} from './state/usersList'
+import modals from './state/modals'
 
 var config = {
     apiKey: "AIzaSyBeh05N_wq-tqVAcGrNFHMyMmG2k42ffR8",
@@ -26,7 +28,9 @@ const reducer = combineReducers({
     lines,
     routeMap,
     favs,
-    auth
+    auth,
+    usersList,
+    modals
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -41,18 +45,21 @@ const store = createStore(
     enhancer
 )
 
-firebase.auth().onAuthStateChanged( user => {
-
-    store.dispatch(setUser(user))
-
-    // if (user !== null) {
-    //     const userId = firebase.auth().currentUser.uid
-    //
-    //     firebase.database().ref('/favorites/' + userId).on('value', snapshot => {
-    //         store.dispatch(setFavs(snapshot.val()))
-    //     })
-    // }
+// Listen for change of Users List
+firebase.database().ref('/users').on('value', snapshot => {
+    store.dispatch(updateList(snapshot.val()))
 })
+
+// Add user to state
+firebase.auth().onAuthStateChanged(user => {
+    store.dispatch(setUser(user))
+})
+
+// First update Users List
+firebase.database().ref('/users').once('value', snapshot => {
+        store.dispatch(updateList(snapshot.val()))
+    }
+)
 
 store.dispatch(fetchStops());
 store.dispatch(fetchLines());
