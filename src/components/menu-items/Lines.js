@@ -1,29 +1,26 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import './Lines.css'
 
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import LineView from '../views/LineView'
 
 const Lines = ({lines}) => (
-        <div className="main-panel menu-panel">
-            <h1 className="lines">Lines</h1>
-            <ul className="lines">
-                {
-                    lines.map(
-                        line => (
-                            <li key={line.id}>
-                                <Link to ={`../../state/lines/${lines.name}`}>
-                                    {
-                                        <LineView/>
-                                    }
-                                </Link>
-                            </li>
-                        )
+    <div className="main-panel menu-panel">
+        <h1 className="lines">Lines</h1>
+        <ul className="lines">
+            {
+                lines.map(
+                    line => (
+                            <LineView
+                                key={line.id}
+                                line={line}
+                            />
                     )
-                }
-            </ul>
-        </div>
+                )
+            }
+        </ul>
+    </div>
 );
 
 
