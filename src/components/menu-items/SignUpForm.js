@@ -54,7 +54,6 @@ class SignUpForm extends React.Component {
                         firebase.database().ref('/users/' + userId).set({
                             username: firebase.auth().currentUser.displayName,
                             email: firebase.auth().currentUser.email
-
                         })
                     }
                 )
