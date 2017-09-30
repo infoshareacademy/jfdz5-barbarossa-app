@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './Lines.css'
 
+import { Link } from 'react-router-dom'
+import LineView from '../views/LineView'
+
 const Lines = ({lines}) => (
         <div className="main-panel menu-panel">
             <h1 className="lines">Lines</h1>
@@ -10,9 +13,11 @@ const Lines = ({lines}) => (
                     lines.map(
                         line => (
                             <li key={line.id}>
-                                {
-                                    line.name
-                                }
+                                <Link to ={`../../state/lines/${lines.name}`}>
+                                    {
+                                        <LineView/>
+                                    }
+                                </Link>
                             </li>
                         )
                     )
@@ -20,6 +25,7 @@ const Lines = ({lines}) => (
             </ul>
         </div>
 );
+
 
 export default connect(
     state => ({
