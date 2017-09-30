@@ -50,9 +50,8 @@ firebase.database().ref('/users').on('value', snapshot => {
     store.dispatch(updateList(snapshot.val()))
 })
 
-// Listen for change of Favs
 
-// Add user to state
+// Add user to state and listen for change of Favs
 firebase.auth().onAuthStateChanged(user => {
     store.dispatch(setUser(user))
 
