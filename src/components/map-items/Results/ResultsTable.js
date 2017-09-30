@@ -2,7 +2,7 @@ import React from 'react'
 import {Button} from 'react-bootstrap'
 import {ResultItem} from './ResultItem'
 
-export const ResultsTable = ({results, saveInFavsClick, showOnMapClick, closeResults}) => {
+export const ResultsTable = ({results, showOnMapClick, closeResults}) => {
 
     return (
         <div className="results main-panel">
@@ -29,7 +29,6 @@ export const ResultsTable = ({results, saveInFavsClick, showOnMapClick, closeRes
                                 key={result.name}
                                 result={result}
                                 results={results}
-                                saveInFavsClick={saveInFavsClick}
                                 showOnMapClick={showOnMapClick}
                             />
                         )

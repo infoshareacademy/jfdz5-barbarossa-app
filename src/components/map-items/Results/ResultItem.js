@@ -1,7 +1,8 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
+import firebase from'firebase'
 
-export const ResultItem = ({result, results, saveInFavsClick, showOnMapClick}) => {
+export const ResultItem = ({result, results, showOnMapClick}) => {
 
     const {
         name,
@@ -17,7 +18,16 @@ export const ResultItem = ({result, results, saveInFavsClick, showOnMapClick}) =
     const handleSaveFavsClick = event => {
         const resultName = event.currentTarget.getAttribute('data-result-name');
         const selectedResult = results.find( result => result.name === resultName);
-        saveInFavsClick(selectedResult)
+
+        let startStopName = selectedResult.startStop.name
+        startStopName = startStopName.replace('.','').replace(' ','')
+        let endStopName = selectedResult.endStop.name
+        endStopName = endStopName.replace('.','').replace(' ','')
+
+        const favName = 'from_' + startStopName + '_to_' + endStopName   + '_by_' + resultName
+        const userId = firebase.auth().currentUser.uid
+
+        firebase.database().ref('/favorites/' + userId + '/' + favName).set(selectedResult)
     }
 
     return (

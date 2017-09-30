@@ -7,7 +7,7 @@ import search from './state/search'
 import stops, {fetchStops} from './state/stops'
 import lines, {fetchLines} from './state/lines'
 import routeMap from './state/routeMap'
-import favs from './state/favs'
+import favs, {updateFavs} from './state/favs'
 import auth, {setUser} from './state/auth'
 import usersList, {updateList} from './state/usersList'
 import modals from './state/modals'
@@ -50,9 +50,18 @@ firebase.database().ref('/users').on('value', snapshot => {
     store.dispatch(updateList(snapshot.val()))
 })
 
+// Listen for change of Favs
+
 // Add user to state
 firebase.auth().onAuthStateChanged(user => {
     store.dispatch(setUser(user))
+
+    if (user) {
+        const userId = firebase.auth().currentUser.uid
+        firebase.database().ref('/favorites/' + userId).on('value', snapshot => {
+            store.dispatch(updateFavs(snapshot.val()))
+        })
+    }
 })
 
 // First update Users List

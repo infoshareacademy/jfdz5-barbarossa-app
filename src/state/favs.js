@@ -1,19 +1,15 @@
-const ADD_FAV = 'favs/ADD_FAV'
-export const save = selectedResult => ({
-    type: ADD_FAV,
-    selectedResult
+const UPDATE_FAVS = 'favs/UPDATE_FAVS'
+export const updateFavs = favs => ({
+    type: UPDATE_FAVS,
+    favs
 })
 
-const initialState = {
-    favorites: null
-};
+const initialState = null;
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case ADD_FAV:
-            return {
-                favorites: action.selectedResult
-            };
+        case UPDATE_FAVS:
+            return action.favs
         default:
             return state
     }
