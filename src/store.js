@@ -10,6 +10,7 @@ import routeMap from './state/routeMap'
 import favs from './state/favs'
 import auth, {setUser} from './state/auth'
 import usersList, {updateList} from './state/usersList'
+import modals from './state/modals'
 
 var config = {
     apiKey: "AIzaSyBeh05N_wq-tqVAcGrNFHMyMmG2k42ffR8",
@@ -28,7 +29,8 @@ const reducer = combineReducers({
     routeMap,
     favs,
     auth,
-    usersList
+    usersList,
+    modals
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

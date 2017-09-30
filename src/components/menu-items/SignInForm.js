@@ -1,5 +1,6 @@
 import React from 'react'
 import firebase from 'firebase'
+import {connect} from 'react-redux'
 import {
     Form,
     FormControl,
@@ -8,6 +9,9 @@ import {
     ControlLabel,
     Button
 } from 'react-bootstrap'
+
+import {toggleResetPasswordModal} from '../../state/modals'
+import ResetPasswordModal from './ResetPasswordModal'
 
 class SignInForm extends React.Component {
 
@@ -81,9 +85,23 @@ class SignInForm extends React.Component {
                 <Button type="submit">
                     Sign In
                 </Button>
+
+                <a onClick={() => this.props.toggleResetPasswordModal(true)}>
+                    Don't you remember the password?
+                </a>
+                {
+                    this.props.modals.showResetPasswordModal ? <ResetPasswordModal/> : null
+                }
             </Form>
         )
     }
 }
 
-export default SignInForm
+export default connect(
+    state => ({
+        modals: state.modals
+    }),
+    dispatch => ({
+        toggleResetPasswordModal: boolean => dispatch(toggleResetPasswordModal(boolean)),
+    })
+)(SignInForm)
