@@ -12,6 +12,7 @@ import Lines from './menu-items/Lines'
 import Schedules from './menu-items/Schedules'
 import Stops from './menu-items/Stops'
 import StopView from './views/StopView'
+import ScheduleView from './views/ScheduleView'
 import Prices from './menu-items/Prices'
 import Log from './menu-items/Log'
 
@@ -21,7 +22,8 @@ const Content = () => (
             <Route exact path="/"/>
             <Route path="/favs" component={Favs}/>
             <Route path="/lines" component={Lines}/>
-            <Route path="/schedules" component={Schedules}/>
+            <Route exact path="/schedules" component={Schedules}/>
+            <Route path="/schedules/:stopId" component={ScheduleView}/>
             <Route exact path="/stops" component={Stops}/>
             <Route path="/stops/:stopId" component={StopView}/>
             <Route path="/prices" component={Prices}/>

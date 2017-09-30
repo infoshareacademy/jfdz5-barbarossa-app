@@ -6,16 +6,16 @@ import {Button} from 'react-bootstrap'
 
 const StopView = props => {
     const stopId = parseInt(props.match.params.stopId, 10);
+    const stopDetails = props.stops.find( stop => stop.id === stopId);
     const linesWithStopIds = props.lines.filter(
         line => line.stops
             .find(
                 stop => stop.id === stopId)
     );
-    console.log(linesWithStopIds)
 
     return (
         <div>
-            <h1> {stopId} </h1>
+            <h1> {stopDetails.name} </h1>
             <LinkContainer exact to="/stops">
                 <Button>
                     <i className="fa fa-arrow-left"/>
