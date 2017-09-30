@@ -2,24 +2,32 @@ import React from 'react'
 import {connect} from 'react-redux'
 import './Lines.css'
 
-import {Link} from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import LineView from '../views/LineView'
 
 const Lines = ({lines}) => (
     <div className="main-panel menu-panel">
         <h1 className="lines">Lines</h1>
-        <ul className="lines">
+        <div className="lines">
             {
                 lines.map(
-                    line => (
-                            <LineView
-                                key={line.id}
-                                line={line}
-                            />
-                    )
+                    line =>
+                        <LinkContainer key={line.id} to={`/lines/${line.name}`}>
+                            <Button className="btn-custom">
+                                {
+                                    line.name
+                                }
+                            </Button>
+                        </LinkContainer>
                 )
             }
-        </ul>
+        </div>
+        <LinkContainer exact to="/">
+            <Button className="btn-exit">
+                <i className="fa fa-times" aria-hidden="true"></i>
+            </Button>
+        </LinkContainer>
     </div>
 );
 

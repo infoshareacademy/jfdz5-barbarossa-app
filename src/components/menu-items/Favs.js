@@ -10,11 +10,6 @@ const Favs = ({user}) => (
             user === null ?
                 <div>
                     <h4>You must be log in to see your favorite connections!</h4>
-                    <LinkContainer exact to="/log">
-                        <Button className="btn-custom">
-                            Sign In
-                        </Button>
-                    </LinkContainer>
                 </div>
                 :
                 <div>
@@ -27,6 +22,11 @@ const Favs = ({user}) => (
                     <h5>This is your favorite connections:</h5>
                 </div>
         }
+        <LinkContainer exact to="/">
+            <Button className="btn-exit">
+                <i className="fa fa-times" aria-hidden="true"></i>
+            </Button>
+        </LinkContainer>
     </div>
 );
 

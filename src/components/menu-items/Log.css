@@ -41,12 +41,24 @@ h4 {
   outline: none;
   text-transform: uppercase;
   text-shadow: none;
-  margin: 8px 0;
+  margin: 15px 0;
   font-weight: bold;
   letter-spacing: 1px; }
   .btn-custom:hover {
     background: #0c8ff2;
     color: #ddd; }
+
+.btn-exit {
+  background: linear-gradient(to top right, #222, #3c3c3c);
+  outline: none;
+  border: none;
+  margin: 10px 0;
+  position: absolute;
+  bottom: -41px;
+  left: 15px; }
+  .btn-exit i {
+    font-size: 1em;
+    color: white; }
 
 .log {
   background: #151515; }

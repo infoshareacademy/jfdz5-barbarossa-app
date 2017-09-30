@@ -1,5 +1,8 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+
 import './Stops.css'
 const Stops = ({stops}) => (
     <div className="main-panel menu-panel">
@@ -17,6 +20,11 @@ const Stops = ({stops}) => (
                     )
                 }
         </select>
+        <LinkContainer exact to="/">
+            <Button className="btn-exit">
+                <i className="fa fa-times" aria-hidden="true"></i>
+            </Button>
+        </LinkContainer>
     </div>
 );
 

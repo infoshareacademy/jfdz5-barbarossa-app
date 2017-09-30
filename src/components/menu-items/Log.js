@@ -24,8 +24,8 @@ const Log = () => (
                 </Tab>
             </Tabs>
             <LinkContainer exact to="/">
-                <Button>
-                    X
+                <Button className="btn-exit">
+                    <i className="fa fa-times" aria-hidden="true"></i>
                 </Button>
             </LinkContainer>
         </AuthLog>

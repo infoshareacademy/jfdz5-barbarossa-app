@@ -63,11 +63,25 @@ h4 {
   outline: none;
   text-transform: uppercase;
   text-shadow: none;
-  margin: 8px 0;
+  margin: 15px 0;
   font-weight: bold;
   letter-spacing: 1px;
   &:hover {
     background: $colorAccent;
     color: $colorFont;
+  }
+}
+
+.btn-exit {
+  @include custom-gradient();
+  outline: none;
+  border: none;
+  margin: 10px 0;
+  position: absolute;
+  bottom: -41px;
+  left: 15px;
+  i {
+    font-size: 1em;
+    color: white;
   }
 }

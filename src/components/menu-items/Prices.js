@@ -1,6 +1,8 @@
 import React from 'react'
 
 import './Prices.css'
+import { Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 
 const Prices = () => (
@@ -34,6 +36,11 @@ const Prices = () => (
                 </ul>
             </div>
         </div>
+        <LinkContainer exact to="/">
+            <Button className="btn-exit">
+                <i className="fa fa-times" aria-hidden="true"></i>
+            </Button>
+        </LinkContainer>
     </div>
 );
 
