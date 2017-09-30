@@ -4,7 +4,6 @@ import './Lines.css'
 
 import { Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import LineView from '../views/LineView'
 
 const Lines = ({lines}) => (
     <div className="main-panel menu-panel">

@@ -13,13 +13,15 @@ import Schedules from './menu-items/Schedules'
 import Stops from './menu-items/Stops'
 import Prices from './menu-items/Prices'
 import Log from './menu-items/Log'
+import LineView from "./views/LineView";
 
 const Content = () => (
     <Grid fluid>
         <Switch>
             <Route exact path="/"/>
             <Route path="/favs" component={Favs}/>
-            <Route path="/lines" component={Lines}/>
+            <Route exact path="/lines" component={Lines}/>
+            <Route path="/lines/:lineName" component={LineView}/>
             <Route path="/schedules" component={Schedules}/>
             <Route path="/stops" component={Stops}/>
             <Route path="/prices" component={Prices}/>
