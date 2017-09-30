@@ -1,5 +1,6 @@
 import React from 'react'
-import {Tabs, Tab} from 'react-bootstrap'
+import {Tabs, Tab, Button} from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import AuthLog from '../AuthLog'
 
 import SignInForm from './SignInForm'
@@ -22,6 +23,11 @@ const Log = () => (
                     <UsersList/>
                 </Tab>
             </Tabs>
+            <LinkContainer exact to="/">
+                <Button>
+                    X
+                </Button>
+            </LinkContainer>
         </AuthLog>
     </div>
 );
