@@ -36,19 +36,23 @@ export const ResultItem = ({result, results, saveInFavsClick, showOnMapClick}) =
                     {
                         timeFromEndStop.hours + ':' + timeFromEndStop.minutes
                     }
-                </td><br/><br/>
+                </td>
+                <td>
                     <Button
                         data-result-name={name}
                         onClick={handleSaveFavsClick}
                     >
                         <i className="fa fa-star-o"/>
                     </Button>
+                </td>
+                <td>
                     <Button
                         data-result-name={name}
                         onClick={handleShowOnMapClick}
                     >
                         <i className="fa fa-car"/>
                     </Button>
+                </td>
             </tr>
     )
 }

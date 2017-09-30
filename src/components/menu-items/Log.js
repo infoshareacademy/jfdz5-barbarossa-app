@@ -1,9 +1,11 @@
 import React from 'react'
-import {Tabs, Tab} from 'react-bootstrap'
+import {Tabs, Tab, Button} from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import AuthLog from '../AuthLog'
 
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
+import UsersList from './UsersList'
 import './Log.css'
 
 
@@ -17,7 +19,15 @@ const Log = () => (
                 <Tab eventKey={2} title="Sign Up">
                     <SignUpForm/>
                 </Tab>
+                <Tab eventKey={3} title="Users List">
+                    <UsersList/>
+                </Tab>
             </Tabs>
+            <LinkContainer exact to="/">
+                <Button>
+                    X
+                </Button>
+            </LinkContainer>
         </AuthLog>
     </div>
 );
