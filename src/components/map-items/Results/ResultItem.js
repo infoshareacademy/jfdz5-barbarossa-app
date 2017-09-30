@@ -19,13 +19,14 @@ export const ResultItem = ({result, results, showOnMapClick}) => {
         const resultName = event.currentTarget.getAttribute('data-result-name');
         const selectedResult = results.find( result => result.name === resultName);
 
-        let startStopName = selectedResult.startStop.name
-        startStopName = startStopName.replace('.','').replace(' ','')
-        let endStopName = selectedResult.endStop.name
-        endStopName = endStopName.replace('.','').replace(' ','')
+        let startStopName = selectedResult.startStop.name;
+        startStopName = startStopName.replace('.','').replace(' ','');
 
-        const favName = 'from_' + startStopName + '_to_' + endStopName   + '_by_' + resultName
-        const userId = firebase.auth().currentUser.uid
+        let endStopName = selectedResult.endStop.name;
+        endStopName = endStopName.replace('.','').replace(' ','');
+
+        const favName = 'from_' + startStopName + '_to_' + endStopName   + '_by_' + resultName;
+        const userId = firebase.auth().currentUser.uid;
 
         firebase.database().ref('/favorites/' + userId + '/' + favName).set(selectedResult)
     }

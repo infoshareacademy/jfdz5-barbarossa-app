@@ -7,7 +7,7 @@ import {
     Grid
 } from 'react-bootstrap'
 
-import Favs from './menu-items/Favs'
+import Favs from './menu-items/Favs/Favs'
 import Lines from './menu-items/Lines'
 import Schedules from './menu-items/Schedules'
 import Stops from './menu-items/Stops'

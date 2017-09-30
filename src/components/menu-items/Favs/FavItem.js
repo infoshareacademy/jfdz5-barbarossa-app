@@ -1,4 +1,5 @@
 import React from 'react'
+import firebase from 'firebase'
 import {Button} from 'react-bootstrap'
 
 export const FavItem = ({fav, favs, showOnMapClick, updateFavs}) => {
@@ -11,14 +12,25 @@ export const FavItem = ({fav, favs, showOnMapClick, updateFavs}) => {
     } = fav;
 
     const handleShowOnMapClick = event => {
-        const favName = event.currentTarget.getAttribute('data-result-name');
+        const favName = event.currentTarget.getAttribute('data-fav-name');
         const selectedFav = favs.find( fav => fav.name === favName);
         showOnMapClick(selectedFav);
     }
 
     const handleRemoveFav = event => {
-        const favName = event.currentTarget.getAttribute('data-result-name');
+        const favName = event.currentTarget.getAttribute('data-fav-name');
         const selectedFav = favs.find( fav => fav.name === favName);
+
+        let startStopName = selectedFav.startStop.name;
+        startStopName = startStopName.replace('.','').replace(' ','');
+
+        let endStopName = selectedFav.endStop.name;
+        endStopName = endStopName.replace('.','').replace(' ','');
+
+        const favNameToRemove = 'from_' + startStopName + '_to_' + endStopName   + '_by_' + favName;
+        const userId = firebase.auth().currentUser.uid;
+
+        firebase.database().ref('/favorites/' + userId + '/' + favNameToRemove).remove()
     }
 
     return (
