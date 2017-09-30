@@ -3,8 +3,7 @@ import {connect} from 'react-redux'
 import {LinkContainer} from 'react-router-bootstrap'
 import {Button} from 'react-bootstrap'
 
-import {updateFavs} from "../../../state/favs";
-import {add} from '../../../state/routeMap'
+import {addLocations} from '../../../state/routeMap'
 import {FavsTable} from './FavsTable'
 
 const Favs = ({user, favs, showOnMapClick}) => (
@@ -35,7 +34,6 @@ const Favs = ({user, favs, showOnMapClick}) => (
                     <FavsTable
                         favs={favs}
                         showOnMapClick={showOnMapClick}
-                        updateFavs={updateFavs}
                     />
                 </div>
         }
@@ -48,8 +46,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    updateFavs: result => dispatch(updateFavs(result)),
-    showOnMapClick: stops => dispatch(add(stops))
+    showOnMapClick: selectedConnection => dispatch(addLocations(selectedConnection))
 });
 
 export default connect(

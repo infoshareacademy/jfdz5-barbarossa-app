@@ -2,7 +2,7 @@ import React from 'react'
 
 import {FavItem} from './FavItem'
 
-export const FavsTable = ({favs, updateFavs, showOnMapClick}) => {
+export const FavsTable = ({favs, showOnMapClick}) => {
 
     if (favs) {
         var favsArray = Object.keys(favs).map(key => favs[key]);
@@ -30,7 +30,6 @@ export const FavsTable = ({favs, updateFavs, showOnMapClick}) => {
                                 fav={fav}
                                 favs={favsArray}
                                 showOnMapClick={showOnMapClick}
-                                updateFavs={updateFavs}
                             />
                         )
                         :

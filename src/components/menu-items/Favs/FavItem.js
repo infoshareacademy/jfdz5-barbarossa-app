@@ -2,7 +2,7 @@ import React from 'react'
 import firebase from 'firebase'
 import {Button} from 'react-bootstrap'
 
-export const FavItem = ({fav, favs, showOnMapClick, updateFavs}) => {
+export const FavItem = ({fav, favs, showOnMapClick}) => {
 
     const {
         name,
