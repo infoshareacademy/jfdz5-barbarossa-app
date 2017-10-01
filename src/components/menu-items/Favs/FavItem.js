@@ -2,6 +2,8 @@ import React from 'react'
 import firebase from 'firebase'
 import {Button} from 'react-bootstrap'
 
+import './Favs.css'
+
 export const FavItem = ({fav, favs, showOnMapClick}) => {
 
     const {
@@ -34,7 +36,7 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
     }
 
     return (
-        <tr>
+        <tr className="fav-table">
             <td>
                 {
                     name
