@@ -17,7 +17,7 @@ const LineView = props => {
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
-                <h3>Departures lines:</h3>
+                <h3>Route:</h3>
                 <ul>
                     {
                         selectedLine.stops.map(stop =>
