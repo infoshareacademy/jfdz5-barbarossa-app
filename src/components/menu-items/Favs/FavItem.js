@@ -13,6 +13,17 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
         endStop
     } = fav;
 
+    let startStopName = fav.startStop.name;
+    startStopName = startStopName.replace('.','').replace(' ','');
+
+    let endStopName = fav.endStop.name;
+    endStopName = endStopName.replace('.','').replace(' ','');
+
+    const startStopTime = timeFromStartStop.hours + ':' + timeFromStartStop.minutes
+    const endStopTime = timeFromEndStop.hours + ':' + timeFromEndStop.minutes
+
+    const favName = 'from_' + startStopName + '_at_' + startStopTime + '_to_' + endStopName + '_at_' + endStopTime + '_by_' + name;
+
     const handleShowOnMapClick = event => {
         const favName = event.currentTarget.getAttribute('data-fav-name');
         const selectedFav = favs.find( fav => fav.name === favName);
@@ -21,21 +32,10 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
 
     const handleRemoveFav = event => {
         const favName = event.currentTarget.getAttribute('data-fav-name');
-        const selectedFav = favs.find( fav => fav.name === favName);
 
-        let startStopName = selectedFav.startStop.name;
-        startStopName = startStopName.replace('.','').replace(' ','');
-
-        let endStopName = selectedFav.endStop.name;
-        endStopName = endStopName.replace('.','').replace(' ','');
-
-        const startStopTime = selectedFav.selectedTime.timeFromStartStop.hours + ':' + selectedFav.selectedTime.timeFromStartStop.minutes
-        const endStopTime = selectedFav.selectedTime.timeFromEndStop.hours + ':' + selectedFav.selectedTime.timeFromEndStop.minutes
-
-        const favNameToRemove = 'from_' + startStopName + '_at_' + startStopTime + '_to_' + endStopName + '_at_' + endStopTime + '_by_' + favName;
         const userId = firebase.auth().currentUser.uid;
 
-        firebase.database().ref('/favorites/' + userId + '/' + favNameToRemove).remove()
+        firebase.database().ref('/favorites/' + userId + '/' + favName).remove()
     }
 
     return (
@@ -71,7 +71,7 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
             <td className="fav-buttons">
                 <Button
                     className="btn-custom"
-                    data-fav-name={name}
+                    data-fav-name={favName}
                     onClick={handleRemoveFav}
                 >
                     <i className="fa fa-minus"/>
@@ -80,7 +80,7 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
             <td>
                 <Button
                     className="btn-custom"
-                    data-fav-name={name}
+                    data-fav-name={favName}
                     onClick={handleShowOnMapClick}
                 >
                     <i className="fa fa-eye"/>
