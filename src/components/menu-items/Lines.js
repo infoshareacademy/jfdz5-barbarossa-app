@@ -10,8 +10,8 @@ const Lines = ({lines}) => (
             {
                 lines.map(
                     line => (
-                        <LinkContainer exact to={`/lines/${line.name}`}>
-                            <li key={line.id}>
+                        <LinkContainer key={line.id} exact to={`/lines/${line.name}`}>
+                            <li>
                                 {
                                     line.name
                                 }

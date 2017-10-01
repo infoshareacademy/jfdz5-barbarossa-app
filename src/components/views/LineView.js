@@ -5,9 +5,8 @@ import {Button} from 'react-bootstrap'
 
 
 const LineView = props => {
-    const lineName = parseInt(props.match.params.stopId, 10);
+    const lineName = props.match.params.lineName
     const selectedLine = props.lines.find(line => line.name === lineName);
-    const stopsInSelectedLine = selectedLine.stops.map(stop => stop.name);
 
     return (
         selectedLine ?
