@@ -27,8 +27,8 @@ class Stops extends React.Component {
             <div className="main-panel menu-panel">
                 <h1>Stops</h1>
                 <LinkContainer exact to="/">
-                    <Button>
-                        X
+                    <Button className="btn-exit">
+                        <i className="fa fa-times" aria-hidden="true"></i>
                     </Button>
                 </LinkContainer>
                 <select className="stops" onChange={this.handleChange}>
@@ -47,8 +47,8 @@ class Stops extends React.Component {
                 </select>
 
                 <LinkContainer exact to={`/stops/${this.state.stopId}`}>
-                    <Button>
-                        Show
+                    <Button className="btn-custom">
+                        <span>SHOW</span>
                     </Button>
                 </LinkContainer>
             </div>

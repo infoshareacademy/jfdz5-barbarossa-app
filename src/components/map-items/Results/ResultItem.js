@@ -32,7 +32,7 @@ export const ResultItem = ({result, results, showOnMapClick}) => {
     }
 
     return (
-            <tr>
+            <tr className="delete-favorite-buttons">
                 <td>
                     {
                         name
@@ -50,6 +50,7 @@ export const ResultItem = ({result, results, showOnMapClick}) => {
                 </td>
                 <td>
                     <Button
+                        className="btn-custom btn-star"
                         data-result-name={name}
                         onClick={handleSaveFavsClick}
                     >
@@ -58,6 +59,7 @@ export const ResultItem = ({result, results, showOnMapClick}) => {
                 </td>
                 <td>
                     <Button
+                        className="btn-custom btn-car"
                         data-result-name={name}
                         onClick={handleShowOnMapClick}
                     >

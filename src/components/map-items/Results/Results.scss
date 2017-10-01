@@ -7,4 +7,9 @@ th, td {
 
 .results {
   margin-top: -25px;
+  margin-bottom: 50px;
+  span {
+    font-size: 1.1em;
+    white-space: nowrap;
+  }
 }

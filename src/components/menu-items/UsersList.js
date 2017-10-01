@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import './UsersList.css'
+
 const UsersList = ({usersList}) => {
 
     if (usersList) {
@@ -8,8 +10,8 @@ const UsersList = ({usersList}) => {
     }
 
     return (
-        <div>
-            <h3>See who's already using our app:</h3>
+        <div className="users-list">
+            <h2><span>Many people</span> already using our app!</h2>
             <ul>
                 {
                     usersList ?

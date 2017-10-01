@@ -17,13 +17,13 @@ const AuthLog = ({children, user, modals, toggleUserRemoveModal}) => {
                 user === null ?
                     children :
                     <div className="main-panel">
-                        <h4>
+                        <h1>
                             You are logged in as <strong>{user.displayName}</strong>
-                        </h4>
+                        </h1>
 
                         <LinkContainer exact to="/">
-                            <Button>
-                                X
+                            <Button className="btn-exit">
+                                <i className="fa fa-times" aria-hidden="true"></i>
                             </Button>
                         </LinkContainer>
 

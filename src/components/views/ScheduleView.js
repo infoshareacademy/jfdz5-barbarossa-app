@@ -12,10 +12,10 @@ const ScheduleView = props => {
 
     return (
         stopDetails ?
-            <div>
+            <div className="main-panel menu-panel">
                 <h1> {stopDetails.name} </h1>
                 <LinkContainer exact to="/stops">
-                    <Button>
+                    <Button className="btn-back">
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
@@ -51,7 +51,9 @@ const ScheduleView = props => {
                 </Table>
             </div>
             :
-            <div>Fetching data</div>
+            <div className="main-panel menu-panel">
+                Fetching data
+            </div>
 
     )
 

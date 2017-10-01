@@ -14,12 +14,19 @@ class UserRemoveModal extends React.Component {
     render() {
         return (
             <Modal show={true}>
-                <Modal.Header>
-                    <Modal.Title>Are you sure to delete your account?</Modal.Title>
+                <Modal.Header className="modal-custom modal-custom-header">
+                    <Modal.Title>
+                        <Button className="btn-exit"
+                                onClick={() => this.props.toggleUserRemoveModal(false)}>
+                            <i className="fa fa-times" aria-hidden="true"></i>
+                        </Button>
+                        <i className="fa fa-frown-o" aria-hidden="true"></i><br/>
+                        Are you <span>sure</span> to <span>delete</span> your account?
+                    </Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
-                    <Button bsStyle="danger"
+                <Modal.Body className="modal-custom modal-custom-body">
+                    <Button className="btn-custom"
                             onClick={() => {
                                 const userId = firebase.auth().currentUser.uid
 
@@ -34,13 +41,9 @@ class UserRemoveModal extends React.Component {
                             }}>
                         Delete
                     </Button>
-                    <Button bsStyle="primary"
-                            onClick={() => this.props.toggleUserRemoveModal(false)}>
-                        Close
-                    </Button>
                 </Modal.Body>
 
-                <Modal.Footer>
+                <Modal.Footer className="modal-custom modal-custom-footer">
                     {
                         this.state.error !== null ?
                             <div className="error-message">

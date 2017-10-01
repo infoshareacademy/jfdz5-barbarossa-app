@@ -10,6 +10,16 @@
 //******************************
 //**********  GLOBAL  **********
 //******************************
+input[type=email] {
+  @include custom-gradient();
+  color: $colorFont;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  &:active {
+    border-color: red !important;
+  }
+}
 
 .container {
   padding-top: 2em;
@@ -21,6 +31,7 @@
   padding: 1em 2em;
   color: $colorFont;
   border-radius: 5px;
+  position: relative;
 }
 
 .menu-panel {
@@ -43,6 +54,7 @@
 h1 {
   font-size: 1.5em;
   letter-spacing: 1px;
+  margin-top: 30px;
 }
 
 h2 {
@@ -57,17 +69,155 @@ h4 {
   font-size: 1.1em;
 }
 
+.important-info {
+  @include custom-transition();
+  font-size: 1em;
+  text-decoration: none;
+  color: $colorAccent;
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+//******************************
+//*********  BUTTONS  **********
+//******************************
+
 .btn-custom {
   @include custom-transition();
-  border: none;
+  @include custom-gradient();
+  @include shadow-content();
+  border: 1px solid darken($colorFontDarker, 50%);
+  color: $colorFontDarker;
   outline: none;
   text-transform: uppercase;
   text-shadow: none;
-  margin: 8px 0;
+  margin: 15px 0;
+  margin-right: 10px;
   font-weight: bold;
   letter-spacing: 1px;
   &:hover {
     background: $colorAccent;
     color: $colorFont;
+    border-color: $colorAccent;
+  }
+}
+
+.btn-exit {
+  @include flex-align();
+  @include shadow-content();
+  background: darkred;
+  color: $colorFont;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  font-size: 0.8em;
+  &:hover {
+    background: darken(darkred, 5%);
+    color: $colorFont;
+  }
+}
+
+.btn-back {
+  @include flex-align();
+  @include shadow-content();
+  background: darkgreen;
+  color: $colorFont;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  font-size: 0.8em;
+  &:hover {
+    background: darken(darkgreen, 5%);
+    color: $colorFont;
+  }
+}
+
+.delete-favorite-buttons, .fav-buttons {
+  .btn-custom {
+    margin: 0;
+
+  }
+  .btn-star {
+    background-image: -webkit-linear-gradient(top, #efd100 0, #e2a233 38%, #f0c328 60%, #fff1a3 86%, #ffe13e 100%);
+    opacity: 0.8;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: 0;
+    &:hover {
+      opacity: 1;
+      outline: none;
+      border: 0;
+    }
+  }
+}
+
+//******************************
+//**********  MODALS  **********
+//******************************
+
+.modal-content {
+  @include custom-transition();
+  background: $colorMain;
+  border: none;
+  position: relative;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  .fa-times {
+    font-size: 0.7em;
+  }
+  span{
+    color: $colorAccent;
+  }
+  .fa-frown-o {
+    color: $colorAccent;
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+}
+
+.modal-custom {
+  background: $colorMainDarken;
+  color: $colorFont;
+  border: none;
+}
+
+.modal-custom-header {
+  padding-top: 3em;
+  text-align: center;
+}
+
+.modal-custom-body {
+  text-align: center;
+  .btn-custom {
+    margin: 5px;
+  }
+  border-width: 0 !important;
+  outline: none !important;
+}
+
+.modal-custom-header_reset {
+  font-size: 0.8em;
+  h4 {
+    margin-bottom: 1em;
+  }
+  span {
+    color: $colorAccent;
   }
 }

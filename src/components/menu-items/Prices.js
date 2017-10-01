@@ -9,8 +9,8 @@ const Prices = () => (
     <div className="main-panel prices menu-panel">
         <h1>Prices</h1>
         <LinkContainer exact to="/">
-            <Button>
-                X
+            <Button className="btn-exit">
+                <i className="fa fa-times" aria-hidden="true"></i>
             </Button>
         </LinkContainer>
         <h2>Single tickets</h2>

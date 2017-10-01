@@ -82,12 +82,14 @@ class SignInForm extends React.Component {
                         null
                 }
 
-                <Button type="submit">
+                <Button type="submit" className="btn-custom">
                     Sign In
                 </Button>
 
-                <a onClick={() => this.props.toggleResetPasswordModal(true)}>
-                    Don't you remember the password?
+                <a
+                    className="important-info"
+                    onClick={() => this.props.toggleResetPasswordModal(true)}>
+                    <span>Don't you remember the password?</span>
                 </a>
                 {
                     this.props.modals.showResetPasswordModal ? <ResetPasswordModal/> : null

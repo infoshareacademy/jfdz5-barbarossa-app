@@ -6,8 +6,10 @@ import {Button} from 'react-bootstrap'
 import {addLocations} from '../../../state/routeMap'
 import {FavsTable} from './FavsTable'
 
+import './Favs.css'
+
 const Favs = ({user, favs, showOnMapClick}) => (
-    <div className="main-panel menu-panel">
+    <div className="main-panel menu-panel favs">
         {
             user === null ?
                 <div>
@@ -17,18 +19,13 @@ const Favs = ({user, favs, showOnMapClick}) => (
                             Sign In
                         </Button>
                     </LinkContainer>
-                    <LinkContainer exact to="/">
-                        <Button>
-                            X
-                        </Button>
-                    </LinkContainer>
                 </div>
                 :
                 <div>
-                    <h4>Hello {user.displayName} !</h4>
+                    <h1>Hello {user.displayName} !</h1>
                     <LinkContainer exact to="/">
-                        <Button>
-                            X
+                        <Button className="btn-exit">
+                            <i className="fa fa-times" aria-hidden="true"></i>
                         </Button>
                     </LinkContainer>
                     <FavsTable
