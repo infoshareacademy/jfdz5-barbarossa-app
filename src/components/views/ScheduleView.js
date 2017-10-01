@@ -21,6 +21,11 @@ const ScheduleView = props => {
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
+                <LinkContainer exact to="/">
+                    <Button className="btn-exit">
+                        <i className="fa fa-times" />
+                    </Button>
+                </LinkContainer>
                 <Table>
                     <thead>
                     <tr>

@@ -22,6 +22,11 @@ const StopView = props => {
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
+                <LinkContainer exact to="/">
+                    <Button className="btn-exit">
+                        <i className="fa fa-times"/>
+                    </Button>
+                </LinkContainer>
                 <h3>Departures lines:</h3>
                 <ul>
                     {
@@ -42,6 +47,11 @@ const StopView = props => {
                 <LinkContainer exact to="/stops">
                     <Button className="btn-back">
                         <i className="fa fa-arrow-left"/>
+                    </Button>
+                </LinkContainer>
+                <LinkContainer exact to="/">
+                    <Button className="btn-exit">
+                        <i className="fa fa-times"/>
                     </Button>
                 </LinkContainer>
                 <h1>Fetching data...</h1>
