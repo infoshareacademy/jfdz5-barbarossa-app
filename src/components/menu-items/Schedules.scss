@@ -1,2 +1,15 @@
 @import '../App.scss';
 
+.schedule-view {
+  .line-number_header {
+    border-bottom: 2px solid $colorAccent;
+  }
+  .line-number {
+    border: none;
+    border-bottom: 2px solid $colorAccent;
+    margin: 10px;
+  }
+  .line-hour {
+    border-top: none;
+  }
+}

@@ -55,6 +55,10 @@ h4 {
     text-decoration: none;
     cursor: pointer; }
 
+th, td {
+  padding: 5px;
+  text-align: center; }
+
 .btn-custom {
   transition: color 0.3s, background 0.3s, transform 0.3s;
   background: linear-gradient(to top right, #222, #3c3c3c);
@@ -77,6 +81,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: darkred;
   color: #ddd;
@@ -88,7 +93,7 @@ h4 {
   margin: 10px;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   padding: 0;
   font-size: 0.8em; }
   .btn-exit:hover {
@@ -99,6 +104,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: darkgreen;
   color: #ddd;
@@ -191,3 +197,42 @@ ul.lines {
       color: #ddd;
       background: #080808;
       cursor: pointer; }
+
+.lines-test {
+  background: linear-gradient(to top right, #222, #3c3c3c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  list-style-type: none;
+  display: inline-block;
+  padding-top: 5px;
+  height: 30px;
+  border: 1px solid #444444;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  width: 100%; }
+  @media only screen and (min-width: 768px) {
+    .lines-test {
+      width: 49%;
+      margin: 0.5%; } }
+  @media only screen and (min-width: 1200px) {
+    .lines-test {
+      width: 32%;
+      margin: 0.5%; } }
+
+.lines .fa-long-arrow-right, .lines .fa-arrow-down {
+  font-size: 3em;
+  margin-bottom: 0.5em; }
+
+.lines .fa-long-arrow-right {
+  display: none; }
+  @media only screen and (min-width: 768px) {
+    .lines .fa-long-arrow-right {
+      display: block; } }
+
+.lines .fa-arrow-down {
+  display: block; }
+  @media only screen and (min-width: 768px) {
+    .lines .fa-arrow-down {
+      display: none; } }

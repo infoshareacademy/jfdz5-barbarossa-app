@@ -75,7 +75,7 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
                     data-fav-name={name}
                     onClick={handleShowOnMapClick}
                 >
-                    <i className="fa fa-car"/>
+                    <i className="fa fa-eye"/>
                 </Button>
             </td>
         </tr>

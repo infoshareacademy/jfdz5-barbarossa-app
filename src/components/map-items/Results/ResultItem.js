@@ -63,7 +63,7 @@ export const ResultItem = ({result, results, showOnMapClick}) => {
                         data-result-name={name}
                         onClick={handleShowOnMapClick}
                     >
-                        <i className="fa fa-car"/>
+                        <i className="fa fa-eye"/>
                     </Button>
                 </td>
             </tr>

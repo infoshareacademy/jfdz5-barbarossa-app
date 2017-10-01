@@ -1,5 +1,5 @@
 import React from 'react'
-import './Results.css';
+import '../Results.css';
 import {connect} from 'react-redux'
 
 import {getConnections} from './getConnections'
