@@ -16,13 +16,13 @@ const ScheduleView = props => {
         stopDetails ?
             <div className="main-panel menu-panel schedule-view">
                 <h1> {stopDetails.name} </h1>
-                <LinkContainer exact to="/stops">
-                    <Button className="btn-back">
+                <LinkContainer className="btn-back" exact to="/stops">
+                    <Button>
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
-                <LinkContainer exact to="/">
-                    <Button className="btn-exit">
+                <LinkContainer className="btn-exit" exact to="/">
+                    <Button>
                         <i className="fa fa-times" />
                     </Button>
                 </LinkContainer>

@@ -91,7 +91,7 @@ class SignUpForm extends React.Component {
                             type="email"
                             placeholder="Email..."
                             name="email"
-                            style={{height: '40px'}}
+                            style={{height: '40px' ,background: 'white'}}
                             onChange={this.handleChange}
                             value={this.state.email}
                         />

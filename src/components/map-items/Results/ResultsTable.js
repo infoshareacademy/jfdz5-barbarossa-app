@@ -22,7 +22,7 @@ export const ResultsTable = ({results, showOnMapClick, closeResults}) => {
                     <th> </th>
                     <th>
                             <Button className="btn-exit" onClick={closeResults}>
-                                <i className="fa fa-times" aria-hidden="true"></i>
+                                <i className="fa fa-times" />
                             </Button>
                     </th>
                 </tr>

@@ -12,13 +12,13 @@ const LineView = props => {
         selectedLine ?
             <div className="main-panel menu-panel lines">
             <h1> {lineName} </h1>
-                <LinkContainer exact to="/lines">
-                    <Button className="btn-back">
+                <LinkContainer className="btn-back" exact to="/lines">
+                    <Button >
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
-                <LinkContainer exact to="/">
-                    <Button className="btn-exit">
+                <LinkContainer className="btn-exit" exact to="/">
+                    <Button >
                         <i className="fa fa-times"/>
                     </Button>
                 </LinkContainer>
