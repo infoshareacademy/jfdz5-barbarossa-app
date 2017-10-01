@@ -1,2 +1,49 @@
+.container {
+  padding-top: 2em; }
+
 .main-panel {
-  background: red; }
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background: linear-gradient(to top right, #222, #3c3c3c);
+  padding: 1em 2em;
+  color: #ddd;
+  border-radius: 5px; }
+
+.menu-panel {
+  margin-top: -2.5em;
+  border-radius: 5px; }
+  @media only screen and (min-width: 992px) {
+    .menu-panel {
+      margin-top: -12em; } }
+
+.row {
+  margin-bottom: 1.5em; }
+
+.container-fluid {
+  margin: 0 !important;
+  padding: 0 !important; }
+
+h1 {
+  font-size: 1.5em;
+  letter-spacing: 1px; }
+
+h2 {
+  font-size: 1.3em; }
+
+h3 {
+  font-size: 1.2em; }
+
+h4 {
+  font-size: 1.1em; }
+
+.btn-custom {
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  text-shadow: none;
+  margin: 8px 0;
+  font-weight: bold;
+  letter-spacing: 1px; }
+  .btn-custom:hover {
+    background: #0c8ff2;
+    color: #ddd; }

@@ -1,27 +1,27 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
-const Stops = ({stopNames}) => (
-    <div className="main-panel">
+import './Stops.css'
+const Stops = ({stops}) => (
+    <div className="main-panel menu-panel">
         <h1>Stops</h1>
-        <ul>
+        <select className="stops">
                 {
-                    stopNames.map(
+                    stops.sort().map(
                         stop => (
-                            <li key={stop}>
+                            <option key={stop.id}>
                                 {
-                                    stop
+                                    stop.name
                                 }
-                            </li>
+                            </option>
                         )
                     )
                 }
-        </ul>
+        </select>
     </div>
 );
 
 export default connect(
     state => ({
-        stopNames: state.stopNames
+        stops: state.stops
     })
 )(Stops)
