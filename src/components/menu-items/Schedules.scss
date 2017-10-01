@@ -1,15 +1,19 @@
 @import '../App.scss';
 
 .schedule-view {
+  h1 {
+    margin-bottom: 1.5em;
+  }
   .line-number_header {
-    border-bottom: 2px solid $colorAccent;
+    background: $colorAccent;
+    border: 4px solid $colorAccent;
   }
   .line-number {
-    border: none;
-    border-bottom: 2px solid $colorAccent;
+    border: 4px solid $colorAccent;
     margin: 10px;
   }
   .line-hour {
-    border-top: none;
+    border-top: transparent;
+    border-bottom: 4px solid darken($colorAccent, 15%);
   }
 }
