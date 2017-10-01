@@ -67,8 +67,8 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
                 }
             </td>
         </tr>
-        <tr>
-            <td className="fav-buttons">
+        <tr className="fav-buttons">
+            <td>
                 <Button
                     className="btn-custom"
                     data-fav-name={favName}

@@ -17,10 +17,8 @@ export const FavsTable = ({favs, showOnMapClick}) => {
                 <thead>
                 <tr>
                     <th>Line</th>
-                    <th>Departure</th>
-                    <th>Time</th>
-                    <th>Arrival</th>
-                    <th>Time</th>
+                    <th colSpan={2}>Departure</th>
+                    <th colSpan={2}>Arrival</th>
                 </tr>
                 </thead>
                 {
