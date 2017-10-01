@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {LinkContainer} from 'react-router-bootstrap'
 import {Button} from 'react-bootstrap'
-import './Stops.css'
+import './Schedules.css'
 
 
 class Schedules extends React.Component {
