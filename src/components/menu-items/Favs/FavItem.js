@@ -27,13 +27,17 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
         let endStopName = selectedFav.endStop.name;
         endStopName = endStopName.replace('.','').replace(' ','');
 
-        const favNameToRemove = 'from_' + startStopName + '_to_' + endStopName   + '_by_' + favName;
+        const startStopTime = selectedFav.selectedTime.timeFromStartStop.hours + ':' + selectedFav.selectedTime.timeFromStartStop.minutes
+        const endStopTime = selectedFav.selectedTime.timeFromEndStop.hours + ':' + selectedFav.selectedTime.timeFromEndStop.minutes
+
+        const favNameToRemove = 'from_' + startStopName + '_at_' + startStopTime + '_to_' + endStopName + '_at_' + endStopTime + '_by_' + favName;
         const userId = firebase.auth().currentUser.uid;
 
         firebase.database().ref('/favorites/' + userId + '/' + favNameToRemove).remove()
     }
 
     return (
+        <tbody>
         <tr>
             <td>
                 {
@@ -60,6 +64,8 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
                     timeFromEndStop.hours + ':' + timeFromEndStop.minutes
                 }
             </td>
+        </tr>
+        <tr>
             <td className="fav-buttons">
                 <Button
                     className="btn-custom"
@@ -79,5 +85,6 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
                 </Button>
             </td>
         </tr>
+        </tbody>
     )
 }
