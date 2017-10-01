@@ -1,0 +1,9 @@
+@import '../App.scss';
+
+.users-list {
+  color: $colorFont;
+  padding: 0 3em 2em 3em;
+  span {
+    color: $colorAccent;
+  }
+}

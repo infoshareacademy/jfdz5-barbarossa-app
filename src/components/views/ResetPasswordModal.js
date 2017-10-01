@@ -19,17 +19,24 @@ class ResetPasswordModal extends React.Component {
     render() {
         return (
             <Modal show={true}>
-                <Modal.Header>
-                    <Modal.Title>Enter your email and click send to get new password:</Modal.Title>
+                <Modal.Header className="modal-custom modal-custom-header modal-custom-header_reset">
+                    <Button className="btn-exit"
+                            onClick={() => this.props.toggleResetPasswordModal(false)}>
+                        <i className="fa fa-times" aria-hidden="true"></i>
+                    </Button>
+                    <Modal.Title>
+                        <h4>Want to reset your password?</h4>
+                        <p>Enter your email and click <span>send</span> to get new password:</p>
+                    </Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body className="modal-custom modal-custom-body">
                     <input
                         type="email"
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
-                    <Button bsStyle="primary"
+                    <Button className="btn-custom"
                             onClick={() => {
                                 if (this.state.email) {
                                     firebase.auth().sendPasswordResetEmail(this.state.email).then(
@@ -51,13 +58,9 @@ class ResetPasswordModal extends React.Component {
                             }}>
                         Reset
                     </Button>
-                    <Button bsStyle="danger"
-                            onClick={() => this.props.toggleResetPasswordModal(false)}>
-                        Close
-                    </Button>
                 </Modal.Body>
 
-                <Modal.Footer>
+                <Modal.Footer className="modal-custom modal-custom-footer">
                     {
                         this.state.error !== null ?
                             <div className="error-message">

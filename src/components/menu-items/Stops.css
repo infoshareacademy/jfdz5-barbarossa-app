@@ -1,3 +1,12 @@
+input[type=email] {
+  background: linear-gradient(to top right, #222, #3c3c3c);
+  color: #ddd;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px; }
+  input[type=email]:active {
+    border-color: red !important; }
+
 .container {
   padding-top: 2em; }
 
@@ -37,9 +46,19 @@ h3 {
 h4 {
   font-size: 1.1em; }
 
+.important-info {
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+  font-size: 1em;
+  text-decoration: none;
+  color: #0c8ff2; }
+  .important-info:hover {
+    text-decoration: none;
+    cursor: pointer; }
+
 .btn-custom {
   transition: color 0.3s, background 0.3s, transform 0.3s;
   background: linear-gradient(to top right, #222, #3c3c3c);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border: 1px solid #2b2b2b;
   color: #aaaaaa;
   outline: none;
@@ -58,6 +77,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: darkred;
   color: #ddd;
   width: 20px;
@@ -79,6 +99,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background: darkgreen;
   color: #ddd;
   width: 20px;
@@ -95,6 +116,45 @@ h4 {
   .btn-back:hover {
     background: #004b00;
     color: #ddd; }
+
+.modal-content {
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+  background: #222;
+  border: none;
+  position: relative;
+  font-size: 1.5em;
+  letter-spacing: 1px; }
+  .modal-content .fa-times {
+    font-size: 0.7em; }
+  .modal-content span {
+    color: #0c8ff2; }
+  .modal-content .fa-frown-o {
+    color: #0c8ff2;
+    font-size: 3em;
+    margin-bottom: 20px; }
+
+.modal-custom {
+  background: #151515;
+  color: #ddd;
+  border: none; }
+
+.modal-custom-header {
+  padding-top: 3em;
+  text-align: center; }
+
+.modal-custom-body {
+  text-align: center;
+  border-width: 0 !important;
+  outline: none !important; }
+  .modal-custom-body .btn-custom {
+    margin: 5px; }
+
+.modal-custom-header_reset {
+  font-size: 0.8em; }
+  .modal-custom-header_reset h4 {
+    margin-bottom: 1em; }
+  .modal-custom-header_reset span {
+    color: #0c8ff2; }
 
 select.stops {
   margin: 1em 0;

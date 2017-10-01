@@ -10,6 +10,16 @@
 //******************************
 //**********  GLOBAL  **********
 //******************************
+input[type=email] {
+  @include custom-gradient();
+  color: $colorFont;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  &:active {
+    border-color: red !important;
+  }
+}
 
 .container {
   padding-top: 2em;
@@ -59,9 +69,25 @@ h4 {
   font-size: 1.1em;
 }
 
+.important-info {
+  @include custom-transition();
+  font-size: 1em;
+  text-decoration: none;
+  color: $colorAccent;
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+//******************************
+//*********  BUTTONS  **********
+//******************************
+
 .btn-custom {
   @include custom-transition();
   @include custom-gradient();
+  @include shadow-content();
   border: 1px solid darken($colorFontDarker, 50%);
   color: $colorFontDarker;
   outline: none;
@@ -80,6 +106,7 @@ h4 {
 
 .btn-exit {
   @include flex-align();
+  @include shadow-content();
   background: darkred;
   color: $colorFont;
   width: 20px;
@@ -101,6 +128,7 @@ h4 {
 
 .btn-back {
   @include flex-align();
+  @include shadow-content();
   background: darkgreen;
   color: $colorFont;
   width: 20px;
@@ -117,5 +145,59 @@ h4 {
   &:hover {
     background: darken(darkgreen, 5%);
     color: $colorFont;
+  }
+}
+
+//******************************
+//**********  MODALS  **********
+//******************************
+
+.modal-content {
+  @include custom-transition();
+  background: $colorMain;
+  border: none;
+  position: relative;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  .fa-times {
+    font-size: 0.7em;
+  }
+  span{
+    color: $colorAccent;
+  }
+  .fa-frown-o {
+    color: $colorAccent;
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+}
+
+.modal-custom {
+  background: $colorMainDarken;
+  color: $colorFont;
+  border: none;
+}
+
+.modal-custom-header {
+  padding-top: 3em;
+  text-align: center;
+}
+
+.modal-custom-body {
+  text-align: center;
+  .btn-custom {
+    margin: 5px;
+  }
+  border-width: 0 !important;
+  outline: none !important;
+}
+
+.modal-custom-header_reset {
+  font-size: 0.8em;
+  h4 {
+    margin-bottom: 1em;
+  }
+  span {
+    color: $colorAccent;
   }
 }
