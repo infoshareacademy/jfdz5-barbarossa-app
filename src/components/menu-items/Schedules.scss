@@ -15,5 +15,9 @@
   .line-hour {
     border-top: transparent;
     border-bottom: 4px solid darken($colorAccent, 15%);
+    display: inline-block;
+    @media #{$medium} {
+      display: table-cell;
+    }
   }
 }
