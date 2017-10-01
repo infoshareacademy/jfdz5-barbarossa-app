@@ -117,6 +117,21 @@ h4 {
     background: #004b00;
     color: #ddd; }
 
+.delete-favorite-buttons .btn-custom, .fav-buttons .btn-custom {
+  margin: 0; }
+
+.delete-favorite-buttons .btn-star, .fav-buttons .btn-star {
+  background-image: -webkit-linear-gradient(top, #efd100 0, #e2a233 38%, #f0c328 60%, #fff1a3 86%, #ffe13e 100%);
+  opacity: 0.8;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: 0; }
+  .delete-favorite-buttons .btn-star:hover, .fav-buttons .btn-star:hover {
+    opacity: 1;
+    outline: none;
+    border: 0; }
+
 .modal-content {
   transition: color 0.3s, background 0.3s, transform 0.3s;
   background: #222;

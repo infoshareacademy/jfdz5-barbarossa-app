@@ -60,8 +60,9 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
                     timeFromEndStop.hours + ':' + timeFromEndStop.minutes
                 }
             </td>
-            <td>
+            <td className="fav-buttons">
                 <Button
+                    className="btn-custom"
                     data-fav-name={name}
                     onClick={handleRemoveFav}
                 >
@@ -70,6 +71,7 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
             </td>
             <td>
                 <Button
+                    className="btn-custom"
                     data-fav-name={name}
                     onClick={handleShowOnMapClick}
                 >

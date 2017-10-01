@@ -10,9 +10,15 @@ export const ResultsTable = ({results, showOnMapClick, closeResults}) => {
             <table>
                 <thead>
                 <tr>
-                    <th>Line</th>
-                    <th>Departure time</th>
-                    <th>Arrival time</th>
+                    <th>
+                        <span>Line</span>
+                    </th>
+                    <th>
+                        <span>Departure</span>
+                    </th>
+                    <th>
+                        <span>Arrival</span>
+                    </th>
                     <th> </th>
                     <th>
                             <Button className="btn-exit" onClick={closeResults}>

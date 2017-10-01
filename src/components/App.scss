@@ -148,6 +148,26 @@ h4 {
   }
 }
 
+.delete-favorite-buttons, .fav-buttons {
+  .btn-custom {
+    margin: 0;
+
+  }
+  .btn-star {
+    background-image: -webkit-linear-gradient(top, #efd100 0, #e2a233 38%, #f0c328 60%, #fff1a3 86%, #ffe13e 100%);
+    opacity: 0.8;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: 0;
+    &:hover {
+      opacity: 1;
+      outline: none;
+      border: 0;
+    }
+  }
+}
+
 //******************************
 //**********  MODALS  **********
 //******************************
