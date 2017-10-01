@@ -51,7 +51,9 @@ const ScheduleView = props => {
                 </Table>
             </div>
             :
-            <div>Fetching data</div>
+            <div className="main-panel menu-panel">
+                Fetching data
+            </div>
 
     )
 

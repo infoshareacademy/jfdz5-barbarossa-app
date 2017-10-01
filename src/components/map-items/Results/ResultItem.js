@@ -50,6 +50,7 @@ export const ResultItem = ({result, results, showOnMapClick}) => {
                 </td>
                 <td>
                     <Button
+                        className="btn-custom"
                         data-result-name={name}
                         onClick={handleSaveFavsClick}
                     >
@@ -58,6 +59,7 @@ export const ResultItem = ({result, results, showOnMapClick}) => {
                 </td>
                 <td>
                     <Button
+                        className="btn-custom"
                         data-result-name={name}
                         onClick={handleShowOnMapClick}
                     >
