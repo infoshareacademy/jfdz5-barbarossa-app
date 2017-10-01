@@ -11,7 +11,7 @@ import {
 } from 'react-bootstrap'
 
 import {toggleResetPasswordModal} from '../../state/modals'
-import ResetPasswordModal from './ResetPasswordModal'
+import ResetPasswordModal from '../views/ResetPasswordModal'
 
 class SignInForm extends React.Component {
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {LinkContainer} from 'react-router-bootstrap'
-
 import {Button} from 'react-bootstrap'
 
-const Favs = ({user}) => (
+import {addLocations} from '../../../state/routeMap'
+import {FavsTable} from './FavsTable'
+
+const Favs = ({user, favs, showOnMapClick}) => (
     <div className="main-panel menu-panel">
         {
             user === null ?
@@ -13,6 +15,11 @@ const Favs = ({user}) => (
                     <LinkContainer exact to="/log">
                         <Button className="btn-custom">
                             Sign In
+                        </Button>
+                    </LinkContainer>
+                    <LinkContainer exact to="/">
+                        <Button>
+                            X
                         </Button>
                     </LinkContainer>
                 </div>
@@ -24,16 +31,25 @@ const Favs = ({user}) => (
                             X
                         </Button>
                     </LinkContainer>
-                    <h5>This is your favorite connections:</h5>
+                    <FavsTable
+                        favs={favs}
+                        showOnMapClick={showOnMapClick}
+                    />
                 </div>
         }
     </div>
 );
 
 const mapStateToProps = state => ({
-    user: state.auth.user
+    user: state.auth.user,
+    favs: state.favs
+});
+
+const mapDispatchToProps = dispatch => ({
+    showOnMapClick: selectedConnection => dispatch(addLocations(selectedConnection))
 });
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Favs)

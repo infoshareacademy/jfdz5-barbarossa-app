@@ -1,5 +1,4 @@
 const UPDATE_LIST = 'usersList/UPDATE_LIST'
-
 export const updateList = list => ({
     type: UPDATE_LIST,
     list
