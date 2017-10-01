@@ -25,7 +25,10 @@ export const ResultItem = ({result, results, showOnMapClick}) => {
         let endStopName = selectedResult.endStop.name;
         endStopName = endStopName.replace('.','').replace(' ','');
 
-        const favName = 'from_' + startStopName + '_to_' + endStopName   + '_by_' + resultName;
+        const startStopTime = selectedResult.selectedTime.timeFromStartStop.hours + ':' + selectedResult.selectedTime.timeFromStartStop.minutes
+        const endStopTime = selectedResult.selectedTime.timeFromEndStop.hours + ':' + selectedResult.selectedTime.timeFromEndStop.minutes
+
+        const favName = 'from_' + startStopName + '_at_' + startStopTime + '_to_' + endStopName + '_at_' + endStopTime + '_by_' + resultName;
         const userId = firebase.auth().currentUser.uid;
 
         firebase.database().ref('/favorites/' + userId + '/' + favName).set(selectedResult)

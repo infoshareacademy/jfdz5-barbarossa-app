@@ -23,10 +23,9 @@ export const FavsTable = ({favs, showOnMapClick}) => {
                     <th>Time</th>
                 </tr>
                 </thead>
-                <tbody>
                 {
                     favs ?
-                        favsArray.map( fav =>
+                        favsArray.map(fav =>
                             <FavItem
                                 key={fav.name}
                                 fav={fav}
@@ -35,13 +34,14 @@ export const FavsTable = ({favs, showOnMapClick}) => {
                             />
                         )
                         :
+                        <tbody>
                         <tr>
                             <td colSpan={5}>
                                 No connections saved
                             </td>
                         </tr>
+                        </tbody>
                 }
-                </tbody>
             </table>
         </div>
     )
