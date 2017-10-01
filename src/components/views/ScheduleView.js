@@ -36,7 +36,7 @@ const ScheduleView = props => {
                     {
                         stopSchedule.map(
                             line => (
-                                <tr key={line.name}>
+                                <tr className="line-number-outter"key={line.name}>
                                     <td className="line-number"> {line.name} </td>
                                     {
                                         line.timeFromSelectedStop.map(
