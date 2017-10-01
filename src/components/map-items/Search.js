@@ -76,7 +76,6 @@ class Search extends React.Component {
             };
 
             this.props.handleSubmitClick(searchParams);
-            this.setState(initialState);
         }
     };
 

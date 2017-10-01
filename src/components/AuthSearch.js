@@ -1,15 +1,15 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 import './AuthSearch.css'
 
-const AuthSearch = ({ user, children }) => (
+const AuthSearch = ({user, children}) => (
     <div>
         {
             user === null ?
                 <div className="auth-box__not-log main-panel">
-                    <i className="fa fa-exclamation-circle" aria-hidden="true"></i><br/>
+                    <i className="fa fa-exclamation-circle"/><br/>
                     Sign in <span>to search</span>
                 </div> :
                 children

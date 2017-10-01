@@ -6,11 +6,13 @@ import {
     FormGroup,
     Col,
     ControlLabel,
-    Button} from 'react-bootstrap'
+    Button
+} from 'react-bootstrap'
 
 class SignUpForm extends React.Component {
 
     state = {
+        username: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -37,16 +39,49 @@ class SignUpForm extends React.Component {
             )
         }
         else {
-            this.setState ({
+            this.setState({
                 error: "'Password' and 'Confirm password' must match."
             })
         }
+
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                firebase.auth().currentUser.updateProfile({
+                    displayName: this.state.username
+                }).then(function () {
+                        const userId = firebase.auth().currentUser.uid
+
+                        firebase.database().ref('/users/' + userId).set({
+                            username: firebase.auth().currentUser.displayName,
+                            email: firebase.auth().currentUser.email
+                        })
+                    }
+                )
+            }
+        })
     }
 
     render() {
         return (
             <Form horizontal onSubmit={this.handleSubmit} className="main-panel auth-panel">
                 <h3>Sign Up</h3>
+
+                <FormGroup controlId="formHorizontalEmail">
+                    <Col style={{paddingTop: '10px'}} componentClass={ControlLabel} sm={2}>
+                        Username
+                    </Col>
+                    <Col sm={10}>
+                        <FormControl
+                            type="text"
+                            placeholder="Username..."
+                            name="username"
+                            style={{height: '40px'}}
+                            onChange={this.handleChange}
+                            value={this.state.username}
+                        />
+                    </Col>
+                </FormGroup>
+
                 <FormGroup controlId="formHorizontalEmail">
                     <Col style={{paddingTop: '10px'}} componentClass={ControlLabel} sm={2}>
                         Email

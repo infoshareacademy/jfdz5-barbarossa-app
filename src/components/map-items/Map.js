@@ -26,9 +26,7 @@ const initialState = {
     destination: null,
     directions: null
 }
-/*
- * Add <script src="https://maps.googleapis.com/maps/api/js"></script> to your HTML to provide google.maps reference
- */
+
 class Map extends Component {
 
     state = initialState;
@@ -42,15 +40,28 @@ class Map extends Component {
         }
         else {
             const DirectionsService = new google.maps.DirectionsService();
-            const waypoints = nextProps.routeMap.routeStops.map(
+
+            const {
+                startStop,
+                endStop,
+                routeStops
+            } = nextProps.routeMap;
+
+            const waypoints = routeStops.map(
                 stop => ({
-                    location: stop.name + ' ,Gdańsk'
+                    location: stop.name +
+                        (stop.name.includes('Chwaszczyno') || stop.name.includes('Banino') ?
+                        '' : ' ,Gdańsk')
                 })
             )
 
             DirectionsService.route({
-                origin: nextProps.routeMap.startStop.name + ' ,Gdańsk',
-                destination: nextProps.routeMap.endStop.name + ' ,Gdańsk',
+                origin: startStop.name +
+                    (startStop.name.includes('Chwaszczyno') || startStop.name.includes('Banino') ?
+                    '' : ' ,Gdańsk'),
+                destination: endStop.name +
+                    (endStop.name.includes('Chwaszczyno') || endStop.name.includes('Banino') ?
+                    '' : ' ,Gdańsk'),
                 waypoints: waypoints,
                 travelMode: google.maps.TravelMode.DRIVING,
             }, (result, status) => {

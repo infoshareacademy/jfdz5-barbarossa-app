@@ -1,5 +1,8 @@
 export const adjustTime = (departures, type, inputTime) => {
-    return departures.every(
+
+    const depType = (type === 'arrival') ? 'depFromEndStop' : 'depFromStartStop'
+
+    return (departures.every(
         ({ depFromEndStop, depFromStartStop }) => (
             inputTime >= (
                 type === 'arrival' ?
@@ -8,7 +11,7 @@ export const adjustTime = (departures, type, inputTime) => {
             )
         )
     ) ?
-        departures[0] :
+        departures :
         departures.filter(
             ({ depFromEndStop, depFromStartStop }) => (
                 (
@@ -17,5 +20,7 @@ export const adjustTime = (departures, type, inputTime) => {
                         depFromStartStop
                 ) >=  inputTime
             )
-        )[0]
+        )).reduce((min, next) =>
+            min[depType] < next[depType] ? min : next,
+            { [depType]: Infinity} )
 }

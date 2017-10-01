@@ -1,7 +1,7 @@
 const ADD_LOCATIONS = 'routeMap/ADD_LOCATIONS'
-export const add = selectedResult => ({
+export const addLocations = selectedConnection => ({
     type: ADD_LOCATIONS,
-    selectedResult
+    selectedConnection
 })
 
 const initialState = {};
@@ -9,7 +9,7 @@ const initialState = {};
 export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_LOCATIONS:
-            return action.selectedResult
+            return action.selectedConnection
         default:
             return initialState
     }
