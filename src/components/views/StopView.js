@@ -38,7 +38,14 @@ const StopView = props => {
                 </ul>
             </div>
             :
-            <div>Fetching data...</div>
+            <div className="main-panel menu-panel">
+                <LinkContainer exact to="/stops">
+                    <Button className="btn-back">
+                        <i className="fa fa-arrow-left"/>
+                    </Button>
+                </LinkContainer>
+                <h1>Fetching data...</h1>
+            </div>
     )
 
 }

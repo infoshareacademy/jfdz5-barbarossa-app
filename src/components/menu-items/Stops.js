@@ -47,8 +47,8 @@ class Stops extends React.Component {
                 </select>
 
                 <LinkContainer exact to={`/stops/${this.state.stopId}`}>
-                    <Button>
-                        Show
+                    <Button className="btn-custom">
+                        <span>SHOW</span>
                     </Button>
                 </LinkContainer>
             </div>

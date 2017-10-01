@@ -47,7 +47,7 @@ class Schedules extends React.Component {
                 </select>
 
                 <LinkContainer exact to={`/schedules/${this.state.stopId}`}>
-                    <Button>
+                    <Button className="btn-custom">
                         Show
                     </Button>
                 </LinkContainer>

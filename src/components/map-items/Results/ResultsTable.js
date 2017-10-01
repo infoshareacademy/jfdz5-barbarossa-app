@@ -15,9 +15,9 @@ export const ResultsTable = ({results, showOnMapClick, closeResults}) => {
                     <th>Arrival time</th>
                     <th> </th>
                     <th>
-                        <Button onClick={closeResults}>
-                            X
-                        </Button>
+                            <Button className="btn-exit" onClick={closeResults}>
+                                <i className="fa fa-times" aria-hidden="true"></i>
+                            </Button>
                     </th>
                 </tr>
                 </thead>

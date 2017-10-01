@@ -17,11 +17,6 @@ const Favs = ({user, favs, showOnMapClick}) => (
                             Sign In
                         </Button>
                     </LinkContainer>
-                    <LinkContainer exact to="/">
-                        <Button>
-                            X
-                        </Button>
-                    </LinkContainer>
                 </div>
                 :
                 <div>
