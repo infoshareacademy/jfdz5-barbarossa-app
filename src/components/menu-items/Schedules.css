@@ -185,12 +185,19 @@ th, td {
   border: 4px solid #0c8ff2; }
 
 .schedule-view .line-number {
+  background: #222;
   border: 4px solid #0c8ff2;
   margin: 10px; }
 
+.schedule-view .line-number-outter:nth-child(odd) {
+  background: #042b48; }
+
+.schedule-view .line-number-outter:nth-child(even) {
+  background: #021c30; }
+
 .schedule-view .line-hour {
   border-top: transparent;
-  border-bottom: 4px solid #0864a9;
+  border-bottom: transparent;
   display: inline-block; }
   @media only screen and (min-width: 992px) {
     .schedule-view .line-hour {

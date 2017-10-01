@@ -25,7 +25,7 @@ const Favs = ({user, favs, showOnMapClick}) => (
                     <h1>Hello {user.displayName} !</h1>
                     <LinkContainer exact to="/">
                         <Button className="btn-exit">
-                            <i className="fa fa-times" aria-hidden="true"></i>
+                            <i className="fa fa-times"/>
                         </Button>
                     </LinkContainer>
                     <FavsTable
