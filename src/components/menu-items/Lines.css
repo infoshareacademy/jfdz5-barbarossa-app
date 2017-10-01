@@ -6,7 +6,8 @@
   background: linear-gradient(to top right, #222, #3c3c3c);
   padding: 1em 2em;
   color: #ddd;
-  border-radius: 5px; }
+  border-radius: 5px;
+  position: relative; }
 
 .menu-panel {
   margin-top: -2.5em;
@@ -24,7 +25,8 @@
 
 h1 {
   font-size: 1.5em;
-  letter-spacing: 1px; }
+  letter-spacing: 1px;
+  margin-top: 30px; }
 
 h2 {
   font-size: 1.3em; }
@@ -49,16 +51,25 @@ h4 {
     color: #ddd; }
 
 .btn-exit {
-  background: linear-gradient(to top right, #222, #3c3c3c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: darkred;
+  color: #ddd;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
   outline: none;
   border: none;
-  margin: 10px 0;
+  margin: 10px;
   position: absolute;
-  bottom: -41px;
-  left: 15px; }
-  .btn-exit i {
-    font-size: 1em;
-    color: white; }
+  top: 0;
+  left: 0;
+  padding: 0;
+  font-size: 0.8em; }
+  .btn-exit:hover {
+    color: darkred;
+    background: #ddd; }
 
 h1.lines {
   margin-bottom: 1em; }

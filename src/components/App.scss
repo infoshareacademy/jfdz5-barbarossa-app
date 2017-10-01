@@ -21,6 +21,7 @@
   padding: 1em 2em;
   color: $colorFont;
   border-radius: 5px;
+  position: relative;
 }
 
 .menu-panel {
@@ -43,6 +44,7 @@
 h1 {
   font-size: 1.5em;
   letter-spacing: 1px;
+  margin-top: 30px;
 }
 
 h2 {
@@ -73,15 +75,22 @@ h4 {
 }
 
 .btn-exit {
-  @include custom-gradient();
+  @include flex-align();
+  background: darkred;
+  color: $colorFont;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
   outline: none;
   border: none;
-  margin: 10px 0;
+  margin: 10px;
   position: absolute;
-  bottom: -41px;
-  left: 15px;
-  i {
-    font-size: 1em;
-    color: white;
+  top: 0;
+  left: 0;
+  padding: 0;
+  font-size: 0.8em;
+  &:hover {
+    color: darkred;
+    background: $colorFont;
   }
 }
