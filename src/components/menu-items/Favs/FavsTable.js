@@ -2,6 +2,8 @@ import React from 'react'
 
 import {FavItem} from './FavItem'
 
+import './Favs.css'
+
 export const FavsTable = ({favs, showOnMapClick}) => {
 
     if (favs) {
@@ -9,7 +11,7 @@ export const FavsTable = ({favs, showOnMapClick}) => {
     }
 
     return (
-        <div className="">
+        <div className="favs">
             <h5>This is your favorite connections:</h5>
             <table>
                 <thead>
