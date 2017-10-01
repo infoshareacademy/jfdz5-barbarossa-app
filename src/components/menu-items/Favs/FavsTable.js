@@ -25,9 +25,9 @@ export const FavsTable = ({favs, showOnMapClick}) => {
                 </thead>
                 {
                     favs ?
-                        favsArray.map(fav =>
+                        favsArray.map( (fav, index) =>
                             <FavItem
-                                key={fav.name}
+                                key={index}
                                 fav={fav}
                                 favs={favsArray}
                                 showOnMapClick={showOnMapClick}
