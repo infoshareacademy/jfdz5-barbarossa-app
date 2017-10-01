@@ -6,8 +6,8 @@ import {Button} from 'react-bootstrap'
 
 const Lines = ({lines}) => (
     <div className="main-panel menu-panel">
-        <LinkContainer exact to="/">
-            <Button className="btn-exit">
+        <LinkContainer className="btn-exit" exact to="/">
+            <Button >
                 <i className="fa fa-times" />
             </Button>
         </LinkContainer>

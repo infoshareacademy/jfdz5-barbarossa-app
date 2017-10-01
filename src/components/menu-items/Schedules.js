@@ -26,8 +26,8 @@ class Schedules extends React.Component {
         return (
             <div className="main-panel menu-panel">
                 <h1>Stops</h1>
-                <LinkContainer exact to="/">
-                    <Button className="btn-exit">
+                <LinkContainer className="btn-exit" exact to="/">
+                    <Button>
                         <i className="fa fa-times"/>
                     </Button>
                 </LinkContainer>
@@ -46,8 +46,8 @@ class Schedules extends React.Component {
                     }
                 </select>
 
-                <LinkContainer exact to={`/schedules/${this.state.stopId}`}>
-                    <Button className="btn-custom">
+                <LinkContainer className="btn-custom" exact to={`/schedules/${this.state.stopId}`}>
+                    <Button >
                         Show
                     </Button>
                 </LinkContainer>

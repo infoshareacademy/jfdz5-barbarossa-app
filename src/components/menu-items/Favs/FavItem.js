@@ -80,7 +80,7 @@ export const FavItem = ({fav, favs, showOnMapClick}) => {
             <td>
                 <Button
                     className="btn-custom"
-                    data-fav-name={favName}
+                    data-fav-name={name}
                     onClick={handleShowOnMapClick}
                 >
                     <i className="fa fa-eye"/>

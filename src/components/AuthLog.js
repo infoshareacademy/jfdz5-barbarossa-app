@@ -21,9 +21,9 @@ const AuthLog = ({children, user, modals, toggleUserRemoveModal}) => {
                             You are logged in as <strong>{user.displayName}</strong>
                         </h1>
 
-                        <LinkContainer exact to="/">
-                            <Button className="btn-exit">
-                                <i className="fa fa-times" aria-hidden="true"></i>
+                        <LinkContainer className="btn-exit" exact to="/">
+                            <Button >
+                                <i className="fa fa-times" />
                             </Button>
                         </LinkContainer>
 

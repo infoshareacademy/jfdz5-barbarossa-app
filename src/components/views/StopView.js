@@ -17,13 +17,13 @@ const StopView = props => {
         stopDetails ?
             <div className="main-panel menu-panel">
             <h1> {stopDetails.name} </h1>
-                <LinkContainer exact to="/stops">
-                    <Button className="btn-back">
+                <LinkContainer className="btn-back" exact to="/stops">
+                    <Button>
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
-                <LinkContainer exact to="/">
-                    <Button className="btn-exit">
+                <LinkContainer className="btn-exit" exact to="/">
+                    <Button>
                         <i className="fa fa-times"/>
                     </Button>
                 </LinkContainer>
@@ -44,16 +44,6 @@ const StopView = props => {
             </div>
             :
             <div className="main-panel menu-panel">
-                <LinkContainer exact to="/stops">
-                    <Button className="btn-back">
-                        <i className="fa fa-arrow-left"/>
-                    </Button>
-                </LinkContainer>
-                <LinkContainer exact to="/">
-                    <Button className="btn-exit">
-                        <i className="fa fa-times"/>
-                    </Button>
-                </LinkContainer>
                 <h1>Fetching data...</h1>
             </div>
     )

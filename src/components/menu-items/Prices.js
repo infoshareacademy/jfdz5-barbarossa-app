@@ -8,8 +8,8 @@ import './Prices.css'
 const Prices = () => (
     <div className="main-panel prices menu-panel">
         <h1>Prices</h1>
-        <LinkContainer exact to="/">
-            <Button className="btn-exit">
+        <LinkContainer className="btn-exit" exact to="/">
+            <Button>
                 <i className="fa fa-times"/>
             </Button>
         </LinkContainer>

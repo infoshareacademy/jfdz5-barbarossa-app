@@ -14,8 +14,8 @@ const Favs = ({user, favs, showOnMapClick}) => (
             user === null ?
                 <div>
                     <h4>You must be log in to see your favorite connections!</h4>
-                    <LinkContainer exact to="/log">
-                        <Button className="btn-custom">
+                    <LinkContainer className="btn-custom" exact to="/log">
+                        <Button>
                             Sign In
                         </Button>
                     </LinkContainer>
@@ -23,8 +23,8 @@ const Favs = ({user, favs, showOnMapClick}) => (
                 :
                 <div>
                     <h1>Hello {user.displayName} !</h1>
-                    <LinkContainer exact to="/">
-                        <Button className="btn-exit">
+                    <LinkContainer className="btn-exit" exact to="/">
+                        <Button>
                             <i className="fa fa-times"/>
                         </Button>
                     </LinkContainer>
