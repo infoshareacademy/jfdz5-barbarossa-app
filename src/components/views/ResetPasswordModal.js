@@ -25,8 +25,8 @@ class ResetPasswordModal extends React.Component {
 
                 <Modal.Body>
                     <input
-                        type="text"
-                        value={this.state.content}
+                        type="email"
+                        value={this.state.email}
                         onChange={this.handleChange}
                     />
                     <Button bsStyle="primary"

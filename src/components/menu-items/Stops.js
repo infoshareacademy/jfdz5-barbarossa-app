@@ -1,32 +1,61 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Button } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-
+import {connect} from 'react-redux'
+import {LinkContainer} from 'react-router-bootstrap'
+import {Button} from 'react-bootstrap'
 import './Stops.css'
-const Stops = ({stops}) => (
-    <div className="main-panel menu-panel">
-        <h1>Stops</h1>
-        <select className="stops">
-                {
-                    stops.sort().map(
-                        stop => (
-                            <option key={stop.id}>
-                                {
-                                    stop.name
-                                }
-                            </option>
-                        )
-                    )
-                }
-        </select>
-        <LinkContainer exact to="/">
-            <Button className="btn-exit">
-                <i className="fa fa-times" aria-hidden="true"></i>
-            </Button>
-        </LinkContainer>
-    </div>
-);
+
+
+class Stops extends React.Component {
+
+    state = {
+        stopId: null
+    }
+
+    handleChange = event => {
+        const selectedStop = this.props.stops.find(stop => stop.name === event.currentTarget.value)
+        const selectedStopId = selectedStop.id
+        this.setState({
+            stopId: selectedStopId
+        })
+    }
+
+
+    render() {
+
+
+        return (
+            <div className="main-panel menu-panel">
+                <h1>Stops</h1>
+                <LinkContainer exact to="/">
+                    <Button>
+                        X
+                    </Button>
+                </LinkContainer>
+                <select className="stops" onChange={this.handleChange}>
+                    {
+                        this.props.stops.map(stop => stop.name).sort()
+                            .map(
+                                (name, index) => (
+                                    <option key={index}>
+                                        {
+                                            name
+                                        }
+                                    </option>
+                                )
+                            )
+                    }
+                </select>
+
+                <LinkContainer exact to={`/stops/${this.state.stopId}`}>
+                    <Button>
+                        Show
+                    </Button>
+                </LinkContainer>
+            </div>
+        )
+    }
+
+}
 
 export default connect(
     state => ({

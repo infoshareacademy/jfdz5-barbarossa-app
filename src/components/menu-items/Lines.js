@@ -1,35 +1,28 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {LinkContainer} from 'react-router-bootstrap'
 import './Lines.css'
-
-import { Button } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
 
 const Lines = ({lines}) => (
     <div className="main-panel menu-panel">
         <h1 className="lines">Lines</h1>
-        <div className="lines">
+        <ul className="lines">
             {
                 lines.map(
-                    line =>
-                        <LinkContainer key={line.id} to={`/lines/${line.name}`}>
-                            <Button className="btn-custom">
+                    line => (
+                        <LinkContainer key={line.id} exact to={`/lines/${line.name}`}>
+                            <li>
                                 {
                                     line.name
                                 }
-                            </Button>
+                            </li>
                         </LinkContainer>
+                    )
                 )
             }
-        </div>
-        <LinkContainer exact to="/">
-            <Button className="btn-exit">
-                <i className="fa fa-times" aria-hidden="true"></i>
-            </Button>
-        </LinkContainer>
+        </ul>
     </div>
 );
-
 
 export default connect(
     state => ({

@@ -4,28 +4,32 @@ import {LinkContainer} from 'react-router-bootstrap'
 import {Button} from 'react-bootstrap'
 
 
-const LineView = props => {
-    const lineName = props.match.params.lineName
-    const selectedLine = props.lines.find(line => line.name === lineName);
+const StopView = props => {
+    const stopId = parseInt(props.match.params.stopId, 10);
+    const stopDetails = props.stops.find(stop => stop.id === stopId);
+    const linesWithStopIds = props.lines.filter(
+        line => line.stops
+            .find(
+                stop => stop.id === stopId)
+    );
 
     return (
-        selectedLine ?
+        stopDetails ?
             <div>
-                <h1> {lineName} </h1>
-                <LinkContainer exact to="/lines">
+                <h1> {stopDetails.name} </h1>
+                <LinkContainer exact to="/stops">
                     <Button>
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
-                <h3>Route:</h3>
+                <h3>Departures lines:</h3>
                 <ul>
                     {
-                        selectedLine.stops.map(
-                            (stop,index) =>
+                        linesWithStopIds.map(line =>
                             (
-                                <li key={index}>
+                                <li key={line.name}>
                                     {
-                                        stop.name
+                                        line.name
                                     }
                                 </li>
                             )
@@ -41,6 +45,7 @@ const LineView = props => {
 
 export default connect(
     state => ({
+        stops: state.stops,
         lines: state.lines
     })
-)(LineView)
+)(StopView)
