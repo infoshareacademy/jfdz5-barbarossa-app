@@ -11,44 +11,47 @@ const ScheduleView = props => {
     const stopSchedule = getStopSchedule(props.lines, stopId)
 
     return (
-        <div>
-            <h1> {stopDetails.name} </h1>
-            <LinkContainer exact to="/stops">
-                <Button>
-                    <i className="fa fa-arrow-left"/>
-                </Button>
-            </LinkContainer>
-            <Table>
-                <thead>
-                <tr>
-                    <th>Line</th>
-                    <th colSpan={5}>Departure times</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    stopSchedule.map(
-                        line => (
-                            <tr key={line.name}>
-                                <td> {line.name} </td>
-                                {
-                                    line.timeFromSelectedStop.map(
-                                        (time, index) => (
-                                            <td key={index}>
-                                                {
-                                                    time.hours + ':' + time.minutes
-                                                }
-                                            </td>
+        stopDetails ?
+            <div>
+                <h1> {stopDetails.name} </h1>
+                <LinkContainer exact to="/stops">
+                    <Button>
+                        <i className="fa fa-arrow-left"/>
+                    </Button>
+                </LinkContainer>
+                <Table>
+                    <thead>
+                    <tr>
+                        <th>Line</th>
+                        <th colSpan={5}>Departure times</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        stopSchedule.map(
+                            line => (
+                                <tr key={line.name}>
+                                    <td> {line.name} </td>
+                                    {
+                                        line.timeFromSelectedStop.map(
+                                            (time, index) => (
+                                                <td key={index}>
+                                                    {
+                                                        time.hours + ':' + time.minutes
+                                                    }
+                                                </td>
+                                            )
                                         )
-                                    )
-                                }
-                            </tr>
+                                    }
+                                </tr>
+                            )
                         )
-                    )
-                }
-                </tbody>
-            </Table>
-        </div>
+                    }
+                    </tbody>
+                </Table>
+            </div>
+            :
+            <div>Fetching data</div>
 
     )
 

@@ -7,7 +7,7 @@ import firebase from 'firebase'
 
 import './AuthLog.css'
 import UsersList from './menu-items/UsersList'
-import UserRemoveModal from './menu-items/UserRemoveModal'
+import UserRemoveModal from './views/UserRemoveModal'
 import {toggleUserRemoveModal} from '../state/modals'
 
 const AuthLog = ({children, user, modals, toggleUserRemoveModal}) => {

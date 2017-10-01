@@ -9,10 +9,11 @@ import {
 
 import Favs from './menu-items/Favs/Favs'
 import Lines from './menu-items/Lines'
+import LineView from './views/LineView'
 import Schedules from './menu-items/Schedules'
+import ScheduleView from './views/ScheduleView'
 import Stops from './menu-items/Stops'
 import StopView from './views/StopView'
-import ScheduleView from './views/ScheduleView'
 import Prices from './menu-items/Prices'
 import Log from './menu-items/Log'
 
@@ -21,7 +22,8 @@ const Content = () => (
         <Switch>
             <Route exact path="/"/>
             <Route path="/favs" component={Favs}/>
-            <Route path="/lines" component={Lines}/>
+            <Route exact path="/lines" component={Lines}/>
+            <Route path="/lines/:lineName" component={LineView}/>
             <Route exact path="/schedules" component={Schedules}/>
             <Route path="/schedules/:stopId" component={ScheduleView}/>
             <Route exact path="/stops" component={Stops}/>
