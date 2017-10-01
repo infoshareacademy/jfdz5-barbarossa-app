@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {LinkContainer} from 'react-router-bootstrap'
 import {Table, Button} from 'react-bootstrap'
 
+import '../menu-items/Schedules.css'
+
 import {getStopSchedule} from '../_utlis/getStopSchedule'
 
 const ScheduleView = props => {
@@ -12,7 +14,7 @@ const ScheduleView = props => {
 
     return (
         stopDetails ?
-            <div className="main-panel menu-panel">
+            <div className="main-panel menu-panel schedule-view">
                 <h1> {stopDetails.name} </h1>
                 <LinkContainer exact to="/stops">
                     <Button className="btn-back">
@@ -22,8 +24,7 @@ const ScheduleView = props => {
                 <Table>
                     <thead>
                     <tr>
-                        <th>Line</th>
-                        <th colSpan={5}>Departure times</th>
+                        <th className="line-number_header">Line</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,11 +32,11 @@ const ScheduleView = props => {
                         stopSchedule.map(
                             line => (
                                 <tr key={line.name}>
-                                    <td> {line.name} </td>
+                                    <td className="line-number"> {line.name} </td>
                                     {
                                         line.timeFromSelectedStop.map(
                                             (time, index) => (
-                                                <td key={index}>
+                                                <td className="line-hour" key={index}>
                                                     {
                                                         time.hours + ':' + time.minutes
                                                     }

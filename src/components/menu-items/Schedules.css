@@ -176,3 +176,14 @@ th, td {
     margin-bottom: 1em; }
   .modal-custom-header_reset span {
     color: #0c8ff2; }
+
+.schedule-view .line-number_header {
+  border-bottom: 2px solid #0c8ff2; }
+
+.schedule-view .line-number {
+  border: none;
+  border-bottom: 2px solid #0c8ff2;
+  margin: 10px; }
+
+.schedule-view .line-hour {
+  border-top: none; }
