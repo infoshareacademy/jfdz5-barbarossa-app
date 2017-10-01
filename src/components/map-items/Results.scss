@@ -1,11 +1,20 @@
 @import '../App.scss';
 
 .results {
-  @include icon-move();
+  margin-top: -25px;
+  margin-bottom: 50px;
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+  }
+  span {
+    font-size: 1.1em;
+    white-space: nowrap;
+  }
+  th, td {
+    padding: 5px;
+    text-align: center;
   }
 }
 

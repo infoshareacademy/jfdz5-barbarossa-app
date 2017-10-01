@@ -10,20 +10,27 @@ const LineView = props => {
 
     return (
         selectedLine ?
-            <div className="main-panel menu-panel">
+            <div className="main-panel menu-panel lines">
             <h1> {lineName} </h1>
                 <LinkContainer exact to="/lines">
                     <Button className="btn-back">
                         <i className="fa fa-arrow-left"/>
                     </Button>
                 </LinkContainer>
+                <LinkContainer exact to="/">
+                    <Button className="btn-exit">
+                        <i className="fa fa-times"/>
+                    </Button>
+                </LinkContainer>
                 <h3>Route:</h3>
+                <i className="fa fa-long-arrow-right"/>
+                <i className="fa fa-arrow-down"/>
                 <ul>
                     {
                         selectedLine.stops.map(
                             (stop,index) =>
                             (
-                                <li key={index}>
+                                <li className="lines-test" key={index}>
                                     {
                                         stop.name
                                     }
@@ -34,7 +41,9 @@ const LineView = props => {
                 </ul>
             </div>
             :
-            <div>Fetching data...</div>
+            <div className="main-panel menu-panel">
+                Fetching data...
+            </div>
     )
 
 }

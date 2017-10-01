@@ -8,7 +8,7 @@ const Lines = ({lines}) => (
     <div className="main-panel menu-panel">
         <LinkContainer exact to="/">
             <Button className="btn-exit">
-                <i className="fa fa-times" aria-hidden="true"></i>
+                <i className="fa fa-times" />
             </Button>
         </LinkContainer>
         <h1 className="lines">Lines</h1>
