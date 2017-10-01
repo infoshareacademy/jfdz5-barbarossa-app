@@ -10,14 +10,14 @@ const Prices = () => (
         <h1>Prices</h1>
         <LinkContainer exact to="/">
             <Button className="btn-exit">
-                <i className="fa fa-times" aria-hidden="true"></i>
+                <i className="fa fa-times"/>
             </Button>
         </LinkContainer>
         <h2>Single tickets</h2>
         <div className="row">
             <div className="col-xs-6">
                 <ul className="prices-list prices_list--oneway">
-                    <h3>One way tickets</h3>
+                    <h3>One way<br/>tickets</h3>
                     <p>Normal lines</p>
                     <li>1.60 PLN<i className="fa fa-child" /></li>
                     <li>3.20 PLN</li>
@@ -28,7 +28,7 @@ const Prices = () => (
             </div>
             <div className="col-xs-6">
                 <ul className="prices-list prices_list--time">
-                    <h3>Time tickets</h3>
+                    <h3>Time<br/>tickets</h3>
                     <p>Normal lines - 1 hour</p>
                     <li>1.90 PLN<i className="fa fa-child" /></li>
                     <li>3.80 PLN</li>

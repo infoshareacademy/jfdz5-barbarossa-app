@@ -28,11 +28,6 @@ class Stops extends React.Component {
                 <h1>Stops</h1>
                 <LinkContainer exact to="/">
                     <Button className="btn-exit">
-                        <i className="fa fa-times"/>
-                    </Button>
-                </LinkContainer>
-                <LinkContainer exact to="/">
-                    <Button className="btn-exit">
                         <i className="fa fa-times" />
                     </Button>
                 </LinkContainer>

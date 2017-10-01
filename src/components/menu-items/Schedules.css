@@ -190,4 +190,8 @@ th, td {
 
 .schedule-view .line-hour {
   border-top: transparent;
-  border-bottom: 4px solid #0864a9; }
+  border-bottom: 4px solid #0864a9;
+  display: inline-block; }
+  @media only screen and (min-width: 992px) {
+    .schedule-view .line-hour {
+      display: table-cell; } }
