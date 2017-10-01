@@ -68,8 +68,29 @@ h4 {
   padding: 0;
   font-size: 0.8em; }
   .btn-exit:hover {
-    color: darkred;
-    background: #ddd; }
+    background: #720000;
+    color: #ddd; }
+
+.btn-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: darkgreen;
+  color: #ddd;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  font-size: 0.8em; }
+  .btn-back:hover {
+    background: #004b00;
+    color: #ddd; }
 
 h1.lines {
   margin-bottom: 1em; }

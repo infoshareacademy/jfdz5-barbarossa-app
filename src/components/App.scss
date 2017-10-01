@@ -90,7 +90,28 @@ h4 {
   padding: 0;
   font-size: 0.8em;
   &:hover {
-    color: darkred;
-    background: $colorFont;
+    background: darken(darkred, 5%);
+    color: $colorFont;
+  }
+}
+
+.btn-back {
+  @include flex-align();
+  background: darkgreen;
+  color: $colorFont;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  font-size: 0.8em;
+  &:hover {
+    background: darken(darkgreen, 5%);
+    color: $colorFont;
   }
 }

@@ -27,8 +27,8 @@ class Schedules extends React.Component {
             <div className="main-panel menu-panel">
                 <h1>Stops</h1>
                 <LinkContainer exact to="/">
-                    <Button>
-                        X
+                    <Button className="btn-exit">
+                        <i className="fa fa-times" aria-hidden="true"></i>
                     </Button>
                 </LinkContainer>
                 <select className="stops" onChange={this.handleChange}>
