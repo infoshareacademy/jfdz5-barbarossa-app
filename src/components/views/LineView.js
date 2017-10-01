@@ -20,9 +20,10 @@ const LineView = props => {
                 <h3>Route:</h3>
                 <ul>
                     {
-                        selectedLine.stops.map(stop =>
+                        selectedLine.stops.map(
+                            (stop,index) =>
                             (
-                                <li key={stop.id}>
+                                <li key={index}>
                                     {
                                         stop.name
                                     }
