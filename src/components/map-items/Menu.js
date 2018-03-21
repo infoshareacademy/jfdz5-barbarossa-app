@@ -11,7 +11,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 const Menu = () => (
             <Navbar fluid inverse collapseOnSelect className="menu">
                 <Navbar.Header>
-                    <Navbar.Toggle />
+                    <Navbar.Toggle style={{marginRight: '+30px'}} />
                 </Navbar.Header>
                 <Navbar.Collapse>
                 <Nav>
