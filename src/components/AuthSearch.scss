@@ -1,0 +1,18 @@
+@import './App.scss';
+
+div.auth-box__not-log {
+  padding: 2em;
+  color: $colorAccent;
+  text-align: center;
+  font-size: 1.6em;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  span {
+    color: white;
+  }
+  i {
+    font-size: 3em;
+    margin: 0.2em;
+  }
+}

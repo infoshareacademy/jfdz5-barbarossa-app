@@ -1,0 +1,29 @@
+@import '../App.scss';
+
+.results {
+  margin-top: -25px;
+  margin-bottom: 50px;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  span {
+    font-size: 1.1em;
+    white-space: nowrap;
+  }
+  th, td {
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.results-title {
+  margin-bottom: 2em;
+}
+
+.results-element {
+  @include flex-align();
+  @include mar-padd(0.6em 0 , 0.3em);
+  background: $colorMain;
+}

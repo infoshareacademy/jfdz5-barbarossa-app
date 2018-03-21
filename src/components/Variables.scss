@@ -1,0 +1,22 @@
+//******************************
+//*********  M QUERIES  ********
+//******************************
+
+$small: 'only screen and (min-width: 768px)';
+$medium: 'only screen and (min-width: 992px)';
+$large: 'only screen and (min-width: 1200px)';
+
+//******************************
+//*********  BG COLORS  ********
+//******************************
+
+$colorMain: #222;
+$colorMainDarken: darken($colorMain, 5%);
+$colorAccent: #0c8ff2;
+
+//******************************
+//*******  TYPHO COLORS  *******
+//******************************
+
+$colorFont: #ddd;
+$colorFontDarker: darken($colorFont, 20%);
