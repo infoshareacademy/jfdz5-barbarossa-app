@@ -6,7 +6,7 @@
     "firebase": "^4.4.0",
     "font-awesome": "^4.7.0",
     "moment": "^2.18.1",
-    "node-sass-chokidar": "0.0.3",
+    "node-sass-chokidar": "1.2.2",
     "npm-run-all": "^4.1.0",
     "rc-time-picker": "^2.4.1",
     "react": "^15.6.1",
